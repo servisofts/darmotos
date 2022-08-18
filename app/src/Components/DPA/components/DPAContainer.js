@@ -15,6 +15,7 @@ class DPAContainer extends React.Component {
                 <SView col={"xs-11 sm-10 md-8 lg-6 xl-4"} center>
                     {this.props.children}
                 </SView>
+                <SHr height={100}/>
             </SView>
         );
     }

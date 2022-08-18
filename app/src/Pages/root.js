@@ -16,7 +16,7 @@ class index extends Component {
         var dataPage = Model.usuarioPage.Action.getPages();
         if (!dataPage) return null;
         return Object.values(dataPage).map((obj) => {
-            return <MenuButtom label={obj.descripcion} url={obj.url} icon={<SImage src={SSocket.api.roles_permisos + "/page/" + obj.key} />} />
+            return <MenuButtom url={obj.url} permiso={"page"} />
         })
     }
 

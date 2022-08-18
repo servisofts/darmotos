@@ -33,6 +33,14 @@ export default class Action extends SAction {
         if (!page) return null;
         if (!page.permisos) return null;
         if (!page.permisos[permiso]) return null;
+        var obj = page.permisos[permiso];
         return page.permisos[permiso];
+    }
+    getPage({ url, loading = "cargando" }) {
+        var pages = this.getAll();
+        if (!pages) return loading;
+        var page = pages[url];
+        if (!page) return null;
+        return page;
     }
 }

@@ -1,12 +1,16 @@
-import DPA, { connect } from '../../Components/DPA';
-import { Parent } from "."
+import DPA, { connect } from '../../../Components/DPA';
+import { Parent } from ".."
 import { SView } from 'servisofts-component';
-import EditarPermisosRol from '../../Components/EditarPermisosRol';
-import Model from '../../Model';
+import EditarPermisosRol from '../../../Components/EditarPermisosRol';
+import Model from '../../../Model';
 
 class index extends DPA.profile {
     constructor(props) {
         super(props, { Parent: Parent, excludes: ["key", "key_servicio", "estado"] });
+    }
+
+    $allowBack() {
+        return true;
     }
     $allowEdit() {
         return Model.usuarioPage.Action.getPermiso({ url: Parent.path, permiso: "edit" })

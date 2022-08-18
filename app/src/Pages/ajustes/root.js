@@ -28,7 +28,7 @@ class index extends Component {
             <SPage title={'Ajustes'}>
                 <SHr height={32} />
                 <SView col={"xs-12"} row center>
-                    <MenuButtom label={"Datos"} url={"/ajustes/dato"} icon={this.buildIcon("Dato")} permiso={"ver"} />
+                    <MenuButtom url={"/ajustes/dato"} permiso={"ver"} />
                 </SView>
             </SPage>
         );

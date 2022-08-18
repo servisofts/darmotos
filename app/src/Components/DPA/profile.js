@@ -54,14 +54,21 @@ class profile extends React.Component {
     onDelete() {
         SNavigation.navigate(this.Parent?.path + "/delete", { pk: this.data[this.Parent.model.pk] });
     }
+    onBack() {
+        SNavigation.goBack();
+    }
     $menu() {
         var arr = [];
+        if (this.$allowBack()) {
+            arr.push({ icon: "Arrow", label: "Back", onPress: this.onBack.bind(this) });
+        }
         if (this.$allowEdit()) {
             arr.push({ icon: "Pencil", label: "edit", onPress: this.onEdit.bind(this) });
         }
         if (this.$allowDelete()) {
             arr.push({ icon: "Close", label: "delete", onPress: this.onDelete.bind(this) });
         }
+
         return arr;
     }
     $header() {
@@ -71,6 +78,12 @@ class profile extends React.Component {
         return null;
     }
     $allowEdit() {
+        return false;
+    }
+    $allowDelete() {
+        return false;
+    }
+    $allowBack() {
         return false;
     }
     $allowDelete() {
