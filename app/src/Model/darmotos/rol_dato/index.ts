@@ -34,9 +34,6 @@ export default new SModel<Action, Reducer>({
         },
 
     },
-    image: {
-        name: "test"
-    },
     Action,
     Reducer,
 });

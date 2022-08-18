@@ -4,7 +4,7 @@ import Reducer from "./Reducer";
 
 export default new SModel<Action, Reducer>({
     info: {
-        component: "dato"
+        component: "usuario_dato"
     },
     Columns: {
         "key": {
@@ -19,21 +19,19 @@ export default new SModel<Action, Reducer>({
         "key_usuario": {
             type: "text", fk: "usuario"
         },
+        "key_usuario_perfil": {
+            type: "text", fk: "usuario", notNull: true,
+        },
+        "key_dato": {
+            type: "text", fk: "dato", notNull: true,
+        },
         "descripcion": {
-            type: "text", label: "Descripcion", notNull: true, editable: true
+            type: "text", notNull: true,
         },
-        "observacion": {
-            type: "text", label: "Observacion", notNull: true, editable: true
+        "fecha_vencimiento": {
+            type: "date"
         },
-        "tipo": {
-            type: "text", label: "Observacion", notNull: true, editable: true
-        },
-        "required": {
-            type: "boolean", editable: true
-        },
-        "caducable": {
-            type: "boolean", editable: true
-        },
+
     },
     Action,
     Reducer,

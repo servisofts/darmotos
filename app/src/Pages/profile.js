@@ -2,7 +2,7 @@ import DPA, { connect } from '../Components/DPA';
 
 import { SButtom, SHr, SInput, SList, SText, SView } from 'servisofts-component';
 import Model from '../Model';
-import EditarUsuarioRol from '../Components/EditarUsuarioRol';
+import EditarUsuarioRol from './usuario/Components/EditarUsuarioRol';
 const Parent = {
     name: "usuario",
     path: `/usuario`,

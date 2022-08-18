@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { SHr, SImage, SInput, SList, SLoad, SPopup, SText, SView } from 'servisofts-component';
-import Model from '../../Model';
+import Model from '../../../Model';
 import SSocket from 'servisofts-socket'
 import { connect } from 'react-redux';
 class EditarUsuarioRol extends Component {
