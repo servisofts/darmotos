@@ -12,10 +12,7 @@ class index extends Component {
     }
 
     buildIcon(label) {
-        var permiso = Model.usuarioPage.Action.getPermiso({ url: Parent.path, permiso: "edit" });
-        if (permiso == "cargando"){
-            
-        }
+
         return <SView col={"xs-12"} height>
             <SIcon name={"Box"} fill={STheme.color.card} />
             <SView style={{
@@ -31,7 +28,7 @@ class index extends Component {
             <SPage title={'Ajustes'}>
                 <SHr height={32} />
                 <SView col={"xs-12"} row center>
-                    <MenuButtom label={"Datos"} url={"/ajustes/dato"} icon={this.buildIcon("Dato")} />
+                    <MenuButtom label={"Datos"} url={"/ajustes/dato"} icon={this.buildIcon("Dato")} permiso={"ver"} />
                 </SView>
             </SPage>
         );

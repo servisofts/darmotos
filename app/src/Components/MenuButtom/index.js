@@ -1,9 +1,25 @@
 import { Text, View } from 'react-native'
 import React, { Component } from 'react'
-import { SNavigation, SText, SView } from 'servisofts-component'
+import { SLoad, SNavigation, SText, SView } from 'servisofts-component'
+import Model from '../../Model';
 
-export default class MenuButtom extends Component {
+type MenuButtomType = {
+    label: String,
+    url: String,
+    icon: any,
+    permiso?: String
+}
+export default class MenuButtom extends Component<MenuButtomType> {
     render() {
+
+        if (this.props.permiso) {
+            var permiso = Model.usuarioPage.Action.getPermiso({ url: this.props.url, permiso: this.props.permiso });
+            if (permiso == "cargando") {
+                return null;
+            }
+            if (!permiso) return null;
+        }
+
         return <SView
             height={100}
             width={90}

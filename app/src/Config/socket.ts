@@ -2,7 +2,8 @@ export default {
     debug: true, //para que se vea los returns del server
     name: 'darmotos',
     ssl: false,
-    host: '192.168.3.2',
+    host: '192.168.0.199',
+    // host: '192.168.3.2',
     port: {
         native: 10038,
         web: 20038,

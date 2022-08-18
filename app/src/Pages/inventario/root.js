@@ -26,11 +26,11 @@ class index extends Component {
             <SPage title={'Inventario'}>
                 <SHr height={32} />
                 <SView col={"xs-12"} row center>
-                    <MenuButtom label={"Marca"} url={"/inventario/marca"} icon={this.buildIcon("Marca")} />
-                    <MenuButtom label={"Modelo"} url={"/inventario/modelo"} icon={this.buildIcon("Modelo")} />
-                    <MenuButtom label={"Almacen"} url={"/inventario/almacen"} icon={this.buildIcon("Almacen")} />
-                    <MenuButtom label={"Producto"} url={"/inventario/producto"} icon={this.buildIcon("Producto")} />
-                    <MenuButtom label={"Datos"} url={"/inventario/inventario_dato"} icon={this.buildIcon("Datos")} />
+                    <MenuButtom label={"Marca"} url={"/inventario/marca"} icon={this.buildIcon("Marca")} permiso={"ver"} />
+                    <MenuButtom label={"Modelo"} url={"/inventario/modelo"} icon={this.buildIcon("Modelo")} permiso={"ver"}/>
+                    <MenuButtom label={"Almacen"} url={"/inventario/almacen"} icon={this.buildIcon("Almacen")} permiso={"ver"}/>
+                    <MenuButtom label={"Producto"} url={"/inventario/producto"} icon={this.buildIcon("Producto")} permiso={"ver"}/>
+                    <MenuButtom label={"Datos"} url={"/inventario/inventario_dato"} icon={this.buildIcon("Datos")} permiso={"ver"}/>
                 </SView>
             </SPage>
         );
