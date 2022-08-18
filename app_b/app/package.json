@@ -1,0 +1,36 @@
+{
+  "name": "darmotos_app",
+  "version": "1.0.0",
+  "description": "darmotos",
+  "scripts": {
+    "start": "react-native start",
+    "build": "react-scripts build",
+    "web": "react-scripts start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "SERVISOFTS S.R.L.",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.2",
+    "react-native": "^0.64.2",
+    "react-native-reanimated": "^2.2.4",
+    "react-native-web": "^0.17.1",
+    "servisofts-usuario": "file:../../usuario/library/dist"
+  },
+  "devDependencies": {
+    "react-scripts": "^4.0.3"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
