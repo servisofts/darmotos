@@ -17,6 +17,15 @@ public class Manejador {
             case test.COMPONENT:
                 test.onMessage(obj, session);
                 break;
+            case Dato.COMPONENT:
+                Dato.onMessage(obj, session);
+                break;
+            case RolDato.COMPONENT:
+                RolDato.onMessage(obj, session);
+                break;
+            case UsuarioDato.COMPONENT:
+                UsuarioDato.onMessage(obj, session);
+                break;
         }
     }
 }
