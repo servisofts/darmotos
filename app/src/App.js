@@ -5,6 +5,7 @@ import Redux, { store } from './Redux';
 import Config from "./Config";
 import Assets from './Assets';
 import Pages from './Pages';
+import BackgroundImage from './Components/BackgroundImage';
 
 setProps(Config.socket);
 
@@ -13,6 +14,7 @@ const App = (props) => {
         <SComponentContainer
             debug
             socket={SSocket}
+            background={<BackgroundImage/>}
             assets={Assets}
             inputs={Config.inputs}
             theme={{ themes: Config.theme }}

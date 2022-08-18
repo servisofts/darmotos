@@ -32,7 +32,7 @@
     "react-redux": "^7.2.4",
     "redux": "^4.1.1",
     "redux-thunk": "^2.3.0",
-    "servisofts-component": "2.8.3",
+    "servisofts-component": "file:../../servisofts-component/dist",
     "servisofts-model": "file:../../servisofts-model/dist",
     "servisofts-socket": "2.5.7",
     "servisofts-usuario": "file:../../usuario/library/dist",

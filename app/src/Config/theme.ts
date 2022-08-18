@@ -2,24 +2,26 @@ import { SThemeThemes } from 'servisofts-component';
 
 const theme: SThemeThemes = {
     default: {
-        barStyle: 'light-content',
-        barColor: '#dddddd',
+        barStyle: 'dark-content',
+        barColor: '#ffffff',
         text: '#000000',
-        primary: '#000000',
-        secondary: '#ffffff',
+        primary: '#ffffff',
+        secondary: '#000000',
         info: '#97989d',
         background: '#ffffff',
+        // card: '#00000010',
         card: '#00000015',
     },
     dark: {
         barStyle: 'light-content',
-        barColor: '#222222',
+        barColor: '#000000',
         text: '#ffffff',
-        primary: '#ffffff',
-        secondary: '#000000',
+        primary: '#000000',
+        secondary: '#ffffff',
         info: '#6E6F74',
         background: '#000000',
-        card: '#ffffff28'
+        card: '#ffffff15'
+        // card: '#ffffff10'
     }
 }
 export default theme;

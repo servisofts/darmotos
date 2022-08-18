@@ -1,18 +1,8 @@
-import { SModel } from "servisofts-model";
-import Action from "./Action";
-import Reducer from "./Reducer";
 
-class index extends SModel<Action, Reducer> {
-    constructor() {
-        super({
-            info: {
-                service:"empresa",
-                component: "empresa"
-            },
-            Action,
-            Reducer,
-        });
-    }
+import empresa from "./empresa";
+import sucursal from "./sucursal";
+
+export default {
+    empresa,
+    sucursal,
 }
-
-export default new index();

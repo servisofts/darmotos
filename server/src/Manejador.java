@@ -14,8 +14,8 @@ public class Manejador {
             return;
         }
         switch (obj.getString("component")) {
-            case Algo.COMPONENT:
-                Algo.onMessage(obj, session);
+            case test.COMPONENT:
+                test.onMessage(obj, session);
                 break;
         }
     }
