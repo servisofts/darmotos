@@ -1,4 +1,4 @@
-import DPA, { connect } from '../../../../Components/DPA';
+import DPA, { connect } from 'servisofts-page';
 import Model from '../../../../Model';
 
 const Parent = {
@@ -12,6 +12,7 @@ class index extends DPA.list {
             page: false,
             Parent: Parent,
             title: "Modelos",
+            type: "componentTitle",
             excludes: ["key", "fecha_on", "key_usuario", "estado", "key_marca",],
             // item: Item,
 

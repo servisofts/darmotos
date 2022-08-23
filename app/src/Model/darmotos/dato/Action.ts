@@ -30,6 +30,9 @@ export default class Action extends SAction {
             { key: "number", content: "Numero" },
             { key: "money", content: "Moneda" },
             { key: "date", content: "Fecha" },
+            { key: "image", content: "Imagen" },
+            { key: "file", content: "Archivo" },
+            { key: "files", content: "Multiples Archivo" },
             { key: "checkBox", content: "ON/OFF" },
         ]
     }

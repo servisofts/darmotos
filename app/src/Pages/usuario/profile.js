@@ -1,4 +1,4 @@
-import DPA, { connect } from '../../Components/DPA';
+import DPA, { connect } from 'servisofts-page';
 import { Parent } from "."
 import { SForm, SHr, SInput, SList, SText, SView } from 'servisofts-component';
 import Model from '../../Model';

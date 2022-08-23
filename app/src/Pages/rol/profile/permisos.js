@@ -1,4 +1,4 @@
-import DPA, { connect } from '../../../Components/DPA';
+import DPA, { connect } from 'servisofts-page';
 import { Parent } from ".."
 import { SView } from 'servisofts-component';
 import EditarPermisosRol from './Components/EditarPermisosRol';

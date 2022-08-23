@@ -1,7 +1,7 @@
-import DPA, { connect } from '../../../Components/DPA';
+import DPA, { connect } from 'servisofts-page';
 import { Parent } from "."
 import Model from '../../../Model';
-import Editar_modelo_inventario_dato from '../../../Components/Editar_modelo_inventario_dato';
+import Editar_modelo_inventario_dato from './Components/Editar_modelo_inventario_dato';
 import { SView } from 'servisofts-component';
 import item from './item';
 

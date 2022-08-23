@@ -1,4 +1,4 @@
-import DPA, { connect } from '../../../Components/DPA';
+import DPA, { connect } from 'servisofts-page';
 import { Parent } from '.';
 import { SNavigation, SPopup } from 'servisofts-component';
 import Model from '../../../Model';
@@ -28,7 +28,7 @@ class index extends DPA.edit {
         inp["required"].col = "xs-5"
         inp["caducable"].type = "checkBox"
         inp["caducable"].col = "xs-5"
-        inp["tipo"] = { label: "Tipo de dato", required: true, type: "select", defaultValue: "", options: Model.dato.Action.getTiposDato() }
+        inp["tipo"] = { label: "Tipo de dato", required: true, type: "select", defaultValue: this.data["tipo"], options: Model.dato.Action.getTiposDato() }
         return inp;
     }
     $allowAccess() {
