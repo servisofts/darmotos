@@ -58,6 +58,9 @@ class item extends React.Component {
                     if (col.type == "timestamp") {
                         value = new SDate(value).toString('yyyy-MM-dd hh:mm')
                     }
+                    if (col.type == "boolean") {
+                        value = value?"SI":"NO"
+                    }
                 }
                 return this.buildLabel({ label, value })
             }} />

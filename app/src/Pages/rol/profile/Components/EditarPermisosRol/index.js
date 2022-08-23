@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { SHr, SImage, SInput, SList, SLoad, SPopup, SText, SView } from 'servisofts-component';
+import { SHr, SImage, SInput, SList, SLoad, SPopup, SText, STheme, SView } from 'servisofts-component';
 import SSocket from 'servisofts-socket'
-import Model from '../../Model';
+import Model from '../../../../../Model';
 
 export default class EditarPermisosRol extends Component {
     constructor(props) {
@@ -14,7 +14,7 @@ export default class EditarPermisosRol extends Component {
         });
         var permisos = Model.permiso.Action.getAll();
         var permisos_rol = Model.rolPermiso.Action.getAllByKeyRol(this.props.key_rol)
-        var allowEdit = Model.usuarioPage.Action.getPermiso({ url: "/rol", permiso: "edit_permiso" })
+        var allowEdit = Model.usuarioPage.Action.getPermiso({ url: "/rol/profile/permisos", permiso: "edit" })
         if (!pages) return <SLoad />;
         if (!permisos) return <SLoad />;
         if (!permisos_rol) return <SLoad />;
@@ -26,38 +26,48 @@ export default class EditarPermisosRol extends Component {
             <SHr />
             <SList
                 buscador
-
-                horizontal={true}
+                order={[{ key: "url", order: "asc", peso: 1 }]}
+                // horizontal={true}
                 data={pages}
                 render={(itm) => {
                     var pf = Object.values(permisos).filter(obj => obj.key_page == itm.key)
-                    return <SView col={"xs-5.7"} >
+                    var cant = itm.url.split(/\//g).length;
+                    return <SView col={"xs-12"} style={{
+                        padding: 8,
+                        paddingLeft: (cant - 1) * 16,
+                    }} card>
                         <SHr height={16} />
-                        <SView row col={"xs-12"} style={{
+                        <SView row flex style={{
                             alignItems: "center"
                         }} >
-                            <SView width={30} height={30} card>
+                            <SView width={40} height={40} card>
                                 <SImage src={Model.page._get_image_download_path(SSocket.api, itm.key)} />
                             </SView>
                             <SView width={8} />
-                            <SText fontSize={16} bold>{itm.descripcion}</SText>
+                            <SView flex>
+                                <SText fontSize={16} bold>{itm.descripcion}</SText>
+                                <SHr height={4} />
+                                <SText fontSize={12}>{itm.url}</SText>
+                            </SView>
+
                         </SView>
                         <SHr />
                         <SList
                             data={pf}
-                            // horizontal
+                            horizontal
                             order={[{ key: "type", order: "desc", "peso": 1 }]}
                             space={16}
                             render={(itm2) => {
                                 var activo = Object.values(permisos_rol).find(elm => elm.key_permiso == itm2.key)
-                                return <SView row style={{
-                                    alignItems: 'center'
+                                return <SView style={{
+                                    alignItems: 'center',
+                                    marginTop: 4,
                                 }}>
                                     <SInput
                                         col={""}
                                         type={"checkBox"}
                                         defaultValue={!!activo}
-                                        editable={!!allowEdit}
+                                        disabled={!allowEdit}
                                         onChangeText={(e) => {
                                             if (e) {
                                                 Model.rolPermiso.Action.registro({
@@ -77,8 +87,7 @@ export default class EditarPermisosRol extends Component {
                                                 })
                                             }
                                         }} />
-                                    <SView width={4} />
-                                    <SText>{itm2.descripcion}</SText>
+                                    <SText color={STheme.color.lightGray}>{itm2.descripcion}</SText>
                                 </SView>
                             }}
                         />

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { SForm, SHr, SInput, SNavigation, SPage, SPopup, SText, SView } from 'servisofts-component';
+import { SForm, SHr, SIcon, SInput, SNavigation, SPage, SPopup, SText, STheme, SView } from 'servisofts-component';
 import Model from '../Model';
 
 class Login extends Component {
@@ -19,8 +19,12 @@ class Login extends Component {
             <SPage title={'Login'} hidden >
                 <SView col={"xs-12"} center>
                     <SHr height={50} />
-                    <SText fontSize={18}>Inicia session</SText>
+                    <SView width={300} height={100} center>
+                        <SIcon name={"Logo"} fill={STheme.color.secondary} />
+                    </SView>
                     <SHr height={50} />
+                    <SText fontSize={18}>Inicia session</SText>
+                    <SHr height={16} />
                     <SForm
                         col={"xs-11 sm-10 md-8 lg-6 xl-4"}
                         ref={ref => this.form = ref}

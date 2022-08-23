@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { SHr, SIcon, SPage, SText, STheme, SView } from 'servisofts-component';
-import MenuButtom from '../../Components/MenuButtom';
+import MenuPages from '../../Components/MenuPages';
 
 class index extends Component {
     constructor(props) {
@@ -15,13 +15,7 @@ class index extends Component {
         return (
             <SPage title={'Inventario'}>
                 <SHr height={32} />
-                <SView col={"xs-12"} row center>
-                    <MenuButtom url={"/inventario/marca"} permiso={"ver"} />
-                    <MenuButtom url={"/inventario/modelo"} permiso={"ver"} />
-                    <MenuButtom url={"/inventario/almacen"} permiso={"ver"} />
-                    <MenuButtom url={"/inventario/producto"} permiso={"ver"} />
-                    <MenuButtom url={"/inventario/inventario_dato"} permiso={"ver"} />
-                </SView>
+                <MenuPages path={"/inventario/"} />
             </SPage>
         );
     }

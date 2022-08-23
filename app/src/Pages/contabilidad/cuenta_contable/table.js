@@ -1,14 +1,17 @@
-import DPA, { connect } from '../../Components/DPA';
+import DPA, { connect } from '../../../Components/DPA';
 import { Parent } from "."
+import Model from '../../../Model';
 
-class index extends DPA.list {
+class index extends DPA.table {
     constructor(props) {
         super(props, {
             Parent: Parent,
-            excludes: ["key", "fecha_on", "key_usuario", "estado"]
+            excludes: ["key",]
         });
     }
-
+    $allowAccess() {
+        return Model.usuarioPage.Action.getPermiso({ url: Parent.path, permiso: "table" })
+    }
     $filter(data) {
         return data.estado != 0
     }

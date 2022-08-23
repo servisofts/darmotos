@@ -25,13 +25,16 @@ class index extends Component {
                     key_usuario: Model.usuario.Action.getKey()
                 })
             } else {
-                var resp = await Model.usuario_dato.Action.editar({
-                    data: {
-                        ...dto,
-                        descripcion: data[key_dato],
-                    },
-                    key_usuario: Model.usuario.Action.getKey()
-                })
+                if (dto?.descripcion != data[key_dato]+"") {
+                    var resp = await Model.usuario_dato.Action.editar({
+                        data: {
+                            ...dto,
+                            descripcion: data[key_dato],
+                        },
+                        key_usuario: Model.usuario.Action.getKey()
+                    })
+                }
+
             }
         }
     }
@@ -45,7 +48,7 @@ class index extends Component {
         var inputs = {};
         Object.values(datos).map((obj) => {
             var dto = Object.values(this.usuario_dato).find(o => o.key_dato == obj.key);
-            inputs[obj.key] = { label: obj.descripcion, type: obj.tipo, required: obj.required, defaultValue: dto?.descripcion }
+            inputs[obj.key] = { label: obj.descripcion, type: obj.tipo, required: obj.required, defaultValue: dto?.descripcion, }
         })
         return <SForm inputs={inputs} onSubmitName={"Editar"} onSubmit={(data) => {
             console.log("subir")

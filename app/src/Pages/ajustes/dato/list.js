@@ -6,13 +6,13 @@ class index extends DPA.list {
     constructor(props) {
         super(props, {
             Parent: Parent,
-            excludes: ["key", "fecha_on", "key_usuario", "estado", "key_servicio"]
+            excludes: ["key", "fecha_on", "key_usuario", "estado", "key_servicio", "required", "caducable"]
         });
     }
-    $allowNew(){
+    $allowNew() {
         return Model.usuarioPage.Action.getPermiso({ url: Parent.path, permiso: "new" });
     }
-    $allowTable(){
+    $allowTable() {
         return Model.usuarioPage.Action.getPermiso({ url: Parent.path, permiso: "table" });
     }
     $allowAccess() {

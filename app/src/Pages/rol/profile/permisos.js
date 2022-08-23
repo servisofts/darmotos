@@ -1,7 +1,7 @@
 import DPA, { connect } from '../../../Components/DPA';
 import { Parent } from ".."
 import { SView } from 'servisofts-component';
-import EditarPermisosRol from '../../../Components/EditarPermisosRol';
+import EditarPermisosRol from './Components/EditarPermisosRol';
 import Model from '../../../Model';
 
 class index extends DPA.profile {

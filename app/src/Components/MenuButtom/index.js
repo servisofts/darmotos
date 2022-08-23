@@ -9,7 +9,8 @@ type MenuButtomType = {
     url: String,
     icon: any,
     permiso?: String,
-    params?: any
+    params?: any,
+    onPress?: Function
 }
 export default class MenuButtom extends Component<MenuButtomType> {
     buildIcon(label) {
@@ -57,6 +58,10 @@ export default class MenuButtom extends Component<MenuButtomType> {
             width={90}
             center
             onPress={() => {
+                if (this.props.onPress) {
+                    this.props.onPress();
+                    return;
+                }
                 if (this.props.params) {
                     SNavigation.navigate(this.props.url, this.props.params)
                     return;
@@ -69,7 +74,7 @@ export default class MenuButtom extends Component<MenuButtomType> {
             }}>
                 {icon}
             </SView>
-            <SView col={"xs-12"} flex>
+            <SView col={"xs-11"} flex>
                 <SText center fontSize={14} col={"xs-12"}>{label}</SText>
             </SView>
         </SView>

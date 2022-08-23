@@ -104,6 +104,10 @@ class index extends React.Component {
             <SPage title={this.title}>
                 <DPAContainer>
                     <SForm
+                        row
+                        style={{
+                            justifyContent: 'space-between',
+                        }}
                         col={"xs-12"}
                         ref={ref => this.form = ref}
                         inputs={this._buildHeaders()}

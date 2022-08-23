@@ -34,8 +34,8 @@
     "redux-thunk": "^2.3.0",
     "servisofts-component": "file:../../servisofts-component/dist",
     "servisofts-model": "file:../../servisofts-model/dist",
+    "servisofts-page": "file:../../servisofts-page/dist",
     "servisofts-socket": "2.5.7",
-    "servisofts-usuario": "file:../../usuario/library/dist",
     "typescript": "^4.4.3",
     "xlsx-color": "^0.14.30"
   },

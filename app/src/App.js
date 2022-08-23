@@ -14,14 +14,14 @@ const App = (props) => {
         <SComponentContainer
             debug
             socket={SSocket}
-            background={<BackgroundImage/>}
+            background={<BackgroundImage />}
             assets={Assets}
             inputs={Config.inputs}
-            theme={{ themes: Config.theme }}
+            theme={{ themes: Config.theme, initialTheme: "dark" }}
         >
             <SNavigation
                 props={{
-                    title: 'App', pages: Pages
+                    title: 'Darmotos', pages: Pages
                 }}
             />
             <SSocket

@@ -1,6 +1,7 @@
-import DPA, { connect } from '../../Components/DPA';
+import DPA, { connect } from '../../../Components/DPA';
 import { Parent } from '.';
 import { SNavigation, SPopup } from 'servisofts-component';
+import Model from '../../../Model';
 
 class index extends DPA.edit {
     constructor(props) {
@@ -8,6 +9,9 @@ class index extends DPA.edit {
             Parent: Parent,
             excludes: []
         });
+    }
+    $allowAccess() {
+        return Model.usuarioPage.Action.getPermiso({ url: Parent.path, permiso: "edit" })
     }
     $getData() {
         return Parent.model.Action.getByKey(this.pk);

@@ -23,16 +23,16 @@ export default new SModel<Action, Reducer>({
             type: "text", label: "Descripcion", notNull: true, editable: true
         },
         "observacion": {
-            type: "text", label: "Observacion", notNull: true, editable: true
+            type: "text", label: "Observacion", editable: true
         },
         "tipo": {
-            type: "text", label: "Observacion", notNull: true, editable: true
+            type: "text", label: "Tipo", notNull: true, editable: true
         },
         "required": {
-            type: "boolean", editable: true
+            type: "boolean", editable: true, label: "Requerido?"
         },
         "caducable": {
-            type: "boolean", editable: true
+            type: "boolean", editable: true, label: "Caducable?"
         },
     },
     Action,

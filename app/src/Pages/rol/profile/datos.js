@@ -1,7 +1,7 @@
 import DPA, { connect } from '../../../Components/DPA';
 import { Parent } from ".."
 import { SHr, SImage, SInput, SList, SLoad, SText, SView } from 'servisofts-component';
-import EditarPermisosRol from '../../../Components/EditarPermisosRol';
+import EditarPermisosRol from './Components/EditarPermisosRol';
 import Model from '../../../Model';
 
 class index extends DPA.profile {
@@ -28,7 +28,7 @@ class index extends DPA.profile {
         var rol_dato = Model.rol_dato.Action.getAllBy({
             key_rol: this.pk
         });
-        var allowEdit = Model.usuarioPage.Action.getPermiso({ url: "/rol", permiso: "edit" })
+        var allowEdit = Model.usuarioPage.Action.getPermiso({ url: "/rol/profile/datos", permiso: "edit" })
         if (!datos) return <SLoad />;
         if (!rol_dato) return <SLoad />;
         if (allowEdit == "cargando") return <SLoad />;
@@ -48,7 +48,7 @@ class index extends DPA.profile {
                             col={""}
                             type={"checkBox"}
                             defaultValue={!!activo}
-                            editable={!!allowEdit && !this.props.disabled}
+                            disabled={!allowEdit || !!this.props.disabled}
                             onChangeText={(e) => {
                                 if (e) {
                                     Model.rol_dato.Action.registro({

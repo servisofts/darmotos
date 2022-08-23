@@ -32,7 +32,7 @@ class EditarUsuarioRol extends Component {
                             col={""}
                             type={"checkBox"}
                             defaultValue={!!usuarioRolActivo}
-                            editable={!!allowEdit && !this.props.disabled}
+                            disabled={!allowEdit || !!this.props.disabled}
                             onChangeText={(e) => {
                                 if (e) {
                                     Model.usuarioRol.Action.registro({

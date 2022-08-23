@@ -9,7 +9,7 @@
                 "pem": "servicio.pem"
             }
         },
-        "reconectTime": 5000
+        "reconectTime": 10000
     },
     "files": {
         "url": "/u01/servisoftsFiles/darmotos/"

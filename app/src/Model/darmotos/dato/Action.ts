@@ -22,4 +22,15 @@ export default class Action extends SAction {
         });
         return resp;
     }
+
+    getTiposDato() {
+        return [
+            { key: "", content: "--" },
+            { key: "text", content: "Texto" },
+            { key: "number", content: "Numero" },
+            { key: "money", content: "Moneda" },
+            { key: "date", content: "Fecha" },
+            { key: "checkBox", content: "ON/OFF" },
+        ]
+    }
 }

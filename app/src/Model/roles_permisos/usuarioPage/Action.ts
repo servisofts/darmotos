@@ -7,17 +7,21 @@ export default class Action extends SAction {
             key_usuario: usr.key,
         })
     }
-    getPages() {
+    getPages(path = "/") {
         var pages = this.getAll();
         if (!pages) return null;
         var resp = {};
-        Object.keys(pages).map((key) => {
-            var obj = pages[key];
-            if (!obj.permisos["page"]) return;
-            resp[key] = obj;
+        var keys = Object.keys(pages);
+        keys = keys.sort()
+        keys.map((key) => {
+            if (key.indexOf(path) == 0) {
+                var obj = pages[key];
+                resp[key] = obj;
+            }
         })
         return resp;
     }
+
     getPermisos(url_page) {
         var pages = this.getAll();
         if (!pages) return null;
