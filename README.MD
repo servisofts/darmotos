@@ -65,6 +65,24 @@ Este sistema es una herramienta indespensable para lograr un manejo eficiente de
    ![Screenshot 1](./img/usuario_perfil.png)
    <br />
    <br />
+   
+   
+## Roles y permisos:
+
+ - Una vez registrados los usuarios, es necesario asignarle uno o mas roles para gestionar sus 
+   permisos de acceso a las diferentes funcionalidades del
+   sistema. Por esto se desarrolla un módulo de roles y permisos
+   para los usuarios.
+              
+   ![Screenshot 1](./img/usuarios_lists.png)
+            
+   Al seleccionar un usuario podrá dirigirse hasta su perfil, donde podra cambiar su foto, y su respectiva información segun su rol en el sistema,
+   ya se una cliente, un empleado un administrador o alguno otro nuevo creado por alguna necesidad futura.
+   <br />
+   <br />
+   ![Screenshot 1](./img/roles_permisos_icon.png)
+   <br />
+   <br />
 
 
 
