@@ -27,10 +27,10 @@ public class Manejador {
                 Banco.onMessage(obj, session);
                 break;
             case BancoCuenta.COMPONENT:
-                Banco.onMessage(obj, session);
+                BancoCuenta.onMessage(obj, session);
                 break;
             case CuentaMovimiento.COMPONENT:
-                Banco.onMessage(obj, session);
+                CuentaMovimiento.onMessage(obj, session);
                 break;
         }
     }
