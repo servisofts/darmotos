@@ -41,6 +41,8 @@ Este sistema es una herramienta indespensable para lograr un manejo eficiente de
 
   - `sudo chown -R django /var/log/django/`
 
+
+
 ## Authors
 
 - Servisofts Srl.
