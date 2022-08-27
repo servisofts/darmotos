@@ -75,7 +75,9 @@ Este sistema es una herramienta indespensable para lograr un manejo eficiente de
    para los usuarios.
    
    <br />
+   
    ![Screenshot 1](./img/roles_permisos_icon.png)
+   
    <br />   
    
    ![Screenshot 1](./img/roles_permisos_list.png)
