@@ -13,6 +13,16 @@ El sistema integrado DarMotos cuenta con innumerables opciones para facilitar la
 Este sistema es una herramienta indespensable para lograr un manejo eficiente de la información.
 
 
+### Tecnologías Aplicadas
+
+- Figma, Framer
+- HTML5, CSS 3, React-Native
+- Java, Python, C#, JavaScript
+- MySQL, Postgres, Oracle.
+- Git, SVN, JSON.
+- Linux server
+- Estructura 
+
 
 ### Módulos
 
@@ -27,19 +37,18 @@ Este sistema es una herramienta indespensable para lograr un manejo eficiente de
 - Venta
 - Cobranza
 
+### Ahora te detallaremos cada módulo y como funciona actualmente en el sistema.
+
+- Usuarios:
+            Para llevar una buena gestion de lo que ocurre en un software
+            informático es indispensable el desarrollo de un módulo de
+            registro, edición, bloqueo, baja y seguimientos de usuarios.
+            En este caso el usuario administrador ingresa al apartado usuarios:
+            ![Screenshot 1](./img/usuarios_logo.png)
+            
+- 
 
 
-### Tecnologías
-
-- Figma, Framer
-- HTML5, CSS 3, React-Native
-- Java, Python, C#, JavaScript
-- MySQL, Postgres, Oracle.
-- Git, SVN, JSON.
-- Linux server
-- Estructura 
-
-  - `sudo chown -R django /var/log/django/`
 
 
 
