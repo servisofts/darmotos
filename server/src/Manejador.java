@@ -26,6 +26,15 @@ public class Manejador {
             case UsuarioDato.COMPONENT:
                 UsuarioDato.onMessage(obj, session);
                 break;
+            case Banco.COMPONENT:
+                Banco.onMessage(obj, session);
+                break;
+            case BancoCuenta.COMPONENT:
+                Banco.onMessage(obj, session);
+                break;
+            case CuentaMovimiento.COMPONENT:
+                Banco.onMessage(obj, session);
+                break;
         }
     }
 }
