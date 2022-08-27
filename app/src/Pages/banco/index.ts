@@ -6,7 +6,7 @@ import _new from "./new";
 import profile from "./profile";
 import edit from "./edit";
 import _delete from "./delete";
-import banco_cuenta from "./banco_cuenta";
+import cuenta from "./cuenta";
 const model = Model.banco;
 
 export const Parent = {
@@ -22,5 +22,5 @@ export default SPage.combinePages(Parent.name, {
     "profile": profile,
     "edit": edit,
     "delete": _delete,
-    ...banco_cuenta
+    ...cuenta
 })

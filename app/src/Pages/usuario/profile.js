@@ -4,6 +4,7 @@ import { SForm, SHr, SInput, SList, SText, SView } from 'servisofts-component';
 import Model from '../../Model';
 import EditarUsuarioRol from './Components/EditarUsuarioRol';
 import DatosDocumentos from './Components/DatosDocumentos';
+import DatosDocumentosEditar from './Components/DatosDocumentosEditar';
 
 class index extends DPA.profile {
     constructor(props) {
@@ -27,6 +28,8 @@ class index extends DPA.profile {
 
         return <SView col={"xs-12"}>
             <DatosDocumentos key_usuario={this.pk} />
+            {/* <SHr height={16} /> */}
+            {/* <DatosDocumentosEditar key_usuario={this.pk} /> */}
             <SHr height={16} />
             <EditarUsuarioRol key_usuario={this.pk} />
         </SView>

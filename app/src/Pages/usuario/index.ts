@@ -5,6 +5,7 @@ import table from "./table";
 import _new from "./new";
 import profile from "./profile";
 import edit from "./edit";
+import edit_datos from "./edit_datos";
 import _delete from "./delete";
 
 const model = Model.usuario;
@@ -21,5 +22,6 @@ export default SPage.combinePages(Parent.name, {
     "new": _new,
     "profile": profile,
     "edit": edit,
+    "profile/edit_datos": edit_datos,
     "delete": _delete
 })

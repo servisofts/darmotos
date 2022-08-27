@@ -2,11 +2,11 @@ export default {
     debug: true, //para que se vea los returns del server
     name: 'darmotos',
 
-    // ssl: true,
-    // host: 'darmotos.servisofts.com',
+    ssl: true,
+    host: 'darmotos.servisofts.com',
 
-    ssl: false,
-    host: '192.168.0.199',
+    // ssl: false,
+    // host: '192.168.3.2',
 
     port: {
         native: 10038,

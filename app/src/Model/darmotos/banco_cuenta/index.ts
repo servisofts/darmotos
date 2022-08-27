@@ -7,7 +7,7 @@ export default new SModel<Action, Reducer>({
         component: "banco_cuenta"
     },
     Columns: {
-        "descripcion": { type: "text", notNull: true, editable: true },
+        "descripcion": { type: "text",label:"Cuenta", notNull: true, editable: true },
         "observacion": { type: "text", editable: true },
         "key": { type: "text", pk: true },
         "fecha_on": { type: "timestamp", label: "Fecha de creacion" },

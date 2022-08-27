@@ -2,7 +2,7 @@ import DPA, { connect } from 'servisofts-page';
 import { Parent } from "."
 import { SHr, SList, SLoad, SText, SView } from 'servisofts-component';
 import Model from '../../Model';
-import C_banco_cuenta_list_by_banco from "./banco_cuenta/Components/list_by_banco";
+import C_banco_cuenta_list_by_banco from "./cuenta/Components/list_by_banco";
 class index extends DPA.profile {
     constructor(props) {
         super(props, {
