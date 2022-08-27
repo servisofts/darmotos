@@ -6,7 +6,7 @@
 
 Bienvenido al sistema de gestión de ventas de DarMotos
 
-[DarMotos](https://darmotos.servisofts.com)
+[darmotos.com](https://darmotos.servisofts.com)
 
 El sistema integrado DarMotos cuenta con innumerables opciones para facilitar la gestion de la empresa.
 
