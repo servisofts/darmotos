@@ -14,7 +14,7 @@ Este sistema es una herramienta indespensable para lograr un manejo eficiente de
 
 
 
-###Módulos
+### Módulos
 
 - Usuarios
 - Roles y permisos
@@ -29,7 +29,7 @@ Este sistema es una herramienta indespensable para lograr un manejo eficiente de
 
 
 
-###Tecnologías
+### Tecnologías
 
 - Figma, Framer
 - HTML5, CSS 3, React-Native
