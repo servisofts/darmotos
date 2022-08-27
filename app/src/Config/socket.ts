@@ -6,7 +6,7 @@ export default {
     // host: 'darmotos.servisofts.com',
 
     ssl: false,
-    host: '192.168.3.2',
+    host: '192.168.0.199',
 
     port: {
         native: 10038,
