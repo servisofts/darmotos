@@ -80,8 +80,15 @@ Este sistema es una herramienta indespensable para lograr un manejo eficiente de
    
    <br />   
    
-   ![Screenshot 1](./img/roles_permisos_list.png)
+   al igual que los usuarios lo primero en ver será la lista y las opciones de crear.
+   
    <br />   
+   
+   ![Screenshot 1](./img/roles_permisos_list.png)
+   
+   <br />   
+   
+   Al seleccionar un rol ingresará a su panel administrativo donde podrá ver la información necesaria de su rol seleccionado.
    
    ![Screenshot 1](./img/roles_permisos_perfil.png)
    
