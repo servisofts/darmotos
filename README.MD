@@ -88,7 +88,13 @@ Este sistema es una herramienta indespensable para lograr un manejo eficiente de
    
    <br />   
    
-   Al seleccionar un rol ingresará a su panel administrativo donde podrá ver la información necesaria de su rol seleccionado.
+   Al seleccionar un rol ingresará a su panel administrativo donde podrá:
+    
+    - Editar
+    - Eliminar
+    - Datos y documentos
+    - Usuarios que tienen el rol
+    - Permisos del rol
    
    ![Screenshot 1](./img/roles_permisos_perfil.png)
    
