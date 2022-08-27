@@ -10,16 +10,34 @@ Bienvenido al sistema de gestión de ventas de DarMotos
 
 El sistema integrado DarMotos cuenta con innumerables opciones para facilitar la gestion de la empresa.
 
-Este sistema es una herramienta indespensable para lograr un manejo eficiente de la información, a continuación te daré algunos ejemplos de procesos anteriormente tediosos que hoy serán parte de tu día a día.
+Este sistema es una herramienta indespensable para lograr un manejo eficiente de la información.
 
-- Ver el stock actual de mis productos en tiempo real.
-    Quiero saber cuantas motos en total tengo disponibles, solo saco el telefono, voy al apartado de invertario y puedo saber cuantas motos, cuantos cascos, cuantos guantes y en que sucursales entán.
-    
-- Ver mis perfiles en tiempo real.
-    Quiero saber cuantos empleados tengo en la empresa, cuatos clientes, cuantos administradores y crear nuevos, cada uno con su respectivo dato y documento.
-    
-- Ver cuanto me deben todos mis clientes en este preciso momento, solo necesito sacar mi celular y entrar al apartado de mora actual.
 
+
+###Módulos
+
+- Usuarios
+- Roles y permisos
+- Sucursales
+- Clientes
+- Bancos
+- Almacenes
+- Productos
+- Compra
+- Venta
+- Cobranza
+
+
+
+###Tecnologías
+
+- Figma, Framer
+- HTML5, CSS 3, React-Native
+- Java, Python, C#, JavaScript
+- MySQL, Postgres, Oracle.
+- Git, SVN, JSON.
+- Linux server
+- Estructura 
 
   - `sudo chown -R django /var/log/django/`
 
