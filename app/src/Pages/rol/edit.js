@@ -1,4 +1,4 @@
-import DPA, { connect } from '../../Components/DPA';
+import DPA, { connect } from 'servisofts-page';
 import { Parent } from '.';
 import { SNavigation, SPopup } from 'servisofts-component';
 import Model from '../../Model';
@@ -19,11 +19,8 @@ class index extends DPA.edit {
 
     $onSubmit(data) {
         Parent.model.Action.editar({
-            data: {
-                ...this.data,
-                ...data
-            },
-            key_usuario: ""
+            ...this.data,
+            ...data
         }).then((resp) => {
             SNavigation.goBack();
         }).catch(e => {

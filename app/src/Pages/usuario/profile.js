@@ -1,8 +1,9 @@
-import DPA, { connect } from '../../Components/DPA';
+import DPA, { connect } from 'servisofts-page';
 import { Parent } from "."
-import { SHr, SInput, SList, SText, SView } from 'servisofts-component';
+import { SForm, SHr, SInput, SList, SText, SView } from 'servisofts-component';
 import Model from '../../Model';
-import EditarUsuarioRol from '../../Components/EditarUsuarioRol';
+import EditarUsuarioRol from './Components/EditarUsuarioRol';
+import DatosDocumentos from './Components/DatosDocumentos';
 
 class index extends DPA.profile {
     constructor(props) {
@@ -21,8 +22,12 @@ class index extends DPA.profile {
     $getData() {
         return Parent.model.Action.getByKey(this.pk);
     }
+
     $footer() {
+
         return <SView col={"xs-12"}>
+            <DatosDocumentos key_usuario={this.pk} />
+            <SHr height={16} />
             <EditarUsuarioRol key_usuario={this.pk} />
         </SView>
 

@@ -1,4 +1,4 @@
-import DPA, { connect } from '../../../Components/DPA';
+import DPA, { connect } from 'servisofts-page';
 import { Parent } from '.';
 import { SNavigation, SPopup } from 'servisofts-component';
 import Model from '../../../Model';
@@ -11,19 +11,14 @@ class index extends DPA.new {
         });
     }
 
-    getOptionsTipo() {
-        return [
-            { key: "", content: "--" },
-            { key: "text", content: "Texto" },
-            { key: "number", content: "Numero" },
-            { key: "money", content: "Moneda" },
-            { key: "date", content: "Fecha" },
-        ]
-    }
+
     $inputs() {
         var inp = super.$inputs();
-        // inp["observacion"].type ="textArea"
-        inp["tipo"] = { label: "Tipo de dato", required: true, type: "select", defaultValue: "", options: this.getOptionsTipo() }
+
+        inp["required"] = { ...inp["required"], type: "checkBox", col: "xs-5", }
+        inp["caducable"] = { ...inp["caducable"], type: "checkBox", col: "xs-5" }
+
+        inp["tipo"] = { label: "Tipo de dato", required: true, type: "select", defaultValue: "", options: Model.dato.Action.getTiposDato() }
         return inp;
     }
     $allowAccess() {

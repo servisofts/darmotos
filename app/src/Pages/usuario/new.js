@@ -1,4 +1,4 @@
-import DPA, { connect } from '../../Components/DPA';
+import DPA, { connect } from 'servisofts-page';
 import { Parent } from '.';
 import { SNavigation, SPopup } from 'servisofts-component';
 import Model from '../../Model';
@@ -31,7 +31,7 @@ class index extends DPA.new {
             key_usuario: ""
         }).then((resp) => {
             this.$submitFile(resp.data.key);
-            SNavigation.goBack();
+            SNavigation.replace("/usuario/profile", { pk: resp.data.key });
         }).catch(e => {
             SPopup.alert("error")
         })

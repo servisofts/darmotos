@@ -1,19 +1,21 @@
-import DPA, { connect } from '../Components/DPA';
-
+import DPA, { connect } from 'servisofts-page';
 import { SButtom, SHr, SInput, SList, SText, SView } from 'servisofts-component';
 import Model from '../Model';
-import EditarUsuarioRol from '../Components/EditarUsuarioRol';
+import EditarUsuarioRol from './usuario/Components/EditarUsuarioRol';
 const Parent = {
     name: "usuario",
     path: `/usuario`,
-    model: Model.usuario
+    model: Model.usuario,
 }
+
 class index extends DPA.profile {
     constructor(props) {
         super(props, {
-            pk: Model.usuario.Action.getKey(),
-            Parent,
-            excludes: ["key", "Password"]
+            Parent: Parent,
+            excludes: ["key", "Password"],
+            defaultParams: {
+                "pk": Model.usuario.Action.getKey()
+            },
         });
     }
 
@@ -27,7 +29,7 @@ class index extends DPA.profile {
     //     return Model.usuarioPage.Action.getPermiso({ url: Parent.path, permiso: "ver" })
     // }
     $getData() {
-        return Parent.model.Action.getByKey(this.pk);
+        return Parent.model.Action.getByKey(this.$params["pk"]);
     }
     $footer() {
         return <SView col={"xs-12"} center>
@@ -36,8 +38,7 @@ class index extends DPA.profile {
                 Model.usuario.Action.unlogin();
             }}>SALIR</SButtom>
             <SHr />
-            <EditarUsuarioRol key_usuario={this.pk} disabled />
-
+            <EditarUsuarioRol key_usuario={this.$params["pk"]} disabled />
         </SView>
 
     }

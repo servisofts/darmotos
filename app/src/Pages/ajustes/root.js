@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { SHr, SIcon, SPage, SText, STheme, SView } from 'servisofts-component';
-import MenuButtom from '../../Components/MenuButtom';
-import Model from '../../Model';
-
+import { MenuButtom, MenuPages } from 'servisofts-rn-roles_permisos';
 class index extends Component {
     constructor(props) {
         super(props);
@@ -11,25 +9,16 @@ class index extends Component {
         };
     }
 
-    buildIcon(label) {
-
-        return <SView col={"xs-12"} height>
-            <SIcon name={"Box"} fill={STheme.color.card} />
-            <SView style={{
-                position: "absolute",
-            }} center col={"xs-12"} height>
-                <SText color={STheme.color.gray} fontSize={12} bold>{label}</SText>
-            </SView>
-        </SView>
-    }
 
     render() {
         return (
             <SPage title={'Ajustes'}>
                 <SHr height={32} />
-                <SView col={"xs-12"} row center>
-                    <MenuButtom label={"Datos"} url={"/ajustes/dato"} icon={this.buildIcon("Dato")} permiso={"ver"} />
-                </SView>
+                <MenuPages path={"/ajustes/"} >
+                    <MenuButtom label={STheme.getTheme() == "default" ? "Dark" : "Withe"} icon={STheme.getTheme() == "default" ? <SIcon name='Moon' /> : <SIcon name='Sun' fill={"#fff"} />} onPress={() => {
+                        STheme.change()
+                    }} />
+                </MenuPages>
             </SPage>
         );
     }

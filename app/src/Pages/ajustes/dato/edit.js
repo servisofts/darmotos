@@ -1,4 +1,4 @@
-import DPA, { connect } from '../../../Components/DPA';
+import DPA, { connect } from 'servisofts-page';
 import { Parent } from '.';
 import { SNavigation, SPopup } from 'servisofts-component';
 import Model from '../../../Model';
@@ -24,8 +24,11 @@ class index extends DPA.edit {
     }
     $inputs() {
         var inp = super.$inputs();
-        // inp["observacion"].type = "textArea"
-        inp["tipo"] = { label: "Tipo de dato", required: true, type: "select", defaultValue: this.data["tipo"], options: this.getOptionsTipo() }
+        inp["required"].type = "checkBox"
+        inp["required"].col = "xs-5"
+        inp["caducable"].type = "checkBox"
+        inp["caducable"].col = "xs-5"
+        inp["tipo"] = { label: "Tipo de dato", required: true, type: "select", defaultValue: this.data["tipo"], options: Model.dato.Action.getTiposDato() }
         return inp;
     }
     $allowAccess() {

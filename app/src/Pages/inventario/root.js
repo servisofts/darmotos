@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { SHr, SIcon, SPage, SText, STheme, SView } from 'servisofts-component';
-import MenuButtom from '../../Components/MenuButtom';
+import { MenuButtom, MenuPages } from 'servisofts-rn-roles_permisos';
 
 class index extends Component {
     constructor(props) {
@@ -10,28 +10,12 @@ class index extends Component {
         };
     }
 
-    buildIcon(label) {
-        return <SView col={"xs-12"} height>
-            <SIcon name={"Box"} fill={STheme.color.card} />
-            <SView style={{
-                position: "absolute",
-            }} center col={"xs-12"} height>
-                <SText color={STheme.color.gray} fontSize={12} bold>{label}</SText>
-            </SView>
-        </SView>
-    }
 
     render() {
         return (
             <SPage title={'Inventario'}>
                 <SHr height={32} />
-                <SView col={"xs-12"} row center>
-                    <MenuButtom label={"Marca"} url={"/inventario/marca"} icon={this.buildIcon("Marca")} permiso={"ver"} />
-                    <MenuButtom label={"Modelo"} url={"/inventario/modelo"} icon={this.buildIcon("Modelo")} permiso={"ver"}/>
-                    <MenuButtom label={"Almacen"} url={"/inventario/almacen"} icon={this.buildIcon("Almacen")} permiso={"ver"}/>
-                    <MenuButtom label={"Producto"} url={"/inventario/producto"} icon={this.buildIcon("Producto")} permiso={"ver"}/>
-                    <MenuButtom label={"Datos"} url={"/inventario/inventario_dato"} icon={this.buildIcon("Datos")} permiso={"ver"}/>
-                </SView>
+                <MenuPages path={"/inventario/"} />
             </SPage>
         );
     }

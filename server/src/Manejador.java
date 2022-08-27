@@ -14,9 +14,6 @@ public class Manejador {
             return;
         }
         switch (obj.getString("component")) {
-            case test.COMPONENT:
-                test.onMessage(obj, session);
-                break;
             case Dato.COMPONENT:
                 Dato.onMessage(obj, session);
                 break;
