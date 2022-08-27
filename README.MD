@@ -44,7 +44,7 @@ Este sistema es una herramienta indespensable para lograr un manejo eficiente de
             informático es indispensable el desarrollo de un módulo de
             registro, edición, bloqueo, baja y seguimientos de usuarios.
             En este caso el usuario administrador ingresa al apartado usuarios:
-            ![Screenshot 1](./img/usuarios_icon.png)
+            ![Screenshot 1](./img/usuario_icon.png)
             
 - 
 
