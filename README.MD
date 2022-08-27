@@ -1,5 +1,7 @@
 # Servisofts - Darmotos
 
+![Screenshot 1](./darmotos/app/src/Assets/svg/logo.svg)
+
 ## Historico
 
 
