@@ -6,8 +6,7 @@
 
 Bienvenido al sistema de gestión de ventas de DarMotos
 
-https://darmotos.servisofts.com
-[web client](https://github.com/Aninstance/simple-stock-management-frontend)
+[DarMotos](https://darmotos.servisofts.com)
 
 El sistema integrado DarMotos cuenta con innumerables opciones para facilitar la gestion de la empresa.
 
