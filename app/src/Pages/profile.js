@@ -39,7 +39,6 @@ class index extends DPA.profile {
             }}>SALIR</SButtom>
             <SHr />
             <EditarUsuarioRol key_usuario={this.$params["pk"]} disabled />
-
         </SView>
 
     }

@@ -35,6 +35,9 @@
     "servisofts-component": "file:../../servisofts-component/dist",
     "servisofts-model": "file:../../servisofts-model/dist",
     "servisofts-page": "file:../../servisofts-page/dist",
+    "servisofts-rn-contabilidad": "file:../../contabilidad/library/dist",
+    "servisofts-rn-roles_permisos": "file:../../roles_permisos/library/dist",
+    "servisofts-rn-usuario": "file:../../usuario/library/dist",
     "servisofts-socket": "2.5.7",
     "typescript": "^4.4.3",
     "xlsx-color": "^0.14.30"

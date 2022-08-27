@@ -7,6 +7,7 @@ import Assets from './Assets';
 import Pages from './Pages';
 import BackgroundImage from './Components/BackgroundImage';
 
+
 setProps(Config.socket);
 
 const App = (props) => {

@@ -14,10 +14,7 @@ class index extends DPA.new {
         return Model.usuarioPage.Action.getPermiso({ url: Parent.path, permiso: "new" })
     }
     $onSubmit(data) {
-        Parent.model.Action.registro({
-            data: data,
-            key_usuario: ""
-        }).then((resp) => {
+        Parent.model.Action.registro(data).then((resp) => {
             this.$submitFile(resp.data.key);
             SNavigation.goBack();
         }).catch(e => {

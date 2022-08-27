@@ -1,7 +1,8 @@
 import DPA, { connect } from 'servisofts-page';
 import { Parent } from ".."
 import { SView } from 'servisofts-component';
-import EditarPermisosRol from './Components/EditarPermisosRol';
+import { EditarPermisosRol } from 'servisofts-rn-roles_permisos'
+// import EditarPermisosRol from './Components/EditarPermisosRol';
 import Model from '../../../Model';
 
 class index extends DPA.profile {
@@ -26,7 +27,7 @@ class index extends DPA.profile {
     }
     $footer() {
         return <SView col={"xs-12"}>
-            <EditarPermisosRol key_rol={this.pk} />
+            <EditarPermisosRol key_rol={this.pk} url_permiso={"/rol/profile/permisos"} />
         </SView>
     }
 

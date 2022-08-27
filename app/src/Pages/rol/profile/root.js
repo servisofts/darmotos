@@ -2,8 +2,7 @@ import DPA, { connect } from 'servisofts-page';
 import { Parent } from ".."
 import { SHr, SIcon, SText, SView } from 'servisofts-component';
 import Model from '../../../Model';
-import MenuButtom from '../../../Components/MenuButtom';
-import MenuPages from '../../../Components/MenuPages';
+import { MenuButtom, MenuPages } from 'servisofts-rn-roles_permisos';
 
 class index extends DPA.profile {
     constructor(props) {

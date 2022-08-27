@@ -15,6 +15,7 @@ class Login extends Component {
             SNavigation.replace("/");
             return null;
         }
+        
         return (
             <SPage title={'Login'} hidden >
                 <SView col={"xs-12"} center>

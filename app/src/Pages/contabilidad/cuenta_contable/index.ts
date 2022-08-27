@@ -6,6 +6,7 @@ import _new from "./new";
 import profile from "./profile";
 import edit from "./edit";
 import _delete from "./delete";
+import test from "./test";
 const model = Model.cuenta_contable;
 
 export const Parent = {
@@ -20,5 +21,6 @@ export default SPage.combinePages(Parent.name, {
     "new": _new,
     "profile": profile,
     "edit": edit,
-    "delete": _delete
+    "delete": _delete,
+    "test": test
 })

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { SButtom, SHr, SIcon, SImage, SNavigation, SPage, SText, SView } from 'servisofts-component';
+import { MenuButtom, MenuPages } from 'servisofts-rn-roles_permisos';
+
 import Model from '../Model';
-import MenuButtom from '../Components/MenuButtom';
-import MenuPages from '../Components/MenuPages';
 class index extends Component {
     constructor(props) {
         super(props);

@@ -1,0 +1,21 @@
+- Instanciar las variables
+     - java : String hola = "hola";
+     - javaScript: var hola = "hola";
+     - C: let hola = "hola";
+- Operadores matematicos
+    - suma: +
+    - resta: -
+    - division: /
+    - multiplicacion: *
+    - modulo: %
+    - potencia: ^     ( ejm. 2^3=8)
+- Opradores logicos
+    - EQUAL: ==
+    - NOT EQUAL: !=
+    - MAYOR >
+    - MENOR <
+    - MAYOR EQUAL >=
+    - MENOR EQUAL <=  
+- Combinadores
+    - AND: &&
+    - OR: ||    

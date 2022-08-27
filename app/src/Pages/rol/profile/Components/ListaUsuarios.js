@@ -9,8 +9,9 @@ const Parent = {
 class index extends DPA.list {
     constructor(props) {
         super(props, {
+            type:"componentTitle",
             Parent: Parent,
-            page: false,
+            title:"Usuarios",
             excludes: ["key", "fecha_on", "key_usuario", "Password", "Telefono", "Correo", "CI"]
         });
     }
