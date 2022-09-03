@@ -112,3 +112,4 @@ Este sistema es una herramienta indespensable para lograr un manejo eficiente de
 - Servisofts Srl.
 
 #editado por rickys
+# tu cambio esta fuera de lugar cd
