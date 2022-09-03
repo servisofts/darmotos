@@ -110,3 +110,5 @@ Este sistema es una herramienta indespensable para lograr un manejo eficiente de
 ## Authors
 
 - Servisofts Srl.
+
+#editado por rickys
