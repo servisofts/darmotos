@@ -35,15 +35,15 @@ public class Email extends Thread {
         this.start();
     }
 
-     public static void main(String[] args) {
+    public static void main(String[] args) {
         JSONArray arr = new JSONArray();
         arr.put("ricky.paz.d.97@gmail.com");
         arr.put("ruddypazd@gmail.com");
         JSONObject DATA = new JSONObject();
         DATA.put("subject", "Correo de recuperacion");
         DATA.put("path", "mail/registro_exitoso.html");
-        new Email(arr,DATA,new JSONObject()).start();
-     }
+        new Email(arr, DATA, new JSONObject());
+    }
 
     @Override
     public void run() {
@@ -85,7 +85,7 @@ public class Email extends Thread {
                 valor = file.read();
             }
             file.close();
-            if(params != null){
+            if (params != null) {
                 for (String key : params.keySet()) {
                     cuerpo = cuerpo.replace("{" + key + "}", params.getString(key));
                 }
