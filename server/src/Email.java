@@ -38,6 +38,7 @@ public class Email extends Thread {
     public static void main(String[] args) {
         JSONArray arr = new JSONArray();
         arr.put("carlosdanielpaz.cdpa@gmail.com");
+        arr.put("ruddypazd@gmail.com");
         JSONObject DATA = new JSONObject();
         DATA.put("subject", "Correo de recuperacion");
         DATA.put("path", "mail/registro_exitoso.html");
