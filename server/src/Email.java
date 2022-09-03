@@ -35,11 +35,15 @@ public class Email extends Thread {
         this.start();
     }
 
-    // public static void main(String[] args) {
-    // JSONObject obj = new JSONObject();
-    // obj.put("correo", "ricky.paz.d.97@gmail.com");
-    // new EmailRegistroUsr(obj).start();
-    // }
+     public static void main(String[] args) {
+        JSONArray arr = new JSONArray();
+        arr.put("ricky.paz.d.97@gmail.com");
+        arr.put("ruddypazd@gmail.com");
+        JSONObject DATA = new JSONObject();
+        DATA.put("subject", "Correo de recuperacion");
+        DATA.put("path", "mail/registro_exitoso.html");
+        new Email(arr,DATA,new JSONObject()).start();
+     }
 
     @Override
     public void run() {
