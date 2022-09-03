@@ -42,7 +42,7 @@ class index extends DPA.list {
         var data = Parent.model.Action.getAll();
         if (!data) return;
         var total = 0;
-        Object.values(data).map((cm) => {
+        Object.values(data).filter(data => data.estado != 0 && data.key_cuenta == this.$params.key_cuenta).map((cm) => {
             total += cm.monto;
         })
         if (this.state.total != total) {

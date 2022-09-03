@@ -63,7 +63,7 @@ class index extends Component {
     type_checkBox() {
         const { obj, dto } = this.props
         return <SView>
-            <SInput type={"checkBox"} value={dto.descripcion} editable={false} />
+            <SInput type={"checkBox"} value={dto?.descripcion} disabled={true} />
         </SView>
     }
     type_default() {

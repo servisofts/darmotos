@@ -11,6 +11,7 @@ class index extends DPA.list {
         super(props, {
             page: false,
             Parent: Parent,
+            type:"componentTitle",
             title: "Sucursales",
             excludes: ["key", "fecha_on", "key_usuario", "key_servicio", "estado", "lat", "lng", "observacion", "key_empresa", "direccion"],
             // item: Item,

@@ -16,6 +16,7 @@ export default class Action extends SAction {
             if (!dato_rol) return null;
             Object.values(dato_rol).map((dr: any) => {
                 var dato = datos[dr.key_dato]
+                if(!dato) return; 
                 resp[dato.key] = dato;
 
             })

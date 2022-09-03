@@ -23,6 +23,7 @@ class EditarUsuarioRol extends Component {
             <SList
                 data={rol}
                 buscador
+                order={[{key:"descripcion",order:"asc"}]}
                 render={(itm) => {
                     var usuarioRolActivo = Object.values(usuarioRol).find(o => o.key_rol == itm.key && o.estado > 0)
                     return <SView row col={"xs-12"} style={{
