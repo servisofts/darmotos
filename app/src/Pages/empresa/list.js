@@ -3,6 +3,7 @@ import { Parent } from "."
 import Model from '../../Model';
 
 class index extends DPA.list {
+    
     constructor(props) {
         super(props, {
             Parent: Parent,

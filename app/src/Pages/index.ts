@@ -12,10 +12,12 @@ import sucursal from './sucursal';
 import inventario from './inventario';
 import ajustes from './ajustes';
 import banco from './banco';
+import test from './test';
 export default SPage.combinePages("/", {
     "": Root,
     "login": login,
     "profile": profile,
+    "test":test,
     ...usuario,
     ...empresa,
     ...rol,
@@ -23,6 +25,6 @@ export default SPage.combinePages("/", {
     ...contabilidad,
     ...inventario,
     ...ajustes,
-    ...banco
+    ...banco,
     
 });

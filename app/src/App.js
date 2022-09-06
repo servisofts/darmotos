@@ -6,11 +6,13 @@ import Config from "./Config";
 import Assets from './Assets';
 import Pages from './Pages';
 import BackgroundImage from './Components/BackgroundImage';
+import Model from './Model';
 
 
 setProps(Config.socket);
 
 const App = (props) => {
+    
     return <Redux>
         <SComponentContainer
             debug
