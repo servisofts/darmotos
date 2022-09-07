@@ -112,7 +112,42 @@ Es un recurso del que se dispone para administrar los gastos e ingresos de una c
 
 Todas las empresas son conscientes de que deben gestionar de forma adecuada los parámetros contables. Este concepto involucra tanto a las denominadas pequeñas y medianas empresas (PYMES) como a las grandes multinacionales. Del mismo modo, obedece tanto a razones de índole financiera en términos de asegurar la adecuada rentabilidad, como a disposiciones fiscales, debido a la presión de los fiscos federales, provinciales y locales sobre cada formación corporativa.
 
-Darmotos como empresa no cuenta con un modulo contable financiero en el software, pero como es indispensable para la buena gestion, la plataforma tendra una contabilidad abstracta (por detras), esto quiere decir que la app realizara transacciones contables para la buena gestion de su informacion pero que no mantendra un historico ni sus respectivos reportes hasta que la empresa decida comprar el modulo contable.
+Darmotos como empresa no cuenta con un modulo contable financiero en el software, pero como es indispensable para la buena gestion, la plataforma tendra una contabilidad abstracta (por detras), esto quiere decir que la app realizara transacciones contables para la buena gestion de su informacion pero que no mantendra un historico, ni sus respectivos reportes hasta que la empresa decida comprar el modulo contable.
+
+
+### Inventario
+
+![image](https://user-images.githubusercontent.com/7370358/188765420-c16589b5-765e-4517-8ab2-8f3336e01fa9.png)
+
+(Modulo en desarrollo)
+
+## Roles y permisos:
+
+![image](https://user-images.githubusercontent.com/7370358/188765588-575886e9-4970-434b-aaf6-5b34c01f9985.png)
+
+
+ - Una vez registrados los usuarios, es necesario asignarle uno o mas roles para gestionar sus 
+   permisos de acceso a las diferentes funcionalidades del
+   sistema. Por esto se desarrolla un módulo de roles y permisos
+   para los usuarios.
+   
+   
+   ![Screenshot 1](./img/roles_permisos_icon.png)
+   
+   al igual que los usuarios lo primero en ver será la lista y las opciones de crear.
+   
+   ![Screenshot 1](./img/roles_permisos_list.png)
+   
+   Al seleccionar un rol ingresará a su panel administrativo donde podrá:
+    
+    - Editar
+    - Eliminar
+    - Datos y documentos
+    - Usuarios que tienen el rol
+    - Permisos del rol
+   
+   ![Screenshot 1](./img/roles_permisos_perfil.png)
+   
 
 ## Clientes:
 
@@ -161,43 +196,6 @@ Este es un modulo indispensable para el sistema por el cual mostraremos diferent
    <br />
    <br />
    
-   
-## Roles y permisos:
-
- - Una vez registrados los usuarios, es necesario asignarle uno o mas roles para gestionar sus 
-   permisos de acceso a las diferentes funcionalidades del
-   sistema. Por esto se desarrolla un módulo de roles y permisos
-   para los usuarios.
-   
-   <br />
-   
-   ![Screenshot 1](./img/roles_permisos_icon.png)
-   
-   <br />   
-   
-   al igual que los usuarios lo primero en ver será la lista y las opciones de crear.
-   
-   <br />   
-   
-   ![Screenshot 1](./img/roles_permisos_list.png)
-   
-   <br />   
-   
-   Al seleccionar un rol ingresará a su panel administrativo donde podrá:
-    
-    - Editar
-    - Eliminar
-    - Datos y documentos
-    - Usuarios que tienen el rol
-    - Permisos del rol
-   
-   ![Screenshot 1](./img/roles_permisos_perfil.png)
-   
-   <br />
-   <br />
-   
-   <br />
-   <br />
 
 
 
