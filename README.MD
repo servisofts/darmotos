@@ -121,7 +121,7 @@ Darmotos como empresa no cuenta con un modulo contable financiero en el software
 
 (Modulo en desarrollo)
 
-## Roles y permisos:
+### Roles y permisos:
 
 ![image](https://user-images.githubusercontent.com/7370358/188765588-575886e9-4970-434b-aaf6-5b34c01f9985.png)
 
@@ -130,11 +130,8 @@ Darmotos como empresa no cuenta con un modulo contable financiero en el software
    permisos de acceso a las diferentes funcionalidades del
    sistema. Por esto se desarrolla un módulo de roles y permisos
    para los usuarios.
-   
-   
-   ![Screenshot 1](./img/roles_permisos_icon.png)
-   
-   al igual que los usuarios lo primero en ver será la lista y las opciones de crear.
+      
+   Al igual que los usuarios lo primero en ver será la lista y las opciones de crear.
    
    ![Screenshot 1](./img/roles_permisos_list.png)
    
