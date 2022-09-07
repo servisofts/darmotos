@@ -74,6 +74,29 @@ Los campos necesarios para un Dato o documento son los siguientes:
 - Requerido: Al momento de guardar los datos solicitados si este campo es requerido no y lo dejan en blanco el sistema dará una advertencia.
 - Caducable: Son daatos o documentos que caducan en el tiempo como la cédula de identidad.
 
+White: Podria aparecerte tanto un sol y white como una luna y dark, que son las dos tonalidades de las aplicaciones de Servisofts Srl. el modo claro y el modo Obscuro.
+
+## Bancos: 
+
+![image](https://user-images.githubusercontent.com/7370358/188762822-98a69600-11e4-4d52-8257-06717553e763.png)
+
+
+El módulo de bancos es un módulo indespensable para la tesorería de la empresa, en este módulo recahen todos los movimientos financieros de la aplicación, en primera instancia podemos listar y crear los diferentes bancos con los que trabajamos.
+
+![image](https://user-images.githubusercontent.com/7370358/188763101-afdf8149-c49b-4ef3-922a-20942e54a16e.png)
+
+Al ingresar a un banco podremos gestionar las cuentas que tenemos en el mismo.
+
+![image](https://user-images.githubusercontent.com/7370358/188763178-c3d265e5-f950-44cc-b86e-e908eac5337d.png)
+
+
+Al ingresar a una cuenta podremos ver todos los movientos y el porque de cada moviento, esto para tener un mejor control de los movimientos bancarios y al mismo tiempo porque existen muchos eventos adentro de la app que terminan haciendo un movimiento en nuestro banco entonces en esa glosa sabremos el motivo del movimiento.
+
+
+
+### Ingresando a Bancos encontramos los siguientes íconos.
+
+![image](https://user-images.githubusercontent.com/7370358/188762932-7bae54cd-78fc-4240-b7cd-9eee8eaf7dcc.png)
 
 
 ## Usuarios:
