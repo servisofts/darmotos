@@ -109,6 +109,27 @@ Al ingresar a una cuenta podremos ver todos los movientos y el porque de cada mo
 
 
 
+## Clientes:
+![image](https://user-images.githubusercontent.com/7370358/188764097-830025af-23da-4f8a-b8fd-31763cf8b3ca.png)
+
+Temporalmente por pedido de la empresa Darmotos este modulo funciona para registrar personas Naturales en el sistema, para posterior venta.
+
+Este icono esta pensado para que muestre un listado de todas las personas que han coprado un producto en la tienda Darmotos y no asi un registro de una personas natural.
+
+Como este modulo esta sin definirse de manera correcta, dejaremos el detalle y la explicacion de su uso para mas adelante.
+
+![image](https://user-images.githubusercontent.com/7370358/188764411-bb367161-aa62-434d-a7bd-5f28591d86cc.png)
+
+Lista las personas registradas.
+
+![image](https://user-images.githubusercontent.com/7370358/188764480-86c8d50d-d85a-417a-839f-d8fec54b75c6.png)
+
+Y nos solicita los datos y documentos parametrizados para el rol clientes.
+
+Este es un modulo indispensable para el sistema por el cual mostraremos diferentes tipos de reportes que seguiremos detallando mas adelante.
+
+
+
 ## Contabilidad
 ![image](https://user-images.githubusercontent.com/7370358/188764636-3f4781b9-4f4e-4b93-8138-5acb17004cbc.png)
 
@@ -150,29 +171,22 @@ Darmotos como empresa no cuenta con un modulo contable financiero en el software
     - Permisos del rol
    
    ![Screenshot 1](./img/roles_permisos_perfil.png)
-   
 
 
-## Clientes:
-![image](https://user-images.githubusercontent.com/7370358/188764097-830025af-23da-4f8a-b8fd-31763cf8b3ca.png)
 
-Temporalmente por pedido de la empresa Darmotos este modulo funciona para registrar personas Naturales en el sistema, para posterior venta.
+## Sucursales
 
-Este icono esta pensado para que muestre un listado de todas las personas que han coprado un producto en la tienda Darmotos y no asi un registro de una personas natural.
+![image](https://user-images.githubusercontent.com/7370358/188766565-fb9bc90b-2620-4c4b-b8c7-09df0f46af35.png)
 
-Como este modulo esta sin definirse de manera correcta, dejaremos el detalle y la explicacion de su uso para mas adelante.
+- En este icono podra administrar todas las sucursales que guste
 
-![image](https://user-images.githubusercontent.com/7370358/188764411-bb367161-aa62-434d-a7bd-5f28591d86cc.png)
+![image](https://user-images.githubusercontent.com/7370358/188766693-81543a6a-81da-4b82-85d9-70dfa9cd0e2c.png)
 
-Lista las personas registradas.
 
-![image](https://user-images.githubusercontent.com/7370358/188764480-86c8d50d-d85a-417a-839f-d8fec54b75c6.png)
 
-Y nos solicita los datos y documentos parametrizados para el rol clientes.
+## Usuarios
+![Screenshot 1](./img/usuario_icon.png)
 
-Este es un modulo indispensable para el sistema por el cual mostraremos diferentes tipos de reportes que seguiremos detallando mas adelante.
-
-## Usuarios:
 
  - Para llevar una buena gestion de lo que ocurre en un software
    informático es indispensable el desarrollo de un módulo de
@@ -181,7 +195,7 @@ Este es un modulo indispensable para el sistema por el cual mostraremos diferent
    <br />
    En este caso el usuario administrador ingresa al apartado usuarios:
    <br />
-   ![Screenshot 1](./img/usuario_icon.png)
+   
    <br />
    <br />
    Al ingresar odrá ver un listado de los usuarios del sistema y si tiene los respectivos permisos, 
