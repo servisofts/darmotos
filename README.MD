@@ -58,9 +58,10 @@ En estos momentos el menu principal de la aplicación se ve de esta manera.
 
 ### A continuación intentaré detallar cada uno de los íconos.
 
-## Ajustes
+
 
 ![image](https://user-images.githubusercontent.com/7370358/188761488-7827c45b-e950-4eee-b9be-9d66bd96a49b.png)
+## Ajustes
 
 ### Ingresando a Ajustes encontramos los siguientes íconos.
 
@@ -87,9 +88,10 @@ Los campos necesarios para un Dato o documento son los siguientes:
 
 White: Podria aparecerte tanto un sol y white como una luna y dark, que son las dos tonalidades de las aplicaciones de Servisofts Srl. el modo claro y el modo Obscuro.
 
-## Bancos: 
+
 
 ![image](https://user-images.githubusercontent.com/7370358/188762822-98a69600-11e4-4d52-8257-06717553e763.png)
+## Bancos:
 
 El módulo de bancos es un módulo indespensable para la tesorería de la empresa, en este módulo recahen todos los movimientos financieros de la aplicación, en primera instancia podemos listar y crear los diferentes bancos con los que trabajamos.
 
@@ -104,9 +106,9 @@ Al ingresar a una cuenta podremos ver todos los movientos y el porque de cada mo
 ![image](https://user-images.githubusercontent.com/7370358/188763474-21ac191c-b8f3-4d7d-bb86-55ccc90b7b3e.png)
 
 
-### Contabilidad
 
 ![image](https://user-images.githubusercontent.com/7370358/188764636-3f4781b9-4f4e-4b93-8138-5acb17004cbc.png)
+## Contabilidad
 
 Es un recurso del que se dispone para administrar los gastos e ingresos de una compañía. Cualquier empresa en el desarrollo de su actividad realiza operaciones de compra, venta, financiación como consecuencia de esas actividades su patrimonio varía y obtiene un beneficio o una pérdida.
 
@@ -115,15 +117,16 @@ Todas las empresas son conscientes de que deben gestionar de forma adecuada los 
 Darmotos como empresa no cuenta con un modulo contable financiero en el software, pero como es indispensable para la buena gestion, la plataforma tendra una contabilidad abstracta (por detras), esto quiere decir que la app realizara transacciones contables para la buena gestion de su informacion pero que no mantendra un historico, ni sus respectivos reportes hasta que la empresa decida comprar el modulo contable.
 
 
-### Inventario
 
 ![image](https://user-images.githubusercontent.com/7370358/188765420-c16589b5-765e-4517-8ab2-8f3336e01fa9.png)
+## Inventario
 
 (Modulo en desarrollo)
 
-### Roles y permisos:
+
 
 ![image](https://user-images.githubusercontent.com/7370358/188765588-575886e9-4970-434b-aaf6-5b34c01f9985.png)
+## Roles y permisos:
 
 
  - Una vez registrados los usuarios, es necesario asignarle uno o mas roles para gestionar sus 
@@ -146,9 +149,9 @@ Darmotos como empresa no cuenta con un modulo contable financiero en el software
    ![Screenshot 1](./img/roles_permisos_perfil.png)
    
 
-## Clientes:
 
 ![image](https://user-images.githubusercontent.com/7370358/188764097-830025af-23da-4f8a-b8fd-31763cf8b3ca.png)
+## Clientes:
 
 Temporalmente por pedido de la empresa Darmotos este modulo funciona para registrar personas Naturales en el sistema, para posterior venta.
 
