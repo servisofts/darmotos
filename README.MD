@@ -45,8 +45,11 @@ En estos momentos el menu principal de la aplicación se ve de esta manera.
 ![image](https://user-images.githubusercontent.com/7370358/188760706-a31c0b53-c879-43b6-a476-0d271bdc3aac.png)
 
 
-### A continuación intentaré detallar cada uno de los módulos.
+### A continuación intentaré detallar cada uno de los íconos.
 
+## Ajustes
+
+![image](https://rolespermisos.servisofts.com/http//page/c4d715f6-8b7b-423e-82f6-935ad4fea727)
 
 ## Usuarios:
 
