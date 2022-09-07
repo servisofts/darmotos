@@ -49,7 +49,7 @@ En estos momentos el menu principal de la aplicación se ve de esta manera.
 
 ## Ajustes
 
-![image](https://rolespermisos.servisofts.com/http//page/c4d715f6-8b7b-423e-82f6-935ad4fea727)
+![image](https://user-images.githubusercontent.com/7370358/188761488-7827c45b-e950-4eee-b9be-9d66bd96a49b.png)
 
 ## Usuarios:
 
