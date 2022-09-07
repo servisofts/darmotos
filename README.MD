@@ -51,6 +51,31 @@ En estos momentos el menu principal de la aplicación se ve de esta manera.
 
 ![image](https://user-images.githubusercontent.com/7370358/188761488-7827c45b-e950-4eee-b9be-9d66bd96a49b.png)
 
+### Ingresando a Ajustes encontramos los siguientes íconos.
+
+![image](https://user-images.githubusercontent.com/7370358/188761702-56f9e7ea-7ba0-448f-a3c2-47c52e9ebddb.png)
+
+Datos del rol: Datos del rol es un lugar donde el Administrador de la aplicación podrá registrar los diferentes tipos de datos y documentos para asignar a los diferentes roles de las personas en la app.
+(más adelante te explicaremos como manejamos los roles)
+
+Al ingresar a este ícono verás el listado de todos los datos y documentos registrados por los administradores del sistema, como vemos en la siguiente imagen:
+
+![image](https://user-images.githubusercontent.com/7370358/188762084-5631f63d-47b7-49cc-9897-bab0dfb5c665.png)
+
+Dependiendo de nuestro nivel de permisos podremos crear nuevos datos y documentos, editar los actuales, eliminar y ver en forma de tabla para exportar a excel.
+
+![image](https://user-images.githubusercontent.com/7370358/188762235-842949de-1347-4f42-bacf-ef872ccf857f.png)
+
+Los campos necesarios para un Dato o documento son los siguientes:
+
+- Descripcion: Nombre a mostrar del dato o documento.
+- Observación: Una explicación breve del dato o documento.
+- Tipo: El tipo de dato a solicitar, puede ser un número, un texto, una fecha, imagen, documento, ect...
+- Requerido: Al momento de guardar los datos solicitados si este campo es requerido no y lo dejan en blanco el sistema dará una advertencia.
+- Caducable: Son daatos o documentos que caducan en el tiempo como la cédula de identidad.
+
+
+
 ## Usuarios:
 
  - Para llevar una buena gestion de lo que ocurre en un software
