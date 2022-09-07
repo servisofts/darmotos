@@ -38,6 +38,15 @@ Este sistema es una herramienta indespensable para lograr un manejo eficiente de
 - Cobranza
 
 ### Ahora te detallaremos cada módulo y como funciona actualmente en el sistema.
+### Fecha actual 06-09-2022
+
+En estos momentos el menu principal de la aplicación se ve de esta manera.
+
+![image](https://user-images.githubusercontent.com/7370358/188760706-a31c0b53-c879-43b6-a476-0d271bdc3aac.png)
+
+
+### A continuación intentaré detallar cada uno de los módulos.
+
 
 ## Usuarios:
 
