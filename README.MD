@@ -37,7 +37,18 @@ Este sistema es una herramienta indespensable para lograr un manejo eficiente de
 - Venta
 - Cobranza
 
-### Ahora te detallaremos cada módulo y como funciona actualmente en el sistema.
+
+#### Antes de comenzar, con la intencion de no volver este documento repetitivo y aburrido, te explico que cada objeto adentro de la app es posible:
+
+- Listarlo.
+- Verlo como tabla.
+- Exportar su tabla a excel.
+- Regitrar nuevo.
+- Editarlo.
+
+Al explicar esto no tendre que detallarte lo mismo para todos los casos de uso.
+
+### Ahora podemos comenzar, primeramente te detallare cada módulo y como funciona actualmente en el sistema.
 ### Fecha actual 06-09-2022
 
 En estos momentos el menu principal de la aplicación se ve de esta manera.
@@ -92,11 +103,7 @@ Al ingresar a un banco podremos gestionar las cuentas que tenemos en el mismo.
 
 Al ingresar a una cuenta podremos ver todos los movientos y el porque de cada moviento, esto para tener un mejor control de los movimientos bancarios y al mismo tiempo porque existen muchos eventos adentro de la app que terminan haciendo un movimiento en nuestro banco entonces en esa glosa sabremos el motivo del movimiento.
 
-
-
-### Ingresando a Bancos encontramos los siguientes íconos.
-
-![image](https://user-images.githubusercontent.com/7370358/188762932-7bae54cd-78fc-4240-b7cd-9eee8eaf7dcc.png)
+![image](https://user-images.githubusercontent.com/7370358/188763474-21ac191c-b8f3-4d7d-bb86-55ccc90b7b3e.png)
 
 
 ## Usuarios:
