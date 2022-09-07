@@ -91,7 +91,6 @@ White: Podria aparecerte tanto un sol y white como una luna y dark, que son las 
 
 ![image](https://user-images.githubusercontent.com/7370358/188762822-98a69600-11e4-4d52-8257-06717553e763.png)
 
-
 El módulo de bancos es un módulo indespensable para la tesorería de la empresa, en este módulo recahen todos los movimientos financieros de la aplicación, en primera instancia podemos listar y crear los diferentes bancos con los que trabajamos.
 
 ![image](https://user-images.githubusercontent.com/7370358/188763101-afdf8149-c49b-4ef3-922a-20942e54a16e.png)
@@ -100,11 +99,40 @@ Al ingresar a un banco podremos gestionar las cuentas que tenemos en el mismo.
 
 ![image](https://user-images.githubusercontent.com/7370358/188763178-c3d265e5-f950-44cc-b86e-e908eac5337d.png)
 
-
 Al ingresar a una cuenta podremos ver todos los movientos y el porque de cada moviento, esto para tener un mejor control de los movimientos bancarios y al mismo tiempo porque existen muchos eventos adentro de la app que terminan haciendo un movimiento en nuestro banco entonces en esa glosa sabremos el motivo del movimiento.
 
 ![image](https://user-images.githubusercontent.com/7370358/188763474-21ac191c-b8f3-4d7d-bb86-55ccc90b7b3e.png)
 
+
+### Contabilidad
+
+![image](https://user-images.githubusercontent.com/7370358/188764636-3f4781b9-4f4e-4b93-8138-5acb17004cbc.png)
+
+Es un recurso del que se dispone para administrar los gastos e ingresos de una compañía. Cualquier empresa en el desarrollo de su actividad realiza operaciones de compra, venta, financiación como consecuencia de esas actividades su patrimonio varía y obtiene un beneficio o una pérdida.
+
+Todas las empresas son conscientes de que deben gestionar de forma adecuada los parámetros contables. Este concepto involucra tanto a las denominadas pequeñas y medianas empresas (PYMES) como a las grandes multinacionales. Del mismo modo, obedece tanto a razones de índole financiera en términos de asegurar la adecuada rentabilidad, como a disposiciones fiscales, debido a la presión de los fiscos federales, provinciales y locales sobre cada formación corporativa.
+
+Darmotos como empresa no cuenta con un modulo contable financiero en el software, pero como es indispensable para la buena gestion, la plataforma tendra una contabilidad abstracta (por detras), esto quiere decir que la app realizara transacciones contables para la buena gestion de su informacion pero que no mantendra un historico ni sus respectivos reportes hasta que la empresa decida comprar el modulo contable.
+
+## Clientes:
+
+![image](https://user-images.githubusercontent.com/7370358/188764097-830025af-23da-4f8a-b8fd-31763cf8b3ca.png)
+
+Temporalmente por pedido de la empresa Darmotos este modulo funciona para registrar personas Naturales en el sistema, para posterior venta.
+
+Este icono esta pensado para que muestre un listado de todas las personas que han coprado un producto en la tienda Darmotos y no asi un registro de una personas natural.
+
+Como este modulo esta sin definirse de manera correcta, dejaremos el detalle y la explicacion de su uso para mas adelante.
+
+![image](https://user-images.githubusercontent.com/7370358/188764411-bb367161-aa62-434d-a7bd-5f28591d86cc.png)
+
+Lista las personas registradas.
+
+![image](https://user-images.githubusercontent.com/7370358/188764480-86c8d50d-d85a-417a-839f-d8fec54b75c6.png)
+
+Y nos solicita los datos y documentos parametrizados para el rol clientes.
+
+Este es un modulo indispensable para el sistema por el cual mostraremos diferentes tipos de reportes que seguiremos detallando mas adelante.
 
 ## Usuarios:
 
