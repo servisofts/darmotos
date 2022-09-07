@@ -214,6 +214,12 @@ Darmotos como empresa no cuenta con un modulo contable financiero en el software
    <br />
    
 
+## Perfil
+![image](https://user-images.githubusercontent.com/7370358/188766910-8a4e6b2d-b9d4-47ce-a9ee-68a356bc5671.png)
+
+En este icono podras ver la informacion de tu usuario logueado al sistema y sus roles asignados.
+
+![image](https://user-images.githubusercontent.com/7370358/188767042-df16ae0e-04c0-4fe1-865f-ed1f911b79d6.png)
 
 
 
