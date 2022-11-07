@@ -126,15 +126,13 @@ Puede ser prospecto:
 Si te fijas, estos usuarios estan registrados en el sistema como clientes pero en realidad no lo són hasta que realicen al menos una compra en la tienda. Una vez realiza su compra ya se lo podrá ver en el reporte de clientes. 
 
 
-![image](https://user-images.githubusercontent.com/7370358/188764411-bb367161-aa62-434d-a7bd-5f28591d86cc.png)
-
-Lista las personas registradas.
-
-![image](https://user-images.githubusercontent.com/7370358/188764480-86c8d50d-d85a-417a-839f-d8fec54b75c6.png)
+# Registro de cliente Cliente
 
 Y nos solicita los datos y documentos parametrizados para el rol clientes.
-
 Este es un modulo indispensable para el sistema por el cual mostraremos diferentes tipos de reportes que seguiremos detallando mas adelante.
+
+![RegistroCliente](https://user-images.githubusercontent.com/69025139/200261219-8ddc4c91-f318-4634-a14a-1566da686488.gif)
+
 
 
 <!-- 
