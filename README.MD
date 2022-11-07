@@ -59,9 +59,13 @@ Ingresa al sistema con tu usuario y contraseña.
 
 ![Login](https://user-images.githubusercontent.com/69025139/200239452-a05105f1-a934-43a4-8d5c-519142a33392.gif)
 
-### A continuación intentaré detallar cada uno de los íconos.
+### Pantalla principal.
 
+Lo primero que verá una vez ingresado al sistema, será una pantalla con diferentes los íconos según sus permisos asignados.
 
+Hasta la última actuaización de este documento la pantalla principal se verá de esta manera.
+
+ file:///home/ruddy/Downloads/WhatsApp%20Image%202022-11-07%20at%202.05.38%20AM.jpeg
 
 ## Ajustes
 ![image](https://user-images.githubusercontent.com/7370358/188761488-7827c45b-e950-4eee-b9be-9d66bd96a49b.png)
