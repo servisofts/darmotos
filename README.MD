@@ -162,7 +162,8 @@ El rol juega un papel muy importante en el sistema, ya que este se encarga de ge
       
    Al igual que los usuarios lo primero en ver será la lista y las opciones de crear.
    
-   ![Screenshot 1](./img/roles_permisos_list.png)
+   ![WhatsApp Image 2022-11-07 at 3 14 43 AM](https://user-images.githubusercontent.com/7370358/200259404-ada848cd-572a-4d53-ade3-d9372ce4080e.jpeg)
+
    
    Al seleccionar un rol ingresará a su panel administrativo donde podrá:
     
@@ -172,7 +173,7 @@ El rol juega un papel muy importante en el sistema, ya que este se encarga de ge
     - Usuarios que tienen el rol
     - Permisos del rol
    
-   ![Screenshot 1](./img/roles_permisos_perfil.png)
+   ![WhatsApp Image 2022-11-07 at 3 15 43 AM](https://user-images.githubusercontent.com/7370358/200259542-8c72a35f-2aee-4c69-b256-fcccf2d1bb07.jpeg)
 
 
 
