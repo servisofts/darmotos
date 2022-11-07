@@ -110,7 +110,20 @@ White: Podria aparecerte tanto un sol y white como una luna y dark, que son las 
 ## Clientes:
 ![image](https://user-images.githubusercontent.com/7370358/188764097-830025af-23da-4f8a-b8fd-31763cf8b3ca.png)
 
-Inicio del módulo de clientes, podrá ver el perfil previamente parametrizado de sus clientes.
+Un cliente es quien adquiere los productos o servicios de un negocio. Por tanto, es un consumidor, desde la perspectiva de la empresa.
+
+Ojo: Oo  Atención!! 
+
+Cabe recalcar que no estamos registrando un cliente realmente, simplemente estamos registrando un usuario en el sistema con el rol de cliente, porque esto??.
+Usted está registrando un "Prospecto de cliente".
+
+Puede ser prospecto: 
+- Un lead con el que ya has hablado por teléfono. 
+- Un usuario que contesta a tus emails. 
+- Alguien que consulta en el chat de tu web o a través de las redes sociales sobre tus productos o servicios.
+- Alguien que pasó por tu tienda, preguntó por tus productos y se hizo registrar en el sistema para que le lleguen novedades sobre tus productos.
+
+Si te fijas, estos usuarios estan registrados en el sistema como clientes pero en realidad no lo són hasta que realicen al menos una compra en la tienda. Una vez realiza su compra ya se lo podrá ver en el reporte de clientes. 
 
 
 ![image](https://user-images.githubusercontent.com/7370358/188764411-bb367161-aa62-434d-a7bd-5f28591d86cc.png)
