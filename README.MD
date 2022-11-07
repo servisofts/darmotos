@@ -63,7 +63,7 @@ Ingresa al sistema con tu usuario y contraseña.
 
 Lo primero que verá una vez ingresado al sistema, será una pantalla con diferentes los íconos según sus permisos asignados.
 
-Hasta la última actuaización de este documento la pantalla principal se verá de esta manera.
+Hasta la última actuaización de este documento la pantalla principal se ve de esta manera (Según cronograma de desarrollo en la etapa correspondiente).
 
 ![WhatsApp Image 2022-11-07 at 2 05 38 AM](https://user-images.githubusercontent.com/7370358/200246624-06918a04-bebe-442c-a98c-34d43dd2b01e.jpeg)
 
