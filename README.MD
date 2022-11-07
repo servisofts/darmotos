@@ -102,11 +102,7 @@ White: Podria aparecerte tanto un sol y white como una luna y dark, que son las 
 ## Clientes:
 ![image](https://user-images.githubusercontent.com/7370358/188764097-830025af-23da-4f8a-b8fd-31763cf8b3ca.png)
 
-Temporalmente por pedido de la empresa Darmotos este modulo funciona para registrar personas Naturales en el sistema, para posterior venta.
-
-Este icono esta pensado para que muestre un listado de todas las personas que han coprado un producto en la tienda Darmotos y no asi un registro de una personas natural.
-
-Como este modulo esta sin definirse de manera correcta, dejaremos el detalle y la explicacion de su uso para mas adelante.
+Inicio del módulo de clientes, podrá ver el perfil previamente parametrizado de sus clientes.
 
 
 ![image](https://user-images.githubusercontent.com/7370358/188764411-bb367161-aa62-434d-a7bd-5f28591d86cc.png)
