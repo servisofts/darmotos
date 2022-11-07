@@ -38,7 +38,10 @@ Este sistema es una herramienta indespensable para lograr un manejo eficiente de
 - Cobranza
 
 
-#### Antes de comenzar, con la intencion de no volver este documento repetitivo y aburrido, te explico que cada objeto adentro de la app es posible:
+#### Antes de comenzar.
+Con la intención de simplificar el uso del presente documento, es necesario que usted lector, sepa de antemano que cada uno de los procesos que se realizan en el sistema tiene las siguientes opciones comúnes y de esta manera no tener que explicarlas en cada proceso.
+
+* Tareas comúnes:
 
 - Listarlo.
 - Verlo como tabla.
@@ -46,10 +49,11 @@ Este sistema es una herramienta indespensable para lograr un manejo eficiente de
 - Regitrar nuevo.
 - Editarlo.
 
-Al explicar esto no tendre que detallarte lo mismo para todos los casos de uso.
+Al explicar esto no tendré que detallarte lo mismo para todos los casos de uso.
 
-### Ahora podemos comenzar, primeramente te detallare cada módulo y como funciona actualmente en el sistema.
-### Fecha actual 06-09-2022
+### Ahora podemos comenzar. 
+
+Primeramente te detallaré cada módulo y como funciona actualmente en el sistema.
 
 En estos momentos el menu principal de la aplicación se ve de esta manera.
 
