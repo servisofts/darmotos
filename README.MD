@@ -30,13 +30,14 @@ Este sistema es una herramienta indespensable para lograr un manejo eficiente de
 - Roles y permisos
 - Sucursales
 - Clientes
+<!--
 - Bancos
 - Almacenes
 - Productos
 - Compra
 - Venta
 - Cobranza
-
+-->
 
 #### Antes de comenzar.
 Con la intención de simplificar el uso del presente documento, es necesario que usted lector, sepa de antemano que cada uno de los procesos que se realizan en el sistema tiene las siguientes opciones comúnes y de esta manera no tener que explicarlas en cada proceso.
