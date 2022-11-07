@@ -2,6 +2,8 @@
 
 ![Screenshot 1](./app/public/logo512.png)
 
+![ezgif-3-2456d69cf3](https://user-images.githubusercontent.com/69025139/200237496-ab77c613-af75-4e1c-b2d9-437b90f35ac4.gif)
+
 ## Introducción
 
 Bienvenido al sistema de gestión de ventas de DarMotos
@@ -117,6 +119,7 @@ Temporalmente por pedido de la empresa Darmotos este modulo funciona para regist
 Este icono esta pensado para que muestre un listado de todas las personas que han coprado un producto en la tienda Darmotos y no asi un registro de una personas natural.
 
 Como este modulo esta sin definirse de manera correcta, dejaremos el detalle y la explicacion de su uso para mas adelante.
+
 
 ![image](https://user-images.githubusercontent.com/7370358/188764411-bb367161-aa62-434d-a7bd-5f28591d86cc.png)
 
