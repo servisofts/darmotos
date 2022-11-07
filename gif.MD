@@ -14,3 +14,9 @@
 
 ## Editar Usuario
 ![EditarUsuario](https://user-images.githubusercontent.com/69025139/200253598-e90f3f96-7e4f-49ea-b6a5-681a9b6021a3.gif)
+
+## Eliminar Usuario
+![EliminarUsuario](https://user-images.githubusercontent.com/69025139/200254986-1c248487-eaf9-4a52-b10c-c01e99abe8b8.gif)
+
+## Recuperar Usuario
+![RecuperarUsuario](https://user-images.githubusercontent.com/69025139/200255018-b5b1f81a-1491-4790-a43d-9f6497b61310.gif)
