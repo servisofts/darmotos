@@ -8,7 +8,7 @@ Bienvenido al sistema de gestión de ventas de DarMotos
 
 [darmotos.com](https://darmotos.servisofts.com)
 
-El sistema integrado DarMotos cuenta con innumerables opciones para facilitar la gestion de la empresa.
+El sistema integrado DarMotos cuenta con innumerables opciones para facilitar la gestión de la empresa.
 
 Este sistema es una herramienta indespensable para lograr un manejo eficiente de la información.
 
