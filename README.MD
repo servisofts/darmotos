@@ -62,7 +62,7 @@ Ingresa al sistema con tu usuario y contraseña.
 
 ### Pantalla principal.
 
-Lo primero que verá una vez ingresado al sistema, será una pantalla con diferentes los íconos según sus permisos asignados.
+Lo primero que verá una vez ingresado al sistema, será una pantalla con los diferentes íconos según sus permisos asignados.
 
 Hasta la última actuaización de este documento la pantalla principal se ve de esta manera (Según cronograma de desarrollo en la etapa correspondiente).
 
