@@ -58,7 +58,7 @@ Para utilizar el sistema es necesario tener una cuenta (Registrada por un admini
 
 Ingresa al sistema con tu usuario y contraseña.
 
-![Login](https://user-images.githubusercontent.com/69025139/200239452-a05105f1-a934-43a4-8d5c-519142a33392.gif)
+![Login](https://user-images.githubusercontent.com/69025139/200251591-5b273361-adb1-4844-92ea-c0d65948c4e8.gif)
 
 ### Pantalla principal.
 
