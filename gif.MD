@@ -11,3 +11,6 @@
 
 ## CAMBIAR TEMA
 ![CambiarTema](https://user-images.githubusercontent.com/69025139/200252466-c0187ab7-6917-46fe-a6b0-ac840f4dc516.gif)
+
+## Editar Usuario
+![EditarUsuario](https://user-images.githubusercontent.com/69025139/200253598-e90f3f96-7e4f-49ea-b6a5-681a9b6021a3.gif)
