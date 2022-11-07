@@ -2,8 +2,6 @@
 
 ![Screenshot 1](./app/public/logo512.png)
 
-![ezgif-3-2456d69cf3](https://user-images.githubusercontent.com/69025139/200237496-ab77c613-af75-4e1c-b2d9-437b90f35ac4.gif)
-
 ## Introducción
 
 Bienvenido al sistema de gestión de ventas de DarMotos
