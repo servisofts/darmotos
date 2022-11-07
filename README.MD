@@ -41,13 +41,15 @@ Este sistema es una herramienta indespensable para lograr un manejo eficiente de
 #### Antes de comenzar.
 Con la intención de simplificar el uso del presente documento, es necesario que usted lector, sepa de antemano que cada uno de los procesos que se realizan en el sistema tiene las siguientes opciones comúnes y de esta manera no tener que explicarlas en cada proceso.
 
-* Tareas comúnes:
+#Tareas comúnes:
 
-- Listarlo.
-- Verlo como tabla.
-- Exportar su tabla a excel.
-- Regitrar nuevo.
-- Editarlo.
+- Listar.
+- Ver como tabla.
+- Exportar tabla a excel.
+- Regitrar.
+- Editar.
+- Eliminar.
+
 
 Al explicar esto no tendré que detallarte lo mismo para todos los casos de uso.
 
