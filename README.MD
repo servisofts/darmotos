@@ -99,24 +99,6 @@ White: Podria aparecerte tanto un sol y white como una luna y dark, que son las 
 
 
 
-## Bancos:
-![image](https://user-images.githubusercontent.com/7370358/188762822-98a69600-11e4-4d52-8257-06717553e763.png)
-
-
-El módulo de bancos es un módulo indespensable para la tesorería de la empresa, en este módulo recahen todos los movimientos financieros de la aplicación, en primera instancia podemos listar y crear los diferentes bancos con los que trabajamos.
-
-![image](https://user-images.githubusercontent.com/7370358/188763101-afdf8149-c49b-4ef3-922a-20942e54a16e.png)
-
-Al ingresar a un banco podremos gestionar las cuentas que tenemos en el mismo.
-
-![image](https://user-images.githubusercontent.com/7370358/188763178-c3d265e5-f950-44cc-b86e-e908eac5337d.png)
-
-Al ingresar a una cuenta podremos ver todos los movientos y el porque de cada moviento, esto para tener un mejor control de los movimientos bancarios y al mismo tiempo porque existen muchos eventos adentro de la app que terminan haciendo un movimiento en nuestro banco entonces en esa glosa sabremos el motivo del movimiento.
-
-![image](https://user-images.githubusercontent.com/7370358/188763474-21ac191c-b8f3-4d7d-bb86-55ccc90b7b3e.png)
-
-
-
 ## Clientes:
 ![image](https://user-images.githubusercontent.com/7370358/188764097-830025af-23da-4f8a-b8fd-31763cf8b3ca.png)
 
