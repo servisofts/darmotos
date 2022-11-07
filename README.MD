@@ -53,9 +53,9 @@ Con la intención de simplificar el uso del presente documento, es necesario que
 
 ### Ahora podemos comenzar. 
 
-Primeramente te detallaré cada módulo y como funciona actualmente en el sistema.
+Para utilizar el sistema es necesario tener una cuenta (Registrada por un adminitrador DM).
 
-En estos momentos el menu principal de la aplicación se ve de esta manera.
+Ingresa al sistema con tu usuario y contraseña.
 
 ![Login](https://user-images.githubusercontent.com/69025139/200239452-a05105f1-a934-43a4-8d5c-519142a33392.gif)
 
