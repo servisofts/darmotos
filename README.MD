@@ -215,6 +215,10 @@ El rol juega un papel muy importante en el sistema, ya que este se encarga de ge
    <br />
    <br />
    
+## Registrar un Usuario
+
+![UsuarioRegistro](https://user-images.githubusercontent.com/69025139/200257257-457f3280-2fcc-49ee-ba30-3c18f24dd692.gif)
+
 
 ## Perfil
 ![image](https://user-images.githubusercontent.com/7370358/188766910-8a4e6b2d-b9d4-47ce-a9ee-68a356bc5671.png)
