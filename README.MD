@@ -57,8 +57,7 @@ Primeramente te detallaré cada módulo y como funciona actualmente en el sistem
 
 En estos momentos el menu principal de la aplicación se ve de esta manera.
 
-![image](https://user-images.githubusercontent.com/7370358/188760706-a31c0b53-c879-43b6-a476-0d271bdc3aac.png)
-
+![Login](https://user-images.githubusercontent.com/69025139/200239452-a05105f1-a934-43a4-8d5c-519142a33392.gif)
 
 ### A continuación intentaré detallar cada uno de los íconos.
 
