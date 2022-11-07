@@ -116,7 +116,7 @@ Y nos solicita los datos y documentos parametrizados para el rol clientes.
 Este es un modulo indispensable para el sistema por el cual mostraremos diferentes tipos de reportes que seguiremos detallando mas adelante.
 
 
-
+/*
 ## Contabilidad
 ![image](https://user-images.githubusercontent.com/7370358/188764636-3f4781b9-4f4e-4b93-8138-5acb17004cbc.png)
 
@@ -126,7 +126,7 @@ Es un recurso del que se dispone para administrar los gastos e ingresos de una c
 Todas las empresas son conscientes de que deben gestionar de forma adecuada los parámetros contables. Este concepto involucra tanto a las denominadas pequeñas y medianas empresas (PYMES) como a las grandes multinacionales. Del mismo modo, obedece tanto a razones de índole financiera en términos de asegurar la adecuada rentabilidad, como a disposiciones fiscales, debido a la presión de los fiscos federales, provinciales y locales sobre cada formación corporativa.
 
 Darmotos como empresa no cuenta con un modulo contable financiero en el software, pero como es indispensable para la buena gestion, la plataforma tendra una contabilidad abstracta (por detras), esto quiere decir que la app realizara transacciones contables para la buena gestion de su informacion pero que no mantendra un historico, ni sus respectivos reportes hasta que la empresa decida comprar el modulo contable.
-
+*/
 
 
 ## Inventario
