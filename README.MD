@@ -51,8 +51,6 @@ Con la intención de simplificar el uso del presente documento, es necesario que
 - Eliminar.
 
 
-Al explicar esto no tendré que detallarte lo mismo para todos los casos de uso.
-
 ### Ahora podemos comenzar. 
 
 Primeramente te detallaré cada módulo y como funciona actualmente en el sistema.
