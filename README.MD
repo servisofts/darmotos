@@ -204,14 +204,15 @@ El rol juega un papel muy importante en el sistema, ya que este se encarga de ge
    podra crear nuevos y ver en forma de tabla.
    <br />
    <br />
-              
-   ![Screenshot 1](./img/usuarios_lists.png)
+
+![b5066820-2194-4e3c-91d3-6bc26d99b67b](https://user-images.githubusercontent.com/7370358/200258195-361cb262-09eb-4402-bd4f-b2367286fa5a.jpeg)
+   
             
    Al seleccionar un usuario podrá dirigirse hasta su perfil, donde podra cambiar su foto, y su respectiva información segun su rol en el sistema,
    ya se una cliente, un empleado un administrador o alguno otro nuevo creado por alguna necesidad futura.
    <br />
    <br />
-   ![Screenshot 1](./img/usuario_perfil.png)
+   ![55152571-db39-4903-937e-6387ac135c68](https://user-images.githubusercontent.com/7370358/200258512-09d458d4-284f-4c1e-ae38-504bf2510732.jpeg)
    <br />
    <br />
    
