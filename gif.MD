@@ -17,5 +17,5 @@
 # RecuperarUsuario
 ![RecuperarUsuario](https://user-images.githubusercontent.com/69025139/200258227-e6cbce08-40db-48ee-b971-9440daab1fd8.gif)
 
-# CrearCliente
-![CrearCliente](https://user-images.githubusercontent.com/69025139/200259907-9ed6bf11-c94e-4472-88ef-09f6564f0ecf.gif)
+# Registro Cliente
+![RegistroCliente](https://user-images.githubusercontent.com/69025139/200261219-8ddc4c91-f318-4634-a14a-1566da686488.gif)
