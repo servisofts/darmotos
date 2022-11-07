@@ -65,7 +65,8 @@ Lo primero que verá una vez ingresado al sistema, será una pantalla con difere
 
 Hasta la última actuaización de este documento la pantalla principal se verá de esta manera.
 
- file:///home/ruddy/Downloads/WhatsApp%20Image%202022-11-07%20at%202.05.38%20AM.jpeg
+![WhatsApp Image 2022-11-07 at 2 05 38 AM](https://user-images.githubusercontent.com/7370358/200246624-06918a04-bebe-442c-a98c-34d43dd2b01e.jpeg)
+
 
 ## Ajustes
 ![image](https://user-images.githubusercontent.com/7370358/188761488-7827c45b-e950-4eee-b9be-9d66bd96a49b.png)
