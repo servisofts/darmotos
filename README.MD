@@ -72,10 +72,17 @@ Hasta la última actualízación de este documento la pantalla principal se ve d
 ## Ajustes
 ![image](https://user-images.githubusercontent.com/7370358/188761488-7827c45b-e950-4eee-b9be-9d66bd96a49b.png)
 
+Los ajustes es un logar en constante evolución, ene ste lugar el usuario podá encontrar diferentes herramientas que le ayudarán en la usabilidad del sistema
+
+- El primer ícono de ajuste es el de cambio de tema, éste ícono le sirve para intercalar entre su tema blanco o su tema obscuro, como en el siguiente video.
+
+![CambiarTema](https://user-images.githubusercontent.com/69025139/200252466-c0187ab7-6917-46fe-a6b0-ac840f4dc516.gif)
 
 ### Ingresando a Ajustes encontramos los siguientes íconos.
 
 ![image](https://user-images.githubusercontent.com/7370358/188761702-56f9e7ea-7ba0-448f-a3c2-47c52e9ebddb.png)
+
+
 
 Datos del rol: Datos del rol es un lugar donde el Administrador de la aplicación podrá registrar los diferentes tipos de datos y documentos para asignar a los diferentes roles de las personas en la app.
 (más adelante te explicaremos como manejamos los roles)
