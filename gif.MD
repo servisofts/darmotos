@@ -8,3 +8,6 @@
 
 ## UsuarioRegistro
 ![UsuarioRegistro](https://user-images.githubusercontent.com/69025139/200250472-9a529920-36f7-48ea-9265-119a5ee1ceb9.gif)
+
+## CAMBIAR TEMA
+![CambiarTema](https://user-images.githubusercontent.com/69025139/200252466-c0187ab7-6917-46fe-a6b0-ac840f4dc516.gif)
