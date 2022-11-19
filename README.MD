@@ -62,13 +62,6 @@ Darmotos como empresa no cuenta con un modulo contable financiero en el software
 -->
 
 
-## Roles:
-![image](https://user-images.githubusercontent.com/7370358/188765588-575886e9-4970-434b-aaf6-5b34c01f9985.png)
-
-
-
-
-
 ## Sucursales
 
 ![image](https://user-images.githubusercontent.com/7370358/188766565-fb9bc90b-2620-4c4b-b8c7-09df0f46af35.png)
@@ -109,34 +102,4 @@ Darmotos como empresa no cuenta con un modulo contable financiero en el software
    <br />
    <br />
    
-## Registrar un Usuario
 
-![UsuarioRegistro](https://user-images.githubusercontent.com/69025139/200257257-457f3280-2fcc-49ee-ba30-3c18f24dd692.gif)
-
-
-## Editar un Usuario
-
-![EditarUsuario](https://user-images.githubusercontent.com/69025139/200258148-f5f22fca-88f0-49df-8f87-f11defcd9d89.gif)
-
-
-## Eliminar un Usuario
-
-![EliminarUsuario](https://user-images.githubusercontent.com/69025139/200258181-c50999b8-1e66-4ef3-afde-6fe4a99ffc51.gif)
-
-
-## Recuperar un Usuario
-![RecuperarUsuario](https://user-images.githubusercontent.com/69025139/200258227-e6cbce08-40db-48ee-b971-9440daab1fd8.gif)
-
-
-## Perfil
-![image](https://user-images.githubusercontent.com/7370358/188766910-8a4e6b2d-b9d4-47ce-a9ee-68a356bc5671.png)
-
-En este icono podras ver la informacion de tu usuario logueado al sistema y sus roles asignados.
-
-![image](https://user-images.githubusercontent.com/7370358/188767042-df16ae0e-04c0-4fe1-865f-ed1f911b79d6.png)
-
-
-
-## Authors
-
-- Servisofts Srl.
