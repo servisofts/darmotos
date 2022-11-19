@@ -8,4 +8,4 @@ Bienvenido al sistema de gestión de ventas de DarMotos
 
 [darmotos.com](https://darmotos.servisofts.com)
 
-Visita nuestra Wiky
+Para saber más visita nuestra [Wiki](https://github.com/servisofts/darmotos/wiki)
