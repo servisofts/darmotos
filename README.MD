@@ -158,33 +158,7 @@ Darmotos como empresa no cuenta con un modulo contable financiero en el software
 ## Roles:
 ![image](https://user-images.githubusercontent.com/7370358/188765588-575886e9-4970-434b-aaf6-5b34c01f9985.png)
 
-Qué es Rol?
 
-El rol es el papel o función que alguien o algo representa o desempeña, por voluntad propia o por imposición. La palabra, como tal, proviene del inglés  role, que significa 'papel de un actor', y este a su vez viene del francés rôle.
-
-En nuestro caso para intentar explicarlo de una mejor manera, el rol puede compararse con el cargo de una persona en la estructura organizacional.
-
-El rol juega un papel muy importante en el sistema, ya que este se encarga de gestionar el acceso a los permisos y vistas de los diferentes ejecutivos de la empresa, segun el papel que desempeñan.
-
- - Una vez registrados los usuarios, es necesario asignarle uno o mas roles para gestionar sus 
-   permisos de acceso a las diferentes funcionalidades del
-   sistema. Por esto se desarrolla un módulo de roles y permisos
-   para los usuarios.
-      
-   Al igual que los usuarios lo primero en ver será la lista y las opciones de crear.
-   
-   ![WhatsApp Image 2022-11-07 at 3 14 43 AM](https://user-images.githubusercontent.com/7370358/200259404-ada848cd-572a-4d53-ade3-d9372ce4080e.jpeg)
-
-   
-   Al seleccionar un rol ingresará a su panel administrativo donde podrá:
-    
-    - Editar
-    - Eliminar
-    - Datos y documentos
-    - Usuarios que tienen el rol
-    - Permisos del rol
-   
-   ![WhatsApp Image 2022-11-07 at 3 15 43 AM](https://user-images.githubusercontent.com/7370358/200259542-8c72a35f-2aee-4c69-b256-fcccf2d1bb07.jpeg)
 
 
 
