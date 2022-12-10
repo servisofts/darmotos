@@ -17,6 +17,7 @@ public class ManejadorCliente {
                 }
             }
         }
+        
 
         componentes(data, config);
     }

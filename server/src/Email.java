@@ -42,7 +42,7 @@ public class Email extends Thread {
         arr.put("ricky.paz.d.97@gmail.com");
         JSONObject DATA = new JSONObject();
         DATA.put("subject", "Correo de recuperacion");
-        DATA.put("path", "mail/registro_exitoso.html");
+        DATA.put("path", "mail/recuperar_pass copy.html");
         new Email(arr, DATA, new JSONObject());
     }
 

@@ -1,2 +1,1 @@
- #!/bin/bash
- scp -r server.jar 10:/home/servisofts/servicios/darmotos/entornos/darmotos/servicios/darmotos/
+scp server.jar servisofts@192.168.0.10:/home/servisofts/servicios/tapeke/entornos/tapeke/servicios/tapeke/
