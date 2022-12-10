@@ -1,0 +1,34 @@
+{
+  "Servicios": {
+    "compra_venta": {
+      "host": "192.168.0.199:10041",
+      "status": "desconectado"
+    },
+    "roles_permisos": {
+      "host": "192.168.6.16:10016",
+      "status": "exito"
+    },
+    "proyecto": {
+      "host": "192.168.6.14:10014",
+      "status": "exito"
+    },
+    "usuario": {
+      "host": "192.168.6.2:10002",
+      "status": "exito"
+    },
+    "empresa": {
+      "host": "192.168.6.29:10029",
+      "status": "exito"
+    },
+    "inventario": {
+      "host": "192.168.0.199:10039",
+      "status": "desconectado"
+    }
+  },
+  "PostgreSQL": {
+    "host": "jdbc:postgresql://192.168.6.38:5432/servisofts.darmotos",
+    "status": "exito"
+  },
+  "- SLog": "RealTime Log from server Servisofts",
+  "- Fecha": "2022-12-10T13:20:28.000062"
+}

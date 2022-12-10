@@ -1,0 +1,1 @@
+scp -r servisofts@192.168.0.10:/home/servisofts/servicios/darmotos/entornos/darmotos/servisoftsFiles/darmotos/ /u01/servisoftsFiles/
