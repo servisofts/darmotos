@@ -2,6 +2,7 @@ import DPA, { connect } from 'servisofts-page';
 import { Parent } from '.';
 import { SNavigation, SPopup } from 'servisofts-component';
 import Model from '../../Model';
+import DatosDocumentosEditar from './Components/DatosDocumentosEditar';
 
 class index extends DPA.edit {
     constructor(props) {
@@ -31,10 +32,25 @@ class index extends DPA.edit {
             },
             key_usuario: ""
         }).then((resp) => {
-            SNavigation.goBack();
+            this.presolve(this.pk)
+            SNavigation.replace("/usuario/profile", { pk: this.pk })
+
         }).catch(e => {
-            SPopup.alert("error")
+            console.error(e);
         })
+    }
+
+    $submitName() {
+        return ""
+    }
+    $footer() {
+        return <DatosDocumentosEditar key_usuario={this.pk} onSubmit={() => {
+            return new Promise((resolve, reject) => {
+                this.presolve = resolve;
+                this.form.submit();
+                // resolve("KEY_USUARIO");
+            })
+        }} />
     }
 }
 

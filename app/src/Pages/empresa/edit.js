@@ -26,7 +26,8 @@ class index extends DPA.edit {
         }).then((resp) => {
             SNavigation.goBack();
         }).catch(e => {
-            SPopup.alert("error")
+            console.error(e);
+
         })
     }
 }

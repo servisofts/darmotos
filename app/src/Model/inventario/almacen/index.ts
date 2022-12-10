@@ -8,13 +8,13 @@ export default new SModel<Action, Reducer>({
         component: "almacen"
     },
     Columns: {
+        "key_sucursal": { type: "text", fk: "sucursal", notNull: true, label: "Sucursal", editable: true },
         "key": { type: "text", pk: true },
-        "descripcion": { type: "text", editable: true, label: "Descripcion", notNull: true },
+        "descripcion": { type: "text", editable: true, label: "Descripcion", notNull: true, },
         "observacion": { type: "text", editable: true, label: "Observacion" },
         "fecha_on": { type: "timestamp", label: "F. Creacion" },
         "estado": { type: "integer" },
         "key_usuario": { type: "text", fk: "usuario" },
-        "key_sucursal": { type: "text", fk: "sucursal", notNull: true },
 
 
     },

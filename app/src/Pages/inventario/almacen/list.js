@@ -7,8 +7,9 @@ class index extends DPA.list {
     constructor(props) {
         super(props, {
             Parent: Parent,
+            title:"Lista de almacenes",
             excludes: ["key", "fecha_on", "key_usuario", "estado", "key_servicio", "key_sucursal"],
-            // item: item
+            item: item
         });
     }
     $allowNew() {

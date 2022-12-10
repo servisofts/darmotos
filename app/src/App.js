@@ -6,13 +6,12 @@ import Config from "./Config";
 import Assets from './Assets';
 import Pages from './Pages';
 import BackgroundImage from './Components/BackgroundImage';
-import Model from './Model';
+import NavBar from './Components/NavBar';
 
 
 setProps(Config.socket);
 
 const App = (props) => {
-    
     return <Redux>
         <SComponentContainer
             debug
@@ -23,7 +22,9 @@ const App = (props) => {
             theme={{ themes: Config.theme, initialTheme: "dark" }}
         >
             <SNavigation
+
                 props={{
+                    navBar: NavBar,
                     title: 'Darmotos', pages: Pages
                 }}
             />

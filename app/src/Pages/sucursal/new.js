@@ -7,11 +7,17 @@ class index extends DPA.new {
     constructor(props) {
         super(props, {
             Parent: Parent,
-            excludes: ["key", "fecha_on", "key_usuario", "estado"]
+            excludes: ["key", "fecha_on", "key_usuario", "estado", "lat", "lng"]
         });
     }
     $allowAccess() {
         return Model.usuarioPage.Action.getPermiso({ url: Parent.path, permiso: "new" })
+    }
+    $inputs() {
+        var inp = super.$inputs();
+        inp["telefono"].type = "phone";
+        inp["correo"].type = "email";
+        return inp;
     }
     $onSubmit(data) {
         Parent.model.Action.registro({
@@ -20,7 +26,8 @@ class index extends DPA.new {
         }).then((resp) => {
             SNavigation.goBack();
         }).catch(e => {
-            SPopup.alert("error")
+            console.error(e);
+
         })
     }
 }

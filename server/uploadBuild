@@ -1,0 +1,2 @@
+ #!/bin/bash
+ scp -r server.jar 10:/home/servisofts/servicios/darmotos/entornos/darmotos/servicios/darmotos/

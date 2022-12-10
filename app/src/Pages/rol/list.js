@@ -6,20 +6,26 @@ class index extends DPA.list {
     constructor(props) {
         super(props, {
             Parent: Parent,
-            excludes: ["key", "fecha_on", "key_servicio", "estado"]
+            excludes: ["key", "fecha_on", "key_servicio", "estado"],
+            itemType:"2"
+
         });
     }
-    $allowNew(){
+    $allowNew() {
         return Model.usuarioPage.Action.getPermiso({ url: Parent.path, permiso: "new" });
     }
-    $allowTable(){
+    $allowTable() {
         return Model.usuarioPage.Action.getPermiso({ url: Parent.path, permiso: "table" });
     }
-    $allowAccess(){
+    $allowAccess() {
         return Model.usuarioPage.Action.getPermiso({ url: Parent.path, permiso: "ver" });
     }
     $filter(data) {
         return data.estado != 0
+    }
+
+    $order() {
+        return [{ key: "descripcion", order: "asc", peso: 1 }]
     }
     $getData() {
         return Parent.model.Action.getAll();

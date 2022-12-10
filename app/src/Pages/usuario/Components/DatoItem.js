@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Linking } from 'react-native'
 import { SForm, SHr, SImage, SInput, SList, SMath, SNavigation, SPage, SText, STheme, SView } from 'servisofts-component';
 import Model from '../../../Model';
 import FileItem from './FileItem'
@@ -8,24 +9,26 @@ class index extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            fontSize: 14,
+            defaultValue: "--"
         };
     }
 
     type_text() {
         const { obj, dto } = this.props
-        return <SText flex fontSize={18} >{dto?.descripcion}</SText>
+        return <SText flex fontSize={this.state.fontSize} >{dto?.descripcion ?? this.state.defaultValue}</SText>
     }
     type_number() {
         const { obj, dto } = this.props
-        return <SText flex fontSize={18}>{dto?.descripcion}</SText>
+        return <SText flex fontSize={this.state.fontSize}>{dto?.descripcion ?? this.state.defaultValue}</SText>
     }
     type_money() {
         const { obj, dto } = this.props
-        return <SText flex fontSize={18}>Bs. {SMath.formatMoney(dto?.descripcion ?? 0)}</SText>
+        return <SText flex fontSize={this.state.fontSize}>Bs. {SMath.formatMoney(dto?.descripcion ?? 0)}</SText>
     }
     type_date() {
         const { obj, dto } = this.props
-        return <SText flex fontSize={18}>{dto?.descripcion}</SText>
+        return <SText flex fontSize={this.state.fontSize}>{dto?.descripcion ?? this.state.defaultValue}</SText>
     }
     type_image() {
         const { obj, dto } = this.props
@@ -40,24 +43,29 @@ class index extends Component {
 
     type_file() {
         const { obj, dto } = this.props
-        if (!dto) return;
+        if (!dto) return <SText>{this.state.defaultValue}</SText>;
         var filePath = SSocket.api.root + "usuario_dato/" + dto.key_usuario_perfil + "/" + obj.key + "/";
-        return <SView col={"xs-12"}>
+        return <SView col={"xs-12"} center>
+            <SHr />
             <FileItem name={dto.descripcion} path={filePath} />
         </SView>
     }
     type_files() {
         const { obj, dto } = this.props
-        if (!dto) return;
+        if (!dto) return <SText>{this.state.defaultValue}</SText>;
         var arr = JSON.parse(dto.descripcion);
-        if (!arr) return;
+        if (!arr) return <SText>{this.state.defaultValue}</SText>;
         var filePath = SSocket.api.root + "usuario_dato/" + dto.key_usuario_perfil + "/" + obj.key + "/";
-        return <SList
-            horizontal
-            data={arr}
-            render={(fil) => {
-                return <FileItem name={fil} path={filePath} />
-            }} />
+        return <SView col={"xs-12"} center>
+            <SHr />
+            <SList
+                horizontal
+                center
+                data={arr}
+                render={(fil) => {
+                    return <FileItem name={fil} path={filePath} />
+                }} />
+        </SView>
 
     }
     type_checkBox() {
@@ -66,9 +74,15 @@ class index extends Component {
             <SInput type={"checkBox"} value={dto?.descripcion} disabled={true} />
         </SView>
     }
+    type_link() {
+        const { obj, dto } = this.props
+        return <SText fontSize={this.state.fontSize} color={"#00A"} onPress={() => {
+            Linking.openURL(dto?.descripcion)
+        }}>{dto?.descripcion ?? this.state.defaultValue}</SText>
+    }
     type_default() {
         const { obj, dto } = this.props
-        return <SText >{dto?.descripcion}</SText>
+        return <SText fontSize={this.state.fontSize}>{dto?.descripcion ?? this.state.defaultValue}</SText>
     }
     getData() {
         switch (this.props.obj.tipo) {
@@ -88,6 +102,8 @@ class index extends Component {
                 return this.type_files();
             case "checkBox":
                 return this.type_checkBox();
+            case "link":
+                return this.type_link();
             default:
                 return this.type_default();
         }
@@ -97,13 +113,17 @@ class index extends Component {
         const { obj, dto } = this.props
         return (
             <SView col={"xs-12"} card style={{
-                padding: 8
+                padding: 4,
+                borderRadius: 0,
             }}>
-                <SView row col={"xs-12"} style={{
-                    overflow: "hidden"
-                }}>
-                    <SText col={"xs-4 sm-3 md-2"} fontSize={12} color={STheme.color.gray}>{obj.descripcion} {obj.required ? "*" : ""}</SText>
-                    {this.getData()}
+                <SView col={"xs-12"} row style={{
+                    overflow: "hidden",
+                }} center>
+                    <SView col={"xs-12"} center>
+                        <SText fontSize={this.state.fontSize} color={STheme.color.gray}>{obj.descripcion} {obj.required ? "*" : ""}</SText>
+                        <SView width={4} />
+                        {this.getData()}
+                    </SView>
 
                 </SView>
                 {/* <SText>{obj.tipo}</SText> */}

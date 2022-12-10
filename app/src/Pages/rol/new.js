@@ -18,7 +18,8 @@ class index extends DPA.new {
             this.$submitFile(resp.data.key);
             SNavigation.goBack();
         }).catch(e => {
-            SPopup.alert("error")
+            console.error(e);
+
         })
     }
 }

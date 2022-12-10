@@ -6,7 +6,7 @@ export default {
     host: 'darmotos.servisofts.com',
 
     // ssl: false,
-    // host: '192.168.3.2',
+    // host: '192.168.0.199',
 
     port: {
         native: 10038,
@@ -18,6 +18,7 @@ export default {
         roles_permisos: 'https://rolespermisos.servisofts.com/http/',
         empresa: 'https://empresa.servisofts.com/http/',
         inventario: 'https://inventario.servisofts.com/http/',
+        // inventario: 'http://192.168.0.199:30039/',
     },
     timeReconnect: 5000
 }

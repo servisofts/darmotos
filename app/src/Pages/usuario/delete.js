@@ -17,8 +17,10 @@ class index extends DPA.delete {
             key_usuario: ""
         }).then((resp) => {
             SNavigation.goBack();
+            SNavigation.goBack();
         }).catch(e => {
-            SPopup.alert("error")
+            console.error(e);
+
         })
     }
 

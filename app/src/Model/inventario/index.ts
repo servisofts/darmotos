@@ -3,12 +3,20 @@ import modelo from "./modelo"
 import almacen from "./almacen"
 import producto from "./producto"
 import inventario_dato from "./inventario_dato"
-import modelo_inventario_dato from "./modelo_inventario_dato"
+import tipo_producto_inventario_dato from "./tipo_producto_inventario_dato"
+import tipo_producto from "./tipo_producto"
+import almacen_producto from "./almacen_producto/index"
+import producto_inventario_dato from "./producto_inventario_dato"
+import inventario from "./inventario"
 export default {
     marca,
     modelo,
     almacen,
     producto,
     inventario_dato,
-    modelo_inventario_dato
+    tipo_producto,
+    tipo_producto_inventario_dato,
+    producto_inventario_dato,
+    almacen_producto,
+    inventario
 }

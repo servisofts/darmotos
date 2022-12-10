@@ -7,7 +7,7 @@ class index extends DPA.edit {
     constructor(props) {
         super(props, {
             Parent: Parent,
-            excludes: []
+            excludes: ["lat", "lng"]
         });
     }
     $allowAccess() {
@@ -15,6 +15,12 @@ class index extends DPA.edit {
     }
     $getData() {
         return Parent.model.Action.getByKey(this.pk);
+    }
+    $inputs() {
+        var inp = super.$inputs();
+        inp["telefono"].type = "phone";
+        inp["correo"].type = "email";
+        return inp;
     }
     $onSubmit(data) {
         Parent.model.Action.editar({
@@ -26,7 +32,8 @@ class index extends DPA.edit {
         }).then((resp) => {
             SNavigation.goBack();
         }).catch(e => {
-            SPopup.alert("error")
+            console.error(e);
+
         })
     }
 }

@@ -1,6 +1,6 @@
 import DPA, { connect } from 'servisofts-page';
 import { Parent } from '.';
-import { SNavigation, SPopup, SView } from 'servisofts-component';
+import { SNavigation, SView } from 'servisofts-component';
 import Model from '../../../Model';
 
 class index extends DPA.new {
@@ -19,11 +19,12 @@ class index extends DPA.new {
     // }
 
     $onSubmit(data) {
-        
+
         Parent.model.Action.registro(data).then((resp) => {
             SNavigation.goBack();
         }).catch(e => {
-            SPopup.alert("error")
+            console.error(e);
+
         })
     }
 }
