@@ -19,48 +19,29 @@ class index extends Component {
         })
         if (!datos) return null;
         if (!this.usuario_dato) return null;
-        // var inputs = {};
-        // Object.values(datos).map((obj) => {
-        //     var dto = Object.values(this.usuario_dato).find(o => o.key_dato == obj.key);
-        //     var defaultValue = dto?.descripcion;
-        //     var filePath = SSocket.api.root + "usuario_dato/" + this.props.key_usuario;
-        //     // inputs[obj.key] = { label: obj.descripcion, type: obj.tipo, required: obj.required, defaultValue: defaultValue, filePath: filePath }
-
-        // })
         return <SList
             data={datos}
+            space={0}
             order={[{ key: "tipo", order: "desc", peso: 1 }]}
             render={(obj) => {
                 var dto = Object.values(this.usuario_dato).find(o => o.key_dato == obj.key);
                 return <DatoItem obj={obj} dto={dto} />
-
-                return <SView col={"xs-12"}>
-                    <SView row>
-                        <SText color={STheme.color.gray}>{obj.descripcion} {obj.required ? "*" : ""}</SText>
-                        <SText >{dto?.descripcion}</SText>
-                    </SView>
-                    {/* <SText>{obj.tipo}</SText> */}
-                </SView>
             }}
         />
     }
     render() {
         return (
-            <SView col={"xs-12"}>
-                <SHr />
-                <SView col={"xs-12"} >
-                    <SHr />
-                    <SText fontSize={16} bold>Datos y documentos</SText>
-                    <SView row card width={100} center height={30} onPress={() => {
+            <SView col={"xs-12"} >
+                {/* <SText fontSize={16} bold>Datos y documentos</SText> */}
+                {/* <SView row card width={100} center height={30} onPress={() => {
                         SNavigation.navigate("/usuario/profile/edit_datos", { pk: this.props.key_usuario })
                     }}>
                         <SIcon name='Pencil' fill={STheme.color.text} width={12} />
                         <SView width={8} />
                         <SText>Editar</SText>
-                    </SView>
-                    <SHr />
-                    {this.getDatos()}
-                </SView>
+                    </SView> */}
+                {/* <SHr height={4}/> */}
+                {this.getDatos()}
             </SView>
         );
     }

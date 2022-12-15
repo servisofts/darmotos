@@ -1,6 +1,6 @@
 import DPA, { connect } from 'servisofts-page';
 import { Parent } from '.';
-import { SNavigation, SPopup, SView } from 'servisofts-component';
+import { SNavigation, SView } from 'servisofts-component';
 import Model from '../../../Model';
 
 class index extends DPA.new {
@@ -13,8 +13,8 @@ class index extends DPA.new {
     $allowAccess() {
         return Model.usuarioPage.Action.getPermiso({ url: Parent.path, permiso: "new" })
     }
-    $getData(){
-        var key_empresa =Model.empresa.Action.getSelect()?.key
+    $getData() {
+        var key_empresa = Model.empresa.Action.getSelect()?.key
         return key_empresa
     }
 
@@ -22,14 +22,16 @@ class index extends DPA.new {
         data.key_empresa = Model.empresa.Action.getSelect()?.key; //TODO
         // data.key_empresa = "74ac7008-5a7f-49da-9b0c-9a9961e4327e";
         if (!data.key_empresa) {
-            SPopup.alert("no hay empresa");
+            console.error("No hay empresa");
+
             return;
         }
         Parent.model.Action.registro(data).then((resp) => {
             this.$submitFile(resp.data.key);
             SNavigation.goBack();
         }).catch(e => {
-            SPopup.alert("error")
+            console.error(e);
+
         })
     }
 }

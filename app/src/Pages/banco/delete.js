@@ -1,6 +1,6 @@
 import DPA, { connect } from 'servisofts-page';
 import { Parent } from "."
-import { SNavigation, SPopup } from 'servisofts-component';
+import { SNavigation } from 'servisofts-component';
 import Model from '../../Model';
 
 class index extends DPA.delete {
@@ -17,8 +17,9 @@ class index extends DPA.delete {
             key_usuario: ""
         }).then((resp) => {
             SNavigation.goBack();
+            SNavigation.goBack();
         }).catch(e => {
-            SPopup.alert("error")
+            console.error(e);
         })
     }
 

@@ -1,6 +1,6 @@
 import DPA, { connect } from 'servisofts-page';
 import { Parent } from '.';
-import { SNavigation, SPopup, SView } from 'servisofts-component';
+import { SNavigation, SPopup, SText, SView } from 'servisofts-component';
 import Model from '../../../Model';
 
 class index extends DPA.new {
@@ -19,6 +19,15 @@ class index extends DPA.new {
             ...inp["key_sucursal"],
             editable: false,
             value: this.state?.sucursal?.key,
+            render: (ref) => {
+                var value = ref.getValue();
+                if (!value) {
+                    return null;
+                }
+                return <SView col={"xs-12"} height center style={{ padding: 8 }}>
+                    <SText col={"xs-12"}>{this.state?.sucursal?.descripcion}</SText>
+                </SView>
+            },
             onPress: () => {
                 SNavigation.navigate("/sucursal", {
                     onSelect: (item) => {
@@ -35,9 +44,10 @@ class index extends DPA.new {
             key_usuario: Model.usuario.Action.getKey()
         }).then((resp) => {
             this.$submitFile(resp.data.key);
-            SNavigation.goBack();
+            SNavigation.replace(Parent.path + "/profile", { pk: resp.data.key });
         }).catch(e => {
-            SPopup.alert("error")
+            console.error(e);
+
         })
     }
 }

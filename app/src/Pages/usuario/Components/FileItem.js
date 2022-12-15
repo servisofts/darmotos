@@ -21,10 +21,10 @@ class index extends Component {
         const { name, path } = this.props
         var extencion = this.getExtencion(name)
         return (
-            <SView width={100} onPress={() => {
+            <SView width={80} onPress={() => {
                 SNavigation.openURL(path + name)
             }} center>
-                <SView width={100} height={100} card>
+                <SView width={80} height={80} card>
                     <SView style={{
                         position: "absolute"
                     }} center col={"xs-12"} height>

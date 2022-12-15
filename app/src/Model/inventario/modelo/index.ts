@@ -9,8 +9,9 @@ export default new SModel<Action, Reducer>({
     },
     Columns: {
         "key": { type: "text", pk: true },
-        "key_marca": { type: "text", fk: "marca", label: "Marca" },
-        "descripcion": { type: "text", notNull: true, editable: true, label: "Descripcion" },
+        "key_marca": { type: "text", fk: "marca", label: "Marca", editable: true },
+        "key_tipo_producto": { type: "text", fk: "tipo_producto", editable: true, label: "Tipo de producto" },
+        "descripcion": { type: "text", notNull: true, editable: true, label: "Modelo" },
         "observacion": { type: "text", editable: true, label: "Observacion" },
         "fecha_on": { type: "timestamp", label: "F. Creacion" },
         "estado": { type: "integer" },

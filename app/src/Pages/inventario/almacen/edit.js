@@ -1,6 +1,6 @@
 import DPA, { connect } from 'servisofts-page';
 import { Parent } from '.';
-import { SNavigation, SPopup } from 'servisofts-component';
+import { SNavigation, SPopup, SText, SView } from 'servisofts-component';
 import Model from '../../../Model';
 
 class index extends DPA.edit {
@@ -16,6 +16,40 @@ class index extends DPA.edit {
     $getData() {
         return Parent.model.Action.getByKey(this.pk);
     }
+    $getData() {
+        var data = Parent.model.Action.getByKey(this.pk);
+        if(!data) return null;
+        if (!this.state.sucursal) {
+            this.state.sucursal = Model.sucursal.Action.getByKey(data.key_sucursal);
+        }
+        if (!this.state.sucursal || !data) return null;
+        return data;
+    }
+    $inputs() {
+        var inp = super.$inputs();
+        inp["key_sucursal"] = {
+            ...inp["key_sucursal"],
+            editable: false,
+            value: this.state?.sucursal?.key,
+            render: (ref) => {
+                var value = ref.getValue();
+                if (!value) {
+                    return null;
+                }
+                return <SView col={"xs-12"} height center style={{ padding: 8 }}>
+                    <SText col={"xs-12"}>{this.state?.sucursal?.descripcion}</SText>
+                </SView>
+            },
+            onPress: () => {
+                SNavigation.navigate("/sucursal", {
+                    onSelect: (item) => {
+                        this.setState({ sucursal: item })
+                    }
+                })
+            }
+        }
+        return inp;
+    }
     $onSubmit(data) {
         Parent.model.Action.editar({
             data: {
@@ -26,7 +60,8 @@ class index extends DPA.edit {
         }).then((resp) => {
             SNavigation.goBack();
         }).catch(e => {
-            SPopup.alert("error")
+            console.error(e);
+
         })
     }
 }

@@ -15,7 +15,7 @@ class Login extends Component {
             SNavigation.replace("/");
             return null;
         }
-        
+
         return (
             <SPage title={'Login'} hidden >
                 <SView col={"xs-12"} center>
@@ -24,14 +24,14 @@ class Login extends Component {
                         <SIcon name={"Logo"} fill={STheme.color.secondary} />
                     </SView>
                     <SHr height={50} />
-                    <SText fontSize={18}>Inicia session</SText>
+                    <SText fontSize={18}>Iniciar sesión</SText>
                     <SHr height={16} />
                     <SForm
                         col={"xs-11 sm-10 md-8 lg-6 xl-4"}
                         ref={ref => this.form = ref}
                         inputs={{
                             usuario: {
-                                label: "Correo",
+                                label: "Correo, CI o Telefono",
                                 type: 'email',
                                 required: true,
                                 autoFocus: true,
@@ -54,7 +54,10 @@ class Login extends Component {
                             }
                         }}
 
-                        onSubmitName={"Login"}
+                        onSubmitName={"Ingresar"}
+                        onSubmitProps={{
+                            type: "outline"
+                        }}
                         onSubmit={(data) => {
                             console.log(data);
                             Model.usuario.Action.login(data).then((resp) => {

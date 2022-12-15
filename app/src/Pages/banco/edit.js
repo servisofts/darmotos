@@ -1,6 +1,6 @@
 import DPA, { connect } from 'servisofts-page';
 import { Parent } from '.';
-import { SNavigation, SPopup } from 'servisofts-component';
+import { SNavigation } from 'servisofts-component';
 import Model from '../../Model';
 
 class index extends DPA.edit {
@@ -26,7 +26,8 @@ class index extends DPA.edit {
         }).then((resp) => {
             SNavigation.goBack();
         }).catch(e => {
-            SPopup.alert("error")
+            console.error(e);
+
         })
     }
 }

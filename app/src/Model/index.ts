@@ -4,8 +4,8 @@ import Usuario from "servisofts-rn-usuario";
 import Roles_permisos from "servisofts-rn-roles_permisos";
 import empresa from './empresa'
 import inventario from "./inventario";
+import compra_venta from "./compra_venta";
 import darmotos from "./darmotos";
-
 
 const Model = {
     ...Usuario.Model,
@@ -13,6 +13,7 @@ const Model = {
     ...empresa,
     ...inventario,
     ...Contabilidad.Model,
+    ...compra_venta,
     ...darmotos
 }
 

@@ -12,13 +12,12 @@ class index extends DPA.delete {
     }
     $onDelete() {
         this.data.estado = 0;
-        Parent.model.Action.editar({
-            data: this.data,
-            key_usuario: ""
-        }).then((resp) => {
+        Parent.model.Action.editar(this.data).then((resp) => {
+            SNavigation.goBack();
             SNavigation.goBack();
         }).catch(e => {
-            SPopup.alert("error")
+            console.error(e);
+
         })
     }
 

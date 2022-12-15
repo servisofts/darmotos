@@ -33,9 +33,12 @@ class index extends DPA.new {
             this.$submitFile(resp.data.key);
             SNavigation.replace("/usuario/profile", { pk: resp.data.key });
         }).catch(e => {
-            SPopup.alert("error")
+            console.error(e);
+
         })
     }
+
+ 
 }
 
 export default connect(index);

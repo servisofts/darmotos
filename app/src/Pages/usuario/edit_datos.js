@@ -2,8 +2,6 @@ import DPA, { connect } from 'servisofts-page';
 import { Parent } from "."
 import { SForm, SHr, SInput, SList, SText, SView } from 'servisofts-component';
 import Model from '../../Model';
-import EditarUsuarioRol from './Components/EditarUsuarioRol';
-import DatosDocumentos from './Components/DatosDocumentos';
 import DatosDocumentosEditar from './Components/DatosDocumentosEditar';
 
 class index extends DPA.profile {

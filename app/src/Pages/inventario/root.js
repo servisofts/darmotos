@@ -15,7 +15,7 @@ class index extends Component {
         return (
             <SPage title={'Inventario'}>
                 <SHr height={32} />
-                <MenuPages path={"/inventario/"} />
+                <MenuPages path={"/inventario/"} onlyFirstChildren />
             </SPage>
         );
     }
