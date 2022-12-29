@@ -2,7 +2,7 @@
   "Servicios": {
     "compra_venta": {
       "host": "192.168.0.199:10041",
-      "status": "desconectado"
+      "status": "exito"
     },
     "roles_permisos": {
       "host": "192.168.6.16:10016",
@@ -22,7 +22,7 @@
     },
     "inventario": {
       "host": "192.168.0.199:10039",
-      "status": "desconectado"
+      "status": "exito"
     }
   },
   "PostgreSQL": {
@@ -30,5 +30,5 @@
     "status": "exito"
   },
   "- SLog": "RealTime Log from server Servisofts",
-  "- Fecha": "2022-12-10T13:20:28.000062"
+  "- Fecha": "2022-12-14T20:46:20.000956"
 }
