@@ -21,8 +21,8 @@ export default class index extends Component {
         this.data = this.props.data;
         // var statei = Model.compra_venta.Action.getStateInfo(this.data.state)
         return (<SView col={"xs-12"} center card style={{ padding: 14, }}>
-            <SText center bold>{this.data?.tipo}</SText>
-            <SText center bold>{this.data?.descripcion}</SText>
+            <SHr />
+            <SText center bold fontSize={18}>{this.data?.descripcion}</SText>
             <SHr />
             <SText center >{this.data?.observacion}</SText>
             <Separador data={this.data} />

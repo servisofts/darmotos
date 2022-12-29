@@ -1,9 +1,29 @@
 import React, { Component } from 'react';
 import { SDate, SHr, SImage, SInput, SList, SLoad, SMath, SNavigation, SOrdenador, SText, STheme, SView } from 'servisofts-component';
 import SSocket from 'servisofts-socket'
-import Model from '../../../../../Model';
+import Model from '../../../../Model';
 import Separador from './Separador';
 
+const PERIODICIDAD_DATA = {
+    "day": {
+        label: "Día", label_plural: "días", add: (date, i) => {
+            date.addDay(i)
+            return date;
+        }
+    },
+    "month": {
+        label: "Mes", label_plural: "meses", add: (date, i) => {
+            date.addMonth(i)
+            return date;
+        }
+    },
+    "year": {
+        label: "Año", label_plural: "años", add: (date, i) => {
+            date.addMonth(i * 12)
+            return date;
+        }
+    }
+}
 export default class PlanPagos extends Component {
     constructor(props) {
         super(props);
@@ -54,8 +74,8 @@ export default class PlanPagos extends Component {
     calcularCuotas(numero_cuotas = 1, fecha_inicio = new SDate().toString("yyyy-MM-dd")) {
         this.state.fecha_inicio = "";
         this.state.numero_cuotas = ""
-        this.state.cant_aux= ""
-        this.state.fecha_aux= ""
+        this.state.cant_aux = ""
+        this.state.fecha_aux = ""
         if (this.inp_cant_cuotas) {
             numero_cuotas = this.inp_cant_cuotas.getValue();
         }
@@ -63,13 +83,18 @@ export default class PlanPagos extends Component {
             fecha_inicio = this.inp_fecha.getValue();
         }
 
-
+        var pm = this.state.periodicidad_medida
+        var pv = this.state.periodicidad_valor
 
         var cuotas_arr = []
         new Array(parseInt(numero_cuotas ?? 1)).fill(0).map((obj, i) => {
             let initDate = new SDate(fecha_inicio, "yyyy-MM-dd");
             if (i != 0) {
-                initDate.addMonth(i)
+                var pdata = PERIODICIDAD_DATA[pm];
+                if (pdata.add) {
+                    initDate = pdata.add(initDate, i * pv)
+                }
+                // initDate.addMonth(i)
             }
             var cuota = {
                 codigo: i + 1,
@@ -86,7 +111,10 @@ export default class PlanPagos extends Component {
         this.setState({ ...this.state })
         Model.cuota.Action.registroAll({
             key_compra_venta: this.data.key,
+            periodicidad_medida: this.state.periodicidad_medida,
+            periodicidad_valor: this.state.periodicidad_valor,
             key_usuario: Model.usuario.Action.getKey(),
+
             data: cuotas_arr
         }).then((e) => {
             this.setState({ loading: false })
@@ -97,9 +125,26 @@ export default class PlanPagos extends Component {
     }
 
     getRecalcular() {
-        if (!this.state.cant_aux && !this.state.fecha_aux) return null;
-        if ((parseInt(this.state.cant_aux) == parseInt(this.state.numero_cuotas)) && this.state.fecha_aux == this.state.fecha_inicio) return null
-        console.log(this.state)
+        var isChange = false;
+        if (this.state.cant_aux) {
+            if (parseInt(this.state.cant_aux) != parseInt(this.state.numero_cuotas)) {
+                isChange = true;
+            }
+        }
+        if (this.state.fecha_aux) {
+            if (this.state.fecha_aux != this.state.fecha_inicio) {
+                isChange = true;
+            }
+        }
+        if (this.data.periodicidad_medida != this.state.periodicidad_medida) {
+            isChange = true;
+
+        }
+        if (this.data.periodicidad_valor != this.state.periodicidad_valor) {
+            isChange = true;
+
+        }
+        if (!isChange) return null;
         return <SView card style={{ padding: 16 }} onPress={() => {
             this.calcularCuotas();
         }}>
@@ -131,6 +176,33 @@ export default class PlanPagos extends Component {
                         }} />
                 </SView>
             </SView>
+            <SView col={"xs-12"} row center>
+                <SView width={130}>
+                    <SInput ref={ref => this.inp_periodicidad_medida = ref}
+                        type={"select"}
+                        options={[
+                            ...Object.keys(PERIODICIDAD_DATA).map(k => { return { key: k, content: PERIODICIDAD_DATA[k].label } })
+                        ]}
+                        style={{ textAlign: "center", paddingRight: 8, }}
+                        label={"Periodicidad"}
+                        defaultValue={this.state.periodicidad_medida}
+                        onChangeText={(val) => {
+                            this.setState({ periodicidad_medida: val })
+                        }}
+                    />
+                </SView>
+                <SView flex />
+                <SView width={130}>
+                    <SInput ref={ref => this.inp_periodicidad_valor = ref} type={"number"}
+                        style={{ textAlign: "center", paddingRight: 8, }}
+                        label={"Cada cuantos " + PERIODICIDAD_DATA[this.state.periodicidad_medida]?.label_plural + "?"}
+                        defaultValue={this.state.periodicidad_valor}
+                        onChangeText={(val) => {
+                            this.setState({ periodicidad_valor: val })
+                        }}
+                    />
+                </SView>
+            </SView>
             <SHr />
             {this.getRecalcular()}
             <Separador data={this.data} />
@@ -146,6 +218,7 @@ export default class PlanPagos extends Component {
             key_compra_venta: this.data.key
         })
 
+
         var cuotas = Model.cuota.Action.getAllByKeyCompraVenta({
             key_compra_venta: this.data.key
         })
@@ -154,7 +227,16 @@ export default class PlanPagos extends Component {
             this.state.cuotas = null;
             return null;
         }
+
         this.state.totales = t;
+
+        if (!this.state.periodicidad_valor) {
+            this.state.periodicidad_valor = this.data.periodicidad_valor ?? 1;
+        }
+
+        if (!this.state.periodicidad_medida) {
+            this.state.periodicidad_medida = this.data.periodicidad_medida ?? "month";
+        }
         if (!this.state.cuotas) {
             var arr = new SOrdenador([{ key: "codigo", type: "number", order: "asc", peso: 1 }]).ordernarObjetoToLista(cuotas);
             this.state.cuotas = arr
@@ -162,6 +244,8 @@ export default class PlanPagos extends Component {
             if (this.state.numero_cuotas > 0) {
                 this.state.fecha_inicio = new SDate(this.state.cuotas[0].fecha).toString("yyyy-MM-dd")
             }
+
+
             if (!this.state.numero_cuotas) {
                 this.state.numero_cuotas = 1
             }
@@ -183,6 +267,8 @@ export default class PlanPagos extends Component {
             }
 
         }
+
+
         return <SView col={"xs-12"}>
             {this.editor()}
             {this.getCuotas()}

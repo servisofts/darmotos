@@ -25,8 +25,13 @@ class index extends DPA.edit {
             },
             key_usuario: ""
         }).then((resp) => {
-            this.presolve(this.pk)
-            SNavigation.goBack();
+            this.presolve({
+                key: this.pk,
+                callback: () => {
+                    SNavigation.goBack()
+                }
+            })
+            // SNavigation.goBack();
         }).catch(e => {
             console.error(e);
 

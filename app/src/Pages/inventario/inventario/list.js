@@ -39,11 +39,14 @@ class index extends DPA.list {
         if (!tipo_producto) return null;
 
         var productos = {};
+        console.log(_productos)
+
         Object.values(_productos).map((pro) => {
             pro.modelo = modelos[pro.key_modelo];
             productos[pro.key] = pro;
         })
 
+        // console.log(productos)
         var sucursalFinal = {}
         Object.values(sucursales).map((obj) => {
             var almacenes_data = Model.almacen.Action.getAllBy({
@@ -52,11 +55,19 @@ class index extends DPA.list {
 
             Object.values(almacenes_data).map((almacen) => {
                 almacenes_data[almacen.key].tipo_producto = {}
+                var alm_pro = Object.values(almacen_producto).filter(o => o.key_almacen == almacen.key);
+                var productos_con_almacen = alm_pro.map((ap) => {
+                    var pro = productos[ap.key_producto];
+                    pro.almacen_producto = ap;
 
+                    return pro;
+                })
 
+                // console.log(productos_con_almacen)
                 Object.values(tipo_producto).map((tp) => {
-                    var arr = Object.values(productos).filter(o => o?.modelo?.key_tipo_producto == tp.key)
-                    almacenes_data[almacen.key].tipo_producto[tp.key] = arr;
+                    var arr = Object.values(productos_con_almacen).filter(o => o?.modelo?.key_tipo_producto == tp.key)
+                    tp.productos = arr
+                    almacenes_data[almacen.key].tipo_producto[tp.key] = { ...tp };
                 })
 
             })
@@ -68,14 +79,15 @@ class index extends DPA.list {
 
 
 
-    renderTipoProducto(producto) {
+    renderTipoProducto(tp) {
         return <SView col={"xs-12"}>
-            <SText>{producto.descripcion}</SText>
+            <SText>( {tp.productos.length} )  {tp.descripcion} </SText>
         </SView>
     }
     renderAlmacen(almacen) {
         return <SView>
             <SText>{almacen.descripcion}</SText>
+            <SHr />
             <SHr />
             <SList
                 data={almacen.tipo_producto}

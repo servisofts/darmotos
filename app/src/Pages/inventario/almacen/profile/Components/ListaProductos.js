@@ -13,6 +13,7 @@ class index extends DPA.list {
             type: "componentTitle",
             Parent: Parent,
             title: Parent.name,
+            // item:item,
             excludes: ["key", "fecha_on", "key_usuario", "Password", "Telefono", "Correo", "CI"]
         });
     }
@@ -31,9 +32,7 @@ class index extends DPA.list {
     }
     $getData() {
         if (!this.props.data) return null;
-        var data = Model.almacen_producto.Action.getAll({
-            key_almacen: this.props.data.key
-        });
+        var data = Model.almacen_producto.Action.getAllByKeyAlmacen(this.props.data.key);
         this.modelos = Model.modelo.Action.getAll();
         this.marcas = Model.marca.Action.getAll();
         this.productos = Model.producto.Action.getAll();
@@ -54,6 +53,7 @@ class index extends DPA.list {
     }
     $item(data, opt) {
         const { producto, modelo, marca, tipo_producto } = data;
+
         return <SView card col={"xs-12"} style={{
             padding: 8
         }} onPress={() => {
@@ -64,50 +64,13 @@ class index extends DPA.list {
                     <SView flex height card>
                         <SImage src={Model.producto._get_image_download_path(SSocket.api, data.key_producto)} />
                     </SView>
-                </SView> 
+                </SView>
                 <SView flex >
                     <SText fontSize={18}>{producto?.descripcion}</SText>
+                    {/* {this} */}
                 </SView>
             </SView>
             <SHr />
-            <SView col={"xs-4"} center>
-                <SView width={35} height={35} style={{ padding: 4 }}>
-                    <SView flex height card>
-                        <SImage src={Model.marca._get_image_download_path(SSocket.api, marca.key)} />
-                    </SView>
-                </SView>
-                <SView  >
-                    <SText color={STheme.color.lightGray}>{marca?.descripcion}</SText>
-                </SView>
-            </SView>
-            <SView col={"xs-4"} center>
-                <SView width={35} height={35} style={{ padding: 4 }}>
-                    <SView flex height card>
-                        <SImage src={Model.marca._get_image_download_path(SSocket.api, modelo.key)} />
-                    </SView>
-                </SView>
-                <SView >
-                    <SText color={STheme.color.lightGray}>{modelo?.descripcion}</SText>
-                </SView>
-            </SView>
-            <SView col={"xs-4"} center>
-                <SView width={35} height={35} style={{ padding: 4 }}>
-                    <SView flex height card>
-                        <SImage src={Model.tipo_producto._get_image_download_path(SSocket.api, tipo_producto.key)} />
-                    </SView>
-                </SView>
-                <SView >
-                    <SText color={STheme.color.lightGray}>{tipo_producto?.descripcion}</SText>
-                </SView>
-            </SView>
-            <SHr />
-
-            <SHr />
-            {/* <SText>Precio de compra{producto?.precio_compra}</SText> */}
-            {/* <SHr /> */}
-            {/* <SText>{new SDate(producto?.fecha_on).toString("yyyy-MM-dd hh:mm")}</SText> */}
-
-            {/* <SText>{producto?.key_modelo}</SText> */}
         </SView>
     }
 }

@@ -31,7 +31,7 @@ class index extends Component {
     }
     render() {
         return (
-            <SView col={"xs-12"} >
+            <SView col={"xs-12"} center >
                 {/* <SText fontSize={16} bold>Datos y documentos</SText> */}
                 {/* <SView row card width={100} center height={30} onPress={() => {
                         SNavigation.navigate("/usuario/profile/edit_datos", { pk: this.props.key_usuario })

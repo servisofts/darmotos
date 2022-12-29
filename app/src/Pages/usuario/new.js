@@ -7,6 +7,7 @@ class index extends DPA.new {
     constructor(props) {
         super(props, {
             Parent: Parent,
+            params: ["key_rol", "onSelect"],
             excludes: ["key", "fecha_on", "key_usuario", "estado"]
         });
     }
@@ -28,17 +29,25 @@ class index extends DPA.new {
         }
         Parent.model.Action.registro({
             data: data,
+            key_rol: this._params.key_rol,
             key_usuario: ""
         }).then((resp) => {
             this.$submitFile(resp.data.key);
+            if (this._params.onSelect) {
+                this._params.onSelect(resp.data);
+                SNavigation.goBack();
+                return;
+            }
+
             SNavigation.replace("/usuario/profile", { pk: resp.data.key });
         }).catch(e => {
+            SPopup.alert("Ya existe un usuario con el dato, " + e.error_dato)
             console.error(e);
 
         })
     }
 
- 
+
 }
 
 export default connect(index);

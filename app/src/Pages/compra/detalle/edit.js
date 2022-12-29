@@ -7,6 +7,7 @@ class index extends DPA.edit {
     constructor(props) {
         super(props, {
             Parent: Parent,
+            params: ["key_compra_venta"],
             excludes: ["key", "key_compra_venta", "observacion", "unidad_medida", "fecha_on", "key_usuario", "key_servicio", "estado", "cliente", "proveedor", "tipo", "state", "key_sucursal"]
 
         });
@@ -15,11 +16,13 @@ class index extends DPA.edit {
         return Model.usuarioPage.Action.getPermiso({ url: Parent.path, permiso: "edit" })
     }
     $getData() {
-        return Parent.model.Action.getByKey(this.pk);
+        if (!this.pk);
+        var getAll = Parent.model.Action.getAll({ key_compra_venta: this.$params.key_compra_venta });
+        if (!getAll) return null
+        return getAll[this.pk]
     }
     $inputs() {
         var imp = super.$inputs();
-
         // imp["observacion"].col = "xs-6 md-3.6"
         imp["descripcion"].col = "xs-12 md-12"
         imp["descripcion"].type = "textArea"
@@ -35,11 +38,15 @@ class index extends DPA.edit {
     }
     $onSubmit(data) {
         new SThread(1000, "esperarFoto", false).start(() => {
+            var dto = {
+                ...this.data,
+                ...data
+            }
+            if (!dto.descuento) {
+                dto.descuento = 0;
+            }
             Parent.model.Action.editar({
-                data: {
-                    ...this.data,
-                    ...data
-                },
+                data: dto,
                 key_usuario: ""
             }).then((resp) => {
                 SNavigation.goBack();

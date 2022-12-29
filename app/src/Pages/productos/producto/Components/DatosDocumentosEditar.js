@@ -55,7 +55,7 @@ class index extends Component {
 
         }
     }
-    
+
     getDatos() {
         var datos;
         if (this.props?.key_producto) {
@@ -76,7 +76,7 @@ class index extends Component {
             var obj = datos[key];
             var dto = Object.values(this.producto_inventario_dato).find(o => o.key_inventario_dato == obj.key);
             var defaultValue = dto?.descripcion;
-            var filePath = SSocket.api.root + "producto_inventario_dato/" + this.props.key_producto;
+            var filePath = SSocket.api.inventario + "producto_inventario_dato/" + this.props.key_producto;
             inputs[obj.key] = { label: obj.descripcion, icon: <SText>{obj.observacion}</SText>, type: obj.tipo, required: true, defaultValue: defaultValue, filePath: filePath }
         })
         return <SForm inputs={inputs} onSubmitName={"Confirmar"} onSubmit={(data, ref) => {
@@ -85,11 +85,15 @@ class index extends Component {
             // var files = ref.getFiles()
             // console.log(files);
             if (this.props.onSubmit) {
-                this.props.onSubmit().then(key_producto => {
+                this.props.onSubmit().then(resp => {
+                    var key_producto = resp.key;
+                    var callback = resp.callback;
                     this.onSubmit(data, ref, key_producto);
+                    // console.log(SSocket.api.root + "upload/producto_inventario_dato/" + key_producto)
                     ref.uploadFiles2(
-                        SSocket.api.root + "upload/producto_inventario_dato/" + key_producto,
+                        SSocket.api.inventario + "upload/producto_inventario_dato/" + key_producto,
                     );
+                    callback()
                 })
                 return;
             }

@@ -1,3 +1,4 @@
+import { SNavigation } from 'servisofts-component';
 import DPA, { connect } from 'servisofts-page';
 import Model from '../../../../Model';
 
@@ -9,16 +10,24 @@ const Parent = {
 class index extends DPA.list {
     constructor(props) {
         super(props, {
-            type:"componentTitle",
+            type: "componentTitle",
             Parent: Parent,
-            title:"Usuarios",
+            title: "Usuarios",
             excludes: ["key", "fecha_on", "key_usuario", "Password", "Telefono", "Correo", "CI"]
         });
     }
 
-    // $allowNew() {
-    //     return Model.usuarioPage.Action.getPermiso({ url: Parent.path, permiso: "new" });
-    // }
+    $allowNew() {
+        return Model.usuarioPage.Action.getPermiso({ url: Parent.path, permiso: "new" });
+    }
+    onNew() {
+        SNavigation.navigate("/usuario/new", {
+            key_rol: this.props.key_rol, onSelect: (itm) => {
+                this.props.onSelect(itm);
+                SNavigation.goBack();
+            }
+        });
+    }
     // $allowTable() {
     //     return Model.usuarioPage.Action.getPermiso({ url: Parent.path, permiso: "table" });
     // }

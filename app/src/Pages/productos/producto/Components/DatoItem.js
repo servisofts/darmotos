@@ -33,7 +33,7 @@ class index extends Component {
     type_image() {
         const { obj, dto } = this.props
         if (!dto) return;
-        var filePath = SSocket.api.root + "usuario_dato/" + dto.key_usuario_perfil + "/" + obj.key + "/";
+        var filePath = SSocket.api.inventario + "usuario_dato/" + dto.key_producto + "/" + obj.key + "/";
         return <SView col={"xs-12"} >
             <SView width={100} height={100} card>
                 <SImage src={filePath + dto.descripcion} enablePreview />
@@ -44,7 +44,7 @@ class index extends Component {
     type_file() {
         const { obj, dto } = this.props
         if (!dto) return <SText>{this.state.defaultValue}</SText>;
-        var filePath = SSocket.api.root + "usuario_dato/" + dto.key_usuario_perfil + "/" + obj.key + "/";
+        var filePath = SSocket.api.inventario + "producto_inventario_dato/" + dto.key_producto + "/" + obj.key + "/";
         return <SView col={"xs-12"} center>
             <SHr />
             <FileItem name={dto.descripcion} path={filePath} />
@@ -55,12 +55,11 @@ class index extends Component {
         if (!dto) return <SText>{this.state.defaultValue}</SText>;
         var arr = JSON.parse(dto.descripcion);
         if (!arr) return <SText>{this.state.defaultValue}</SText>;
-        var filePath = SSocket.api.root + "usuario_dato/" + dto.key_usuario_perfil + "/" + obj.key + "/";
+        var filePath = SSocket.api.inventario + "producto_inventario_dato/" + dto.key_producto + "/" + obj.key + "/";
         return <SView col={"xs-12"} center>
             <SHr />
             <SList
-                horizontal
-                center
+                horizontal center
                 data={arr}
                 render={(fil) => {
                     return <FileItem name={fil} path={filePath} />
@@ -115,7 +114,7 @@ class index extends Component {
             <SView col={"xs-12"} card style={{
                 padding: 4,
                 borderRadius: 0,
-            }}>
+            }} center>
                 <SView col={"xs-12"} row style={{
                     overflow: "hidden",
                 }} center>

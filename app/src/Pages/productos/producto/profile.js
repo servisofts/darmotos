@@ -1,8 +1,10 @@
-import { SHr, SText, SView } from 'servisofts-component';
+import { SButtom, SHr, SNavigation, SText, SView } from 'servisofts-component';
 import DPA, { connect } from 'servisofts-page';
 import { MenuPages } from 'servisofts-rn-roles_permisos';
 import { Parent } from "."
 import Model from '../../../Model';
+import AlmacenActual from './Components/AlmacenActual';
+import AlmacenProductoHistory from './Components/AlmacenProductoHistory';
 import DatosDocumentos from './Components/DatosDocumentos';
 import item from './item';
 class index extends DPA.profile {
@@ -29,11 +31,19 @@ class index extends DPA.profile {
     }
     $footer() {
         return <SView col={"xs-12"}>
-            <SHr />
-            <SHr />
-            <SText>Datos:</SText>
-            <SHr />
             <DatosDocumentos key_producto={this.pk} />
+            <SHr />
+            <AlmacenActual key_producto={this.pk} />
+            <SHr />
+
+            <SHr />
+
+            <SHr />
+            <SHr height={50} />
+
+            <AlmacenProductoHistory key_producto={this.pk} />
+            <SHr />
+
         </SView>
 
     }

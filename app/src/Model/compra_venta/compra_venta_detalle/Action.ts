@@ -11,9 +11,19 @@ export default class Action extends SAction {
     //         key_usuario: Model.usuario.Action.getKey()
     //     })
     // }
-
+  
+    getAll({ key_compra_venta }) {
+        var reducer = this._getReducer();
+        if (reducer.key_compra_venta != key_compra_venta) {
+            reducer.data = null;
+            reducer.key_compra_venta = key_compra_venta;
+        }
+        return super.getAll({
+            key_compra_venta: key_compra_venta
+        })
+    }
     getTotales({ key_compra_venta }) {
-        var compra_venta_detalle = Model.compra_venta_detalle.Action.getAllBy({
+        var compra_venta_detalle = Model.compra_venta_detalle.Action.getAll({
             key_compra_venta: key_compra_venta
         })
         if (!compra_venta_detalle) return null;

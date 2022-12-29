@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { SHr, SPage, SText, STheme, SView } from 'servisofts-component';
-import Model from '../../../../../../Model';
+import Model from '../../../../../Model';
 import Cliente from '../Cliente';
+import Comentarios from '../Comentarios';
 import Detalle from '../Detalle';
 import Estado from '../Estado';
+import Participantes from '../Participantes';
 import PlanPagos from '../PlanPagos';
 import Proveedor from '../Proveedor';
 import Separador from '../Separador';
@@ -21,7 +23,7 @@ export default class index extends Component {
         this.data = this.props.data;
         var statei = Model.compra_venta.Action.getStateInfo(this.data.state)
         return (<SView col={"xs-12"} center card style={{ padding: 14, }}>
-            <SText center bold>{this.data?.tipo}</SText>
+            <SHr />
             <SText center bold>{this.data?.descripcion}</SText>
             <SHr />
             <SText center >{this.data?.observacion}</SText>
@@ -38,8 +40,10 @@ export default class index extends Component {
             <Separador data={this.data} />
             <PlanPagos ref={ref => this.pp = ref} data={this.data} disabled />
             <Separador data={this.data} />
+            <Participantes data={this.data} disabled />
+            <Separador data={this.data} />
+            <Comentarios data={this.data} disabled/>
 
-            {/* <Separador data={this.data}/> */}
 
 
             {/* <SView col={"xs-12"} row center>

@@ -3,10 +3,15 @@ import { Parent } from ".."
 import { SHr, SImage, SInput, SList, SLoad, SText, SView } from 'servisofts-component';
 import Model from '../../../Model';
 import ListaUsuarios from './Components/ListaUsuarios';
+// import ListaUsuarios from './Components/ListaUsuarios';
 
 class index extends DPA.profile {
     constructor(props) {
-        super(props, { Parent: Parent, excludes: ["key", "key_servicio", "estado"] });
+        super(props, {
+            Parent: Parent,
+            params: ["onSelect?"],
+            excludes: ["key", "key_servicio", "estado"]
+        });
     }
     $allowBack() {
         return true;
@@ -24,9 +29,8 @@ class index extends DPA.profile {
         return Parent.model.Action.getByKey(this.pk);
     }
     $footer() {
-  
         return (<SView col={"xs-12"}>
-            <ListaUsuarios key_rol={this.pk} />
+            <ListaUsuarios key_rol={this.pk} onSelect={this.$params.onSelect} />
         </SView>
         )
     }

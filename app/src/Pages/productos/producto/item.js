@@ -55,19 +55,19 @@ class index extends DPA.item {
 
             <SHr />
             <SView col={"xs-12"}>
-                <SText bold>{this.data.descripcion}</SText>
+                <SText bold fontSize={18}>{this.data.descripcion}</SText>
                 <SText color={STheme.color.gray}>{this.data.observacion}</SText>
+                <SHr />
                 {this.buildLabel({ label: "Tipo", value: this.tipo_producto.descripcion })}
                 {this.buildLabel({ label: "Marca", value: this.marca.descripcion })}
                 {this.buildLabel({ label: "Modelo", value: this.modelo.descripcion })}
-                {this.buildLabel({ label: "P. Compra", value: "Bs. " + (this.data.precio_compra ?? 0) })}
+                {/* {this.buildLabel({ label: "P. Compra", value: "Bs. " + (this.data.precio_compra ?? 0) })} */}
 
                 {/* {super.$renderContent()} */}
 
             </SView>
             <SHr />
             {this.renderCreador()}
-            <SHr />
         </SView>
     }
 }

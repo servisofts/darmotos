@@ -42,12 +42,10 @@ export default class Action extends SAction {
         return statesi[key];
 
     }
-    // getAll() {
-    //     var empresa: any = Model.empresa.Action.getSelect();
-    //     if (!empresa) return null;
-    //     return super.getAll({
-    //         key_empresa: empresa.key,
-    //         key_usuario: Model.usuario.Action.getKey()
-    //     })
-    // }
+    getAll(extra) {
+        if (!Model.usuario.Action.getKey()) return null;
+        return super.getAll({
+            key_usuario: Model.usuario.Action.getKey()
+        })
+    }
 }   

@@ -16,6 +16,7 @@ export const Parent = {
 export default SPage.combinePages(Parent.name, {
     "": list,
     "list": list,
+    "select": list,
     "table": table,
     "new": _new,
     "profile": profile,

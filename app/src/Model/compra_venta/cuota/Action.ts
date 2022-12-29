@@ -13,6 +13,7 @@ export default class Action extends SAction {
     }
     async registroAll(extra = {}) {
         return new Promise((resolve, reject) => {
+            var reducer = this._getReducer();
             const petition = {
                 ...this.model.info,
                 type: "registroAll",
@@ -21,6 +22,12 @@ export default class Action extends SAction {
             }
             SSocket.sendPromise(petition).then((resp) => {
                 this._dispatch(resp);
+                this._dispatch({
+                    component: "compra_venta",
+                    type: "change_plan_pago",
+                    data: resp
+                });
+
                 resolve(resp);
             }).catch(e => {
                 reject(e);

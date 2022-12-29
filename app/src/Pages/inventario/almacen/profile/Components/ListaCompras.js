@@ -76,8 +76,8 @@ class index extends DPA.list {
             <SHr />
 
             <SView>
-                <SText color={STheme.color.lightGray}>Proveedor: {proveedor.razon_social}</SText>
-                <SText color={STheme.color.lightGray}>Nit: {proveedor.nit}</SText>
+                <SText color={STheme.color.lightGray}>Proveedor: {proveedor?.razon_social}</SText>
+                <SText color={STheme.color.lightGray}>Nit: {proveedor?.nit}</SText>
             </SView>
             <SView row center>
 
