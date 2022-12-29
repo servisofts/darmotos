@@ -2,7 +2,7 @@
   "Servicios": {
     "compra_venta": {
       "host": "192.168.0.199:10041",
-      "status": "exito"
+      "status": "desconectado"
     },
     "roles_permisos": {
       "host": "192.168.6.16:10016",
@@ -30,5 +30,5 @@
     "status": "exito"
   },
   "- SLog": "RealTime Log from server Servisofts",
-  "- Fecha": "2022-12-14T20:46:20.000956"
+  "- Fecha": "2022-12-15T02:14:57.000609"
 }
