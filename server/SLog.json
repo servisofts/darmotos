@@ -1,34 +1,46 @@
 {
   "Servicios": {
+    "notification": {
+      "host": "192.168.0.199:10033",
+      "status": "desconectado"
+    },
     "compra_venta": {
       "host": "192.168.0.199:10041",
       "status": "desconectado"
     },
     "roles_permisos": {
-      "host": "192.168.6.16:10016",
+      "host": "192.168.5.16:10016",
+      "status": "exito"
+    },
+    "contabilidad": {
+      "host": "192.168.5.11:10011",
       "status": "exito"
     },
     "proyecto": {
-      "host": "192.168.6.14:10014",
+      "host": "192.168.5.14:10014",
       "status": "exito"
     },
     "usuario": {
-      "host": "192.168.6.2:10002",
+      "host": "192.168.5.2:10002",
+      "status": "exito"
+    },
+    "caja": {
+      "host": "192.168.5.45:10045",
       "status": "exito"
     },
     "empresa": {
-      "host": "192.168.6.29:10029",
+      "host": "192.168.5.29:10029",
       "status": "exito"
     },
     "inventario": {
-      "host": "192.168.0.199:10039",
+      "host": "192.168.5.39:10039",
       "status": "exito"
     }
   },
   "PostgreSQL": {
-    "host": "jdbc:postgresql://192.168.6.38:5432/servisofts.darmotos",
+    "host": "jdbc:postgresql://192.168.5.38:5432/servisofts.darmotos",
     "status": "exito"
   },
   "- SLog": "RealTime Log from server Servisofts",
-  "- Fecha": "2022-12-15T02:14:57.000609"
+  "- Fecha": "2023-01-11T02:40:16.000998"
 }
