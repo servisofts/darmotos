@@ -39,6 +39,16 @@ public class UsuarioDato {
         }
     }
 
+    public static JSONObject getAll(String key_usuario) {
+        try {
+            String consulta = "select get_all('" + COMPONENT + "','key_usuario','"+key_usuario+"') as json";
+            return SPGConect.ejecutarConsultaObject(consulta);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     public static void getByKey(JSONObject obj, SSSessionAbstract session) {
         try {
             String consulta = "select get_by_key('" + COMPONENT + "', '" + obj.getString("key") + "') as json";
