@@ -1,6 +1,7 @@
 import { SAction } from "servisofts-model";
 import Model from "../..";
 import SSocket from 'servisofts-socket';
+import { SDate } from "servisofts-component";
 
 export default class Action extends SAction {
     // getAll() {
@@ -11,7 +12,7 @@ export default class Action extends SAction {
     //         key_usuario: Model.usuario.Action.getKey()
     //     })
     // }
-  
+
     getAll({ key_compra_venta }) {
         var reducer = this._getReducer();
         if (reducer.key_compra_venta != key_compra_venta) {
@@ -36,6 +37,7 @@ export default class Action extends SAction {
             credito_fiscal: 0,
         }
         Object.values(compra_venta_detalle).map(((obj: any) => {
+            if (!obj.estado) return;
             const { precio_unitario, cantidad, descuento } = obj;
             t.subtotal += ((precio_unitario * cantidad) - (descuento ?? 0))
         }))
@@ -74,6 +76,52 @@ export default class Action extends SAction {
         })
 
     }
+
+    entregar({ key_compra_venta_detalle_producto }) {
+        return new Promise((resolve, reject) => {
+            Model.compra_venta_detalle_producto.Action.editar({
+                fecha_off: new SDate().toString(),
+                data: {
+                    key: key_compra_venta_detalle_producto,
+                    // estado: 0,
+                },
+                key_usuario: Model.usuario.Action.getKey()
+            }).then((resp: any) => {
+                console.log("ENTREGADO", resp)
+                // this._dispatch({
+                //     ...this.model.info,
+                //     type: "editar_cantidad_ventar_sin_entregar",
+                //     data: resp.data,
+                //     estado: "exito"
+                // })
+            }).catch(e => {
+                console.log("entro al estado error")
+                // Model.producto.Action.editar({
+                //     data: {
+                //         key: key_producto,
+                //         estado: -1,
+                //     },
+                //     key_usuario: Model.usuario.Action.getKey()
+                // })
+            })
+        })
+
+    }
+    cambiarPrecios({ key_compra_venta }) {
+        return new Promise((resolve, reject) => {
+            SSocket.sendPromise({
+                ...this.model.info,
+                type: "cambiarPrecios",
+                key_compra_venta: key_compra_venta,
+                key_usuario: Model.usuario.Action.getKey()
+            }).then((resp: any) => {
+                resolve(resp);
+            }).catch(e => {
+                reject(e);
+            })
+        })
+
+    }
     comprasSinRecepcionar({ key_sucursal }) {
         var reducer = this._getReducer();
         if (reducer.key_sucursal != key_sucursal) {
@@ -86,6 +134,26 @@ export default class Action extends SAction {
             const petition = {
                 ...this.model.info,
                 type: "comprasSinRecepcionar",
+                estado: "cargando",
+                key_sucursal: key_sucursal
+            }
+            SSocket.send(petition);
+            return null;
+        }
+        return data;
+    }
+    ventasSinEntregar({ key_sucursal }) {
+        var reducer = this._getReducer();
+        if (reducer.key_sucursal != key_sucursal) {
+            reducer.ventar_sin_entregar = null;
+        }
+        reducer.key_sucursal = key_sucursal
+        const data = reducer?.ventar_sin_entregar;
+        if (!data) {
+            if (reducer.estado == "cargando") return null;
+            const petition = {
+                ...this.model.info,
+                type: "ventasSinEntregar",
                 estado: "cargando",
                 key_sucursal: key_sucursal
             }

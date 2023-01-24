@@ -1,7 +1,7 @@
 import { STheme } from "servisofts-component";
 import { SAction } from "servisofts-model";
 import Model from "../..";
-
+import SSocket from 'servisofts-socket'
 import { compra_venta_state } from "./index"
 export default class Action extends SAction {
 
@@ -31,12 +31,14 @@ export default class Action extends SAction {
         })
     }
 
+
     getStateInfo(key) {
         var statesi = {
             "cotizacion": { color: STheme.color.lightGray, label: "Cotizacion" },
             "aprobado": { color: STheme.color.warning, label: "Aprobado" },
             "denegado": { color: STheme.color.danger, label: "Denegado" },
             "comprado": { color: STheme.color.success, label: "Comprado" },
+            "vendido": { color: STheme.color.success, label: "Vendido" },
         }
         if (!key) return statesi;
         return statesi[key];
@@ -45,6 +47,14 @@ export default class Action extends SAction {
     getAll(extra) {
         if (!Model.usuario.Action.getKey()) return null;
         return super.getAll({
+            key_usuario: Model.usuario.Action.getKey()
+        })
+    }
+    pdf({ key_compra_venta }): Promise<unknown> {
+        return SSocket.sendPromise({
+            ...this.model.info,
+            type: "pdf",
+            key_compra_venta: key_compra_venta,
             key_usuario: Model.usuario.Action.getKey()
         })
     }

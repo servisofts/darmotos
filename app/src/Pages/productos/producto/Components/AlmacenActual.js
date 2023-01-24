@@ -10,26 +10,26 @@ export default class AlmacenActual extends Component {
     }
 
     renderAlmacen() {
-        var data = Model.almacen_producto.Action.getAllByKeyProducto({
-            key_producto: this.props.key_producto
-        })
-        if (!data) return <SLoad />
-        var obj = Object.values(data)[0]
-        if (!obj) {
-            return null;
-        }
+        var obj = Model.producto.Action.getByKey(this.props.key_producto);
+        if (!obj) return <SLoad />
         var almacen = Model.almacen.Action.getByKey(obj.key_almacen);
         if (!almacen) return <SLoad />
+        var sucursal = Model.sucursal.Action.getByKey(almacen.key_sucursal);
+        if (!sucursal) return <SLoad />
         return <SView col={"xs-12"} card style={{
             padding: 4
         }}>
             <SHr />
+            <SText>{sucursal.descripcion}</SText>
             <SText bold>{almacen.descripcion}</SText>
             <SText>{almacen.observacion}</SText>
             <SHr />
         </SView>
     }
     render() {
+        var obj = Model.producto.Action.getByKey(this.props.key_producto);
+        if(!obj) return <SLoad/>
+        if (obj.key_cliente) return null; //Vendido
         return (
             <SView center col={"xs-12"}>
                 {this.renderAlmacen()}
@@ -37,9 +37,13 @@ export default class AlmacenActual extends Component {
                 <SButtom type={"danger"} onPress={() => {
                     SNavigation.navigate("/inventario/almacen/list", {
                         onSelect: (almacen) => {
-                            Model.almacen_producto.Action.traspaso({
-                                key_almacen: almacen.key,
-                                key_producto: this.props.key_producto
+                            Model.producto.Action.editar({
+                                key_usuario: Model.usuario.Action.getKey(),
+                                data: {
+                                    ...obj,
+                                    key_almacen: almacen.key,
+                                    key: this.props.key_producto
+                                }
                             }).then(r => {
                                 console.log("entro en la respuesta")
                             }).catch(e => {

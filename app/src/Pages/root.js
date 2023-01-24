@@ -35,6 +35,7 @@ class index extends Component {
             <SPage title={''} >
                 <SHr height={32} />
                 <MenuPages path={"/"} permiso={"page"}>
+                    {/* <MenuButtom label={"Notificaciones"} url={"/notificacion"} icon={""} /> */}
                     <MenuButtom label={"Mi perfil"} url={"/profile"} icon={this.getIconProfile()} />
                 </MenuPages>
             </SPage>

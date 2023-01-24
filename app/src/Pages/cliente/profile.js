@@ -29,6 +29,8 @@ class index extends DPA.profile {
     $footer() {
         return <SView col={"xs-12"}>
             <DatosDocumentos key_usuario={this.pk} />
+            <SHr />
+            <SText>Cuotas</SText>
         </SView>
 
     }

@@ -68,14 +68,21 @@ class index extends DPA.new {
             this.$submitFile(resp.data.key);
 
             if (this.presolve) {
-                this.presolve(resp.data.key);
+                console.log(resp.data)
+                this.presolve({
+                    key: resp.data.key,
+                    callback: () => {
+                        SNavigation.goBack()
+                    }
+                })
+                // this.presolve(resp.data.key);
                 // SNavigation.replace("/cliente/profile", { pk: resp.data.key })
             }
             if (this.onSelect) {
                 this.onSelect(resp.data);
                 return;
             }
-            SNavigation.goBack();
+            // SNavigation.goBack();
         }).catch(e => {
             console.error(e);
 

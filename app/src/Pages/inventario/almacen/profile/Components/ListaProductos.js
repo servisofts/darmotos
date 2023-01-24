@@ -32,41 +32,43 @@ class index extends DPA.list {
     }
     $getData() {
         if (!this.props.data) return null;
-        var data = Model.almacen_producto.Action.getAllByKeyAlmacen(this.props.data.key);
+        // var data = Model.almacen_producto.Action.getAllByKeyAlmacen(this.props.data.key);
         this.modelos = Model.modelo.Action.getAll();
         this.marcas = Model.marca.Action.getAll();
-        this.productos = Model.producto.Action.getAll();
+        this.productos = Model.producto.Action.getAllBy({
+            key_almacen: this.props.data.key
+        });
         this.tipo_productos = Model.tipo_producto.Action.getAll();
         if (!this.productos) return null;
         if (!this.modelos) return null;
         if (!this.marcas) return null;
         if (!this.tipo_productos) return null;
-        if (!data) return null;
+        // if (!data) return null;
 
-        Object.values(data).map((obj) => {
-            obj.producto = this.productos[obj.key_producto]
+        Object.values(this.productos).map((obj) => {
+            // obj.producto = this.productos[obj.key_producto]
             obj.modelo = this.modelos[obj.producto?.key_modelo]
             obj.marca = this.marcas[obj.modelo?.key_marca]
             obj.tipo_producto = this.tipo_productos[obj.modelo?.key_tipo_producto]
         })
-        return data;
+        return this.productos;
     }
     $item(data, opt) {
-        const { producto, modelo, marca, tipo_producto } = data;
+        const { key, descripcion, modelo, marca, tipo_producto } = data;
 
         return <SView card col={"xs-12"} style={{
             padding: 8
         }} onPress={() => {
-            SNavigation.navigate("/productos/producto/profile", { pk: producto.key })
+            SNavigation.navigate("/productos/producto/profile", { pk: key })
         }} row>
             <SView col={"xs-12"} center row>
                 <SView width={60} height={60} style={{ padding: 4 }}>
                     <SView flex height card>
-                        <SImage src={Model.producto._get_image_download_path(SSocket.api, data.key_producto)} />
+                        <SImage src={Model.producto._get_image_download_path(SSocket.api, key)} />
                     </SView>
                 </SView>
                 <SView flex >
-                    <SText fontSize={18}>{producto?.descripcion}</SText>
+                    <SText fontSize={18}>{descripcion}</SText>
                     {/* {this} */}
                 </SView>
             </SView>

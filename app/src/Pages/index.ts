@@ -16,7 +16,10 @@ import productos from './productos';
 import test from './test';
 import wiki from './wiki';
 import compra from './compra';
-
+import venta from './venta';
+import caja from './caja';
+import cobranza from './cobranza';
+import notification from './notification';
 export default SPage.combinePages("/", {
     "": Root,
     "login": login,
@@ -33,6 +36,10 @@ export default SPage.combinePages("/", {
     ...banco,
     ...cliente,
     ...productos,
-    ...compra
+    ...compra,
+    ...venta,
+    ...caja,
+    ...cobranza,
+    ...notification
 
 });

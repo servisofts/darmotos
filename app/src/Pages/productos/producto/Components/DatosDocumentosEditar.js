@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { SForm, SHr, SNavigation, SOrdenador, SPage, SText, STheme, SView } from 'servisofts-component';
+import { SButtom, SForm, SHr, SNavigation, SOrdenador, SPage, SText, STheme, SView } from 'servisofts-component';
 import Model from '../../../../Model';
 import SSocket from 'servisofts-socket'
 class index extends Component {
@@ -12,11 +12,10 @@ class index extends Component {
 
     }
 
-    async onSubmit(data, ref, key_producto) {
+    async onSubmit(data, ref, key_producto, callback) {
         var arr = Object.keys(data);
         for (let i = 0; i < arr.length; i++) {
             const key_dato = arr[i];
-            console.log(arr[i])
             var dto = Object.values(this.producto_inventario_dato).find(o => o.key_inventario_dato == key_dato);
             var dato_str = data[key_dato];
             if (!dato_str) {
@@ -54,6 +53,10 @@ class index extends Component {
             }
 
         }
+        ref.uploadFiles2(
+            SSocket.api.inventario + "upload/producto_inventario_dato/" + key_producto,
+        );
+        callback();
     }
 
     getDatos() {
@@ -79,7 +82,7 @@ class index extends Component {
             var filePath = SSocket.api.inventario + "producto_inventario_dato/" + this.props.key_producto;
             inputs[obj.key] = { label: obj.descripcion, icon: <SText>{obj.observacion}</SText>, type: obj.tipo, required: true, defaultValue: defaultValue, filePath: filePath }
         })
-        return <SForm inputs={inputs} onSubmitName={"Confirmar"} onSubmit={(data, ref) => {
+        return <SForm ref={(ref) => this.form = ref} inputs={inputs} onSubmitName={""} onSubmit={(data, ref) => {
             // console.log("subir")
             // console.log(data);
             // var files = ref.getFiles()
@@ -88,12 +91,9 @@ class index extends Component {
                 this.props.onSubmit().then(resp => {
                     var key_producto = resp.key;
                     var callback = resp.callback;
-                    this.onSubmit(data, ref, key_producto);
+                    this.onSubmit(data, ref, key_producto, callback);
                     // console.log(SSocket.api.root + "upload/producto_inventario_dato/" + key_producto)
-                    ref.uploadFiles2(
-                        SSocket.api.inventario + "upload/producto_inventario_dato/" + key_producto,
-                    );
-                    callback()
+                    // callback()
                 })
                 return;
             }
@@ -102,12 +102,21 @@ class index extends Component {
     }
     render() {
         return (
-            <SView col={"xs-12"}>
+            <SView col={"xs-12"} center>
                 {/* <SHr /> */}
                 {/* <SHr /> */}
                 {/* <SText fontSize={14} color={STheme.color.gray}>Recuerde precionar el boton "Confirmar" para guardar los cambios.</SText> */}
                 {/* <SHr /> */}
                 {this.getDatos()}
+                <SButtom type={"danger"} onPress={() => {
+                    if (!this.form) {
+                        this.props.onSubmit();
+                    } else {
+                        this.form.submit();
+                    }
+                }}>
+                    ACEPTAR
+                </SButtom>
             </SView>
         );
     }

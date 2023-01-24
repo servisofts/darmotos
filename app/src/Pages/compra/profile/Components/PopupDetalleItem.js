@@ -43,9 +43,11 @@ export default class PopupDetalleItem extends Component {
                         <SView card style={{ padding: 16, }} onPress={() => {
                             console.log(this.props.data)
                             Model.compra_venta_detalle.Action.editar({
+                                key_compra_venta: this.props.key_compra_venta,
                                 data: {
                                     key: key,
                                     estado: 0,
+                                    key_compra_venta: this.props.key_compra_venta
                                 }
                             }).then(resp => {
                                 SPopup.close("popup-detalle-item")

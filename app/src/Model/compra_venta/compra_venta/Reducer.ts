@@ -12,6 +12,7 @@ export default class Reducer extends SReducer {
                         ...state.data[obj.key_compra_venta],
                         periodicidad_medida: obj.periodicidad_medida,
                         periodicidad_valor: obj.periodicidad_valor,
+                        porcentaje_interes: obj.porcentaje_interes,
 
                     }
                 }

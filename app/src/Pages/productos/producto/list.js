@@ -24,6 +24,7 @@ class index extends DPA.list {
     $filter(data) {
         return data.estado != 0
     }
+
     // $item(props) {
     //     return super.$item(props, {
     //         header: (itm) => {
@@ -46,6 +47,11 @@ class index extends DPA.list {
         if (!this.modelos) return null;
         if (!this.marcas) return null;
         if (!this.tipo_productos) return null;
+        Object.values(data).map(obj => {
+            obj.modelo = this.modelos[obj.key_modelo];
+            obj.marca = this.marcas[obj.modelo.key_marca];
+            obj.tipo_producto = this.tipo_productos[obj.modelo.key_tipo_producto];
+        })
         return data;
     }
 }
