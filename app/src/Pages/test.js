@@ -1,8 +1,9 @@
-import React, { Component} from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { SHr, SPage, SText } from 'servisofts-component';
-import Btn from '../Components/Btn';
-
+import { Linking } from 'react-native';
+import { SButtom, SHr, SPage, SText, SView } from 'servisofts-component';
+import SSocket from 'servisofts-socket'
+import Model from '../Model';
 class Test extends Component {
     constructor(props) {
         super(props);
@@ -13,15 +14,26 @@ class Test extends Component {
     render() {
         return (
             <SPage title={'Test'} hidden>
-
-                <Btn ref={ref => this._btn = ref} suma={[1, 5, 7, 10]} />
                 <SHr />
-                <SText onPress={() => {
-                    this._btn.esconderse();
-                  
+                <SButtom loading={this.state.loading} type='danger' onPress={() => {
+                    this.setState({ loading: true })
+                    SSocket.sendPromise({
+                        component: "dato",
+                        type: "pdf",
+                        key_usuario: Model.usuario.Action.getKey(),
+                        estado: "cargando",
+                    }).then(resp => {
+                        this.setState({ loading: false })
+                        Linking.openURL(SSocket.api.root + "pdf/" + resp.data);
+                        // console.log(resp);
+                    }).catch(e => {
+                        this.setState({ loading: false })
+                        console.error(e)
+                    })
+
                 }}  >
-                ENVIAR
-            </SText>
+                    ENVIAR PDF
+                </SButtom>
             </SPage >
         );
     }

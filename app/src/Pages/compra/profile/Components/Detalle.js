@@ -10,7 +10,7 @@ export default class Detalle extends Component {
         };
     }
     data = {}
-    detalle_item({ key, key_usuario, nombre, precio, cantidad, descuento }) {
+    detalle_item({ key, key_usuario, nombre, precio, cantidad, descuento, tipo }) {
         var onPress = null;
         if (!this.props.disabled) {
             onPress = () => {
@@ -31,6 +31,7 @@ export default class Detalle extends Component {
             <SView flex>
                 <SText bold >{nombre}</SText>
                 <SText>{SMath.formatMoney(precio)} X {SMath.formatMoney(cantidad)} </SText>
+                <SText fontSize={10} bold color={STheme.color.lightGray}>{tipo}</SText>
             </SView>
             <SView width={8} />
             <SView col={"xs-3"} style={{ alignItems: 'end', textAlign: "end" }}>
@@ -62,6 +63,7 @@ export default class Detalle extends Component {
             {/* <SText>{JSON.stringify(this.compra_venta_detalle)}</SText> */}
             <SList
                 data={this.compra_venta_detalle}
+                filter={obj => obj.estado != 0 && obj.key_compra_venta == this.data.key}
                 order={[{ "key": "fecha_on", order: "asc" }]}
                 render={(obj) => {
                     return this.detalle_item({
@@ -70,7 +72,8 @@ export default class Detalle extends Component {
                         cantidad: obj.cantidad,
                         precio: obj.precio_unitario,
                         key_usuario: obj.key_usuario,
-                        descuento: obj.descuento
+                        descuento: obj.descuento,
+                        tipo: obj.tipo
                     })
                 }}
             />

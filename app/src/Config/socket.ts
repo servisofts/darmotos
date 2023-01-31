@@ -18,6 +18,7 @@ export default {
         roles_permisos: 'https://rolespermisos.servisofts.com/http/',
         empresa: 'https://empresa.servisofts.com/http/',
         inventario: 'https://inventario.servisofts.com/http/',
+        compra_venta: 'https://compraventa.servisofts.com/http/',
         // inventario: 'http://192.168.0.199:30039/',
     },
     timeReconnect: 5000

@@ -11,6 +11,7 @@ import aprobado from "./aprobado";
 import comprado from "./comprado";
 import denegado from "./denegado";
 import profile from "./profile";
+import pendientes from "./pendientes";
 import edit from "./edit";
 const model = Model.compra_venta;
 
@@ -29,6 +30,7 @@ export default SPage.combinePages("compra",
         "aprobado": aprobado,
         "comprado": comprado,
         "denegado": denegado,
+        "pendientes": pendientes,
         "profile": profile,
         ...detalle,
     }

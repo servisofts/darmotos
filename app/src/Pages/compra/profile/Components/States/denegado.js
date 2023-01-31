@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { SHr, SPage, SText, STheme, SView } from 'servisofts-component';
+import Components from '../../../../../Components';
 import Model from '../../../../../Model';
 import Cliente from '../Cliente';
 import Detalle from '../Detalle';
-import Estado from '../Estado';
 import Proveedor from '../Proveedor';
-import Separador from '../Separador';
-import Totales from '../Totales';
 
 export default class index extends Component {
     constructor(props) {
@@ -24,21 +22,21 @@ export default class index extends Component {
             <SText center bold>{this.data?.descripcion}</SText>
             <SHr />
             <SText center >{this.data?.observacion}</SText>
-            <Separador data={this.data} />
-            <Estado data={this.data} />
-            <Separador data={this.data} />
+            <Components.compra_venta.Separador data={this.data} />
+            <Components.compra_venta.Estado data={this.data} />
+            <Components.compra_venta.Separador data={this.data} />
             <Proveedor data={this.data} disabled />
-            <Separador data={this.data} />
+            <Components.compra_venta.Separador data={this.data} />
             <Cliente data={this.data} />
-            <Separador data={this.data} />
+            <Components.compra_venta.Separador data={this.data} />
             <Detalle disabled data={this.data} />
-            <Separador data={this.data} />
-            <Totales data={this.data} />
-            <Separador data={this.data} />
+            <Components.compra_venta.Separador data={this.data} />
+            <Components.compra_venta.Totales data={this.data} />
+            <Components.compra_venta.Separador data={this.data} />
             <SHr />
             <SText>ESTA COTIZACION FUE DENEGADA</SText>
             <SHr />
-            <Separador data={this.data} />
+            <Components.compra_venta.Separador data={this.data} />
             <SView card style={{ padding: 16 }} onPress={() => {
                 Model.compra_venta.Action.changeState({ data: this.data, state: "cotizacion" })
             }}>

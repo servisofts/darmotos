@@ -16,6 +16,7 @@ export default new SModel<Action, Reducer>({
         "estado": { type: "integer" },
         "key_compra_venta": { type: "text", fk: "compra_venta" },
         "key_sucursal": { type: "text", fk: "sucursal" },
+        "tipo": { type: "text", editable: true, label: "Tipo" },
         "observacion": { type: "text", editable: true, label: "Codigo" },
         "descripcion": { type: "text", notNull: true, editable: true, label: "Descripcion" },
         "cantidad": { type: "double", editable: true, label: "Cantidad", notNull: true },

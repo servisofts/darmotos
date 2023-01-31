@@ -28,7 +28,7 @@ class index extends DPA.new {
         }
         Parent.model.Action.registro({
             data: data,
-            key_usuario: "",
+            key_usuario: Model.usuario.Action.getKey(),
         }).then((resp) => {
             SNavigation.goBack();
         }).catch(e => {

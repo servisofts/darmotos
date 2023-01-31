@@ -5,6 +5,8 @@ import Roles_permisos from "servisofts-rn-roles_permisos";
 import empresa from './empresa'
 import inventario from "./inventario";
 import compra_venta from "./compra_venta";
+import caja from "./caja";
+import notification from "./notification";
 import darmotos from "./darmotos";
 
 const Model = {
@@ -14,6 +16,8 @@ const Model = {
     ...inventario,
     ...Contabilidad.Model,
     ...compra_venta,
+    ...caja,
+    ...notification,
     ...darmotos
 }
 

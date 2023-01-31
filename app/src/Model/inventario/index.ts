@@ -8,6 +8,8 @@ import tipo_producto from "./tipo_producto"
 import almacen_producto from "./almacen_producto/index"
 import producto_inventario_dato from "./producto_inventario_dato"
 import inventario from "./inventario"
+import producto_historico from "./producto_historico"
+
 export default {
     marca,
     modelo,
@@ -18,5 +20,6 @@ export default {
     tipo_producto_inventario_dato,
     producto_inventario_dato,
     almacen_producto,
-    inventario
+    inventario,
+    producto_historico
 }

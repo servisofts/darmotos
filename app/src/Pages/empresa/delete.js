@@ -14,7 +14,7 @@ class index extends DPA.delete {
         this.data.estado = 0;
         Parent.model.Action.editar({
             data: this.data,
-            key_usuario: ""
+            key_usuario: Model.usuario.Action.getKey()
         }).then((resp) => {
             SNavigation.goBack();
             SNavigation.goBack();

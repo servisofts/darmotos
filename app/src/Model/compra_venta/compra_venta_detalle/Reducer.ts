@@ -7,6 +7,11 @@ export default class Reducer extends SReducer {
             state.data_compras_sr = action.data;
         }
     }
+    ventasSinEntregar(state: any, action: any): void {
+        if (action.estado == "exito") {
+            state.ventar_sin_entregar = action.data;
+        }
+    }
     editar_cantidad_compras_sr(state: any, action: any): void {
         if (action.estado == "exito") {
             if (state.data_compras_sr) {
