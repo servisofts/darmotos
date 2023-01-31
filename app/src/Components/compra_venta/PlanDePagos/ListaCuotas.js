@@ -60,11 +60,15 @@ export default class ListaCuotas extends Component {
         cuotas.map((cuota, i) => {
             if (cuota.codigo == "0") {
                 cuota.monto_interes = 0;
+                cuota.interes = 0;
                 cuota.monto_capital = parseFloat(cuota.monto);
+                cuota.capital = parseFloat(cuota.monto);
 
             } else {
                 cuota.monto_interes = (saldo_capital * (interes / 100));
+                cuota.interes = (saldo_capital * (interes / 100));
                 cuota.monto_capital = parseFloat(cuota.monto) - cuota.monto_interes;
+                cuota.capital = parseFloat(cuota.monto) - cuota.monto_interes;
             }
 
             saldo_capital = saldo_capital - cuota.monto_capital;

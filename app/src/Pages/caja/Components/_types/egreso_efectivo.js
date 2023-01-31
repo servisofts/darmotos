@@ -18,8 +18,8 @@ export default class index {
     }
     static onPress(caja) {
         //Pedimos el monto y el detalle
-        SNavigation.navigate("/contabilidad/plan_unico_cuenta", {
-            onlyChildrens: true,
+        SNavigation.navigate("/contabilidad/cuentas", {
+            codigo: "5",
             key_cuenta: "f30fe343-cfb5-4770-8adb-4f11a1316259",
             onSelect: (cuenta_contable) => {
                 SNavigation.goBack();
@@ -29,13 +29,13 @@ export default class index {
                     onSubmit: ({ monto, detalle }) => {
                         //Pedimos el tipo de pago
                         if (caja.fraccionar_moneda) {
-                            SNavigation.navigate("/caja/fraccionar", {
-                                "monto": monto,
-                                "detalle": detalle,
-                                "key_caja": caja.key,
-                                "_type": this.key,
-                            })
-                            return;
+                            // SNavigation.navigate("/caja/fraccionar", {
+                            //     "monto": monto,
+                            //     "detalle": detalle,
+                            //     "key_caja": caja.key,
+                            //     "_type": this.key,
+                            // })
+                            // return;
                         }
                         var caja_detalle = {
                             "key_caja": caja.key,
@@ -43,11 +43,12 @@ export default class index {
                             "monto": monto * -1,
                             "tipo": "egreso",
                             "key_tipo_pago": "efectivo",
-                            "key_cuenta_contable": cuenta_contable.key,
+                            cuentas: [{ key_cuenta_contable: cuenta_contable.key, monto: monto }],
                         }
                         //Registramos el caja_detalle
                         Model.caja_detalle.Action.registro({
                             data: caja_detalle,
+                            cuentas: [{ key_cuenta_contable: cuenta_contable.key, monto: monto }],
                             key_usuario: Model.usuario.Action.getKey()
                         }).then((resp) => {
                             console.log(resp)

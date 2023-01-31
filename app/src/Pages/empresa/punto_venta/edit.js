@@ -8,7 +8,7 @@ class index extends DPA.edit {
         super(props, {
             Parent: Parent,
             params: ["key_sucursal"],
-            excludes: []
+            excludes: ["key_cuenta_contable", "lat", "lng"]
         });
     }
 
@@ -24,10 +24,12 @@ class index extends DPA.edit {
         return Parent.model.Action.getByKey(this.pk, { key_sucursal: this.$params.key_sucursal });
     }
     $onSubmit(data) {
+
         Parent.model.Action.editar({
             data: {
                 ...this.data,
-                ...data
+                ...data,
+                // key_cuenta_contable: cuenta.key,
             },
             key_usuario: Model.usuario.Action.getKey()
         }).then((resp) => {

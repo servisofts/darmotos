@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { SHr, SIcon, SPage, SText, STheme, SView } from 'servisofts-component';
+import { SHr, SIcon, SNavigation, SPage, SText, STheme, SView } from 'servisofts-component';
 import { MenuButtom, MenuPages } from 'servisofts-rn-roles_permisos';
 import { Parent } from "."
 class index extends Component {
@@ -15,7 +15,9 @@ class index extends Component {
         return (
             <SPage title={Parent.title}>
                 <SHr height={32} />
-                <MenuPages path={Parent.path + "/"} />
+                <MenuPages path={Parent.path + "/"} blackList={["/contabilidad/asiento_contable"]} >
+               
+                </MenuPages>
             </SPage>
         );
     }

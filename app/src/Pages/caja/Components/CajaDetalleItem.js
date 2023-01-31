@@ -24,16 +24,18 @@ export default class CajaDetalleItem extends Component {
 
     render() {
         var obj = this.props.data;
-        console.log(obj)
+        // console.log(obj)
         return <SView col={"xs-12"} card style={{ padding: 8 }} row>
             {/* <SText card style={{ padding: 8 }}>{JSON.stringify(obj)}</SText> */}
             <SView flex>
                 <SText fontSize={16}>{obj.descripcion}</SText>
                 <SText fontSize={10} color={STheme.color.gray}>{new SDate(obj.fecha_on).toString("yyyy-MM-dd hh:mm")}</SText>
+                <SText fontSize={16}>{obj.key_cuenta_contable}</SText>
+                <SHr />
+                <SHr />
             </SView>
             <SView center>
                 <SText bold color={this.getColor()} fontSize={16}>Bs. {SMath.formatMoney(obj.monto)}</SText>
-                {/* <SText fontSize={10}>{obj.tipo}</SText> */}
                 <SText fontSize={10}>{obj.key_tipo_pago}</SText>
             </SView>
             <SView col={"xs-12"}>

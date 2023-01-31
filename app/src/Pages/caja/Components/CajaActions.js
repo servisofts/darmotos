@@ -21,7 +21,9 @@ export default class CajaActions extends Component {
                 <SView flex colSquare>
                     <SIcon name={action.icon} />
                 </SView>
-                <SText center fontSize={10} bold>{action.descripcion}</SText>
+                <SView col={"xs-12"} center height={26}>
+                    <SText center fontSize={10} bold>{action.descripcion}</SText>
+                </SView>
             </SView>
         </SView>
     }

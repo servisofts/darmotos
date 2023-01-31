@@ -1,6 +1,7 @@
-import { SView } from 'servisofts-component';
+import { SHr, SLoad, SText, STheme, SView } from 'servisofts-component';
 import DPA, { connect } from 'servisofts-page';
 import { Parent } from "."
+import Components from '../../../Components';
 import Model from '../../../Model';
 import Editar_tipo_producto_inventario_dato from './Components/Editar_tipo_producto_inventario_dato';
 
@@ -25,8 +26,55 @@ class index extends DPA.profile {
     $getData() {
         return Parent.model.Action.getByKey(this.pk);
     }
+
+    getCuentaContable() {
+        if (!this.data) return <SLoad />
+        var cuenta_contable = null;
+        if (this.data.key_cuenta_contable_credito) {
+            cuenta_contable = Model.cuenta_contable.Action.getByKey(this.data.key_cuenta_contable_credito);
+            if (!cuenta_contable) return <SLoad />
+        }
+        return <Components.contabilidad.cuenta_contable.Select
+            defaultValue={cuenta_contable}
+            codigo={"4"}
+            onChange={(cuenta) => {
+                Model.tipo_producto.Action.editar({
+                    data: {
+                        ...this.data,
+                        key_cuenta_contable_credito: cuenta.key
+                    },
+                    key_usuario: Model.usuario.Action.getKey()
+                })
+            }} />
+    }
+    getCuentaContableCredito() {
+        if (!this.data) return <SLoad />
+        var cuenta_contable = null;
+        if (this.data.key_cuenta_contable_contado) {
+            cuenta_contable = Model.cuenta_contable.Action.getByKey(this.data.key_cuenta_contable_contado);
+            if (!cuenta_contable) return <SLoad />
+        }
+        return <Components.contabilidad.cuenta_contable.Select
+            defaultValue={cuenta_contable}
+            codigo={"4"}
+            onChange={(cuenta) => {
+                Model.tipo_producto.Action.editar({
+                    data: {
+                        ...this.data,
+                        key_cuenta_contable_contado: cuenta.key
+                    },
+                    key_usuario: Model.usuario.Action.getKey()
+                })
+            }} />
+    }
     $footer() {
         return <SView col={"xs-12"}>
+            <SHr />
+            <SText color={STheme.color.lightGray}>Cuenta contable al contado</SText>
+            {this.getCuentaContable()}
+            <SHr />
+            <SText color={STheme.color.lightGray}>Cuenta contable al credito</SText>
+            {this.getCuentaContableCredito()}
             <Editar_tipo_producto_inventario_dato key_tipo_producto={this.pk} />
         </SView>
 

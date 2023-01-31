@@ -2,6 +2,7 @@ import DPA, { connect } from 'servisofts-page';
 import { Parent } from '.';
 import { SNavigation, SPopup } from 'servisofts-component';
 import Model from '../../../Model';
+import Components from '../../../Components';
 
 class index extends DPA.new {
     constructor(props) {
@@ -37,7 +38,15 @@ class index extends DPA.new {
     }
     $onSubmit(data) {
         // data.tipo = "compra"
+        if(!this.cuenta_contable_input.getValue()){
+            SPopup.alert("Seleccione una cuenta");
+            return;
+        }
         data.key_compra_venta = this._params.key_compra_venta
+        data.data = {
+            key_cuenta_contable_contado: this.cuenta_contable_input.getValue().key,
+            key_cuenta_contable_credito: this.cuenta_contable_input.getValue().key,
+        }
         Parent.model.Action.registro({
             data: data,
             key_usuario: Model.usuario.Action.getKey()
@@ -49,6 +58,9 @@ class index extends DPA.new {
             console.error(e);
 
         })
+    }
+    $header() {
+        return <Components.contabilidad.cuenta_contable.Select codigo={"5"} ref={ref => this.cuenta_contable_input = ref} />
     }
 }
 

@@ -5,11 +5,12 @@ import Model from '../../../Model';
 
 class index extends DPA.delete {
     constructor(props) {
-        super(props, { Parent: Parent, });
+        super(props, { params: ["key_sucursal"], Parent: Parent, });
     }
     $allowAccess() {
         return Model.usuarioPage.Action.getPermiso({ url: Parent.path, permiso: "delete" })
     }
+
     $onDelete() {
         this.data.estado = 0;
         Parent.model.Action.editar({
@@ -25,7 +26,7 @@ class index extends DPA.delete {
     }
 
     $getData() {
-        return Parent.model.Action.getByKey(this.pk);
+        return Parent.model.Action.getByKey(this.pk, { key_sucursal: this.$params.key_sucursal });
     }
 }
 export default connect(index);

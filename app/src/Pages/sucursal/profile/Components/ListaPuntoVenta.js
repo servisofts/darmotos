@@ -13,21 +13,24 @@ class index extends DPA.list {
             type: "componentTitle",
             Parent: Parent,
             title: Parent.name,
-            excludes: ["key", "fecha_on", "key_usuario", "estado", "key_sucursal", "lng", "lat",]
+            excludes: ["key", "fecha_on", "key_usuario", "estado", "key_sucursal", "lng", "lat", "key_cuenta_contable"]
         });
     }
 
-    // $allowNew() {
-    //     return Model.usuarioPage.Action.getPermiso({ url: Parent.path, permiso: "new" });
-    // }
-    // $allowTable() {
-    //     return Model.usuarioPage.Action.getPermiso({ url: Parent.path, permiso: "table" });
-    // }
-    // $allowAccess() {
-    //     return Model.usuarioPage.Action.getPermiso({ url: Parent.path, permiso: "ver" });
-    // }
+    $allowNew() {
+        return Model.usuarioPage.Action.getPermiso({ url: Parent.path, permiso: "new" });
+    }
+    $allowTable() {
+        return Model.usuarioPage.Action.getPermiso({ url: Parent.path, permiso: "table" });
+    }
+    $allowAccess() {
+        return Model.usuarioPage.Action.getPermiso({ url: Parent.path, permiso: "ver" });
+    }
     $filter(data) {
         return data.estado != "0"
+    }
+    onNew() {
+        SNavigation.navigate(Parent.path + "/new", { key_sucursal: this.props.key_sucursal })
     }
     $onSelect(data) {
         SNavigation.navigate("/empresa/punto_venta/profile", { key_sucursal: this.props.key_sucursal, pk: data.key })

@@ -43,4 +43,26 @@ export default class Action extends SAction {
             estado: "cargando"
         })
     }
+    reporte_cuentas({ fecha_inicio, fecha_fin }) {
+
+        return SSocket.sendPromise({
+            ...this.model.info,
+            type: "reporteCuentas",
+            estado: "cargando",
+            fecha_inicio: fecha_inicio,
+            fecha_fin: fecha_fin,
+
+        })
+    }
+    historico_cajas({ fecha_inicio, fecha_fin }) {
+
+        return SSocket.sendPromise({
+            ...this.model.info,
+            type: "getHistorico",
+            estado: "cargando",
+            fecha_inicio: fecha_inicio,
+            fecha_fin: fecha_fin,
+
+        })
+    }
 }   

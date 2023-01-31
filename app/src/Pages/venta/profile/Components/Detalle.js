@@ -61,6 +61,8 @@ export default class Detalle extends Component {
 
                     //     }
                     // }
+                    // console.log(resp);
+                    // return;
                     var precio_unitario = resp.precio_venta;
                     if (this.props.data.tipo_pago != "contado") {
                         precio_unitario = resp.precio_venta_credito;
@@ -76,6 +78,8 @@ export default class Detalle extends Component {
                             data: {
                                 precio_venta: resp.precio_venta,
                                 precio_venta_credito: resp.precio_venta_credito,
+                                key_cuenta_contable_contado: "",
+                                key_cuenta_contable_credito: "",
                             }
                         },
                         key_producto: resp.key,
