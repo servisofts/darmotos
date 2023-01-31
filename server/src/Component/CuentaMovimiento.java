@@ -60,6 +60,11 @@ public class CuentaMovimiento {
             data.put("fecha_on", SUtil.now());
             data.put("key_usuario", obj.getString("key_usuario"));
             SPGConect.insertArray(COMPONENT, new JSONArray().put(data));
+
+            data.getString("key_cuenta_contable");
+
+            data.getString("key_cuenta_banco");
+
             obj.put("data", data);
             obj.put("estado", "exito");
         } catch (Exception e) {
