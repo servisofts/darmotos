@@ -20,6 +20,9 @@ public class UsuarioDato {
             case "registro":
                 registro(obj, session);
                 break;
+            case "registroAll":
+                registroAll(obj, session);
+                break;
             case "editar":
                 editar(obj, session);
                 break;
@@ -65,12 +68,42 @@ public class UsuarioDato {
     public static void registro(JSONObject obj, SSSessionAbstract session) {
         try {
             JSONObject data = obj.getJSONObject("data");
+
             data.put("key", SUtil.uuid());
             data.put("estado", 1);
             data.put("fecha_on", SUtil.now());
             data.put("key_usuario", obj.getString("key_usuario"));
             SPGConect.insertArray(COMPONENT, new JSONArray().put(data));
             obj.put("data", data);
+            obj.put("estado", "exito");
+        } catch (Exception e) {
+            obj.put("estado", "error");
+            obj.put("error", e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    public static void registroAll(JSONObject obj, SSSessionAbstract session) {
+        try {
+            JSONArray data_ = obj.getJSONArray("data");
+
+            JSONObject data;
+            JSONArray registro = new JSONArray();
+            for (int i = 0; i < data_.length(); i++) {
+                data = data_.getJSONObject(i);
+                if(data.has("key") && !data.isNull("key")){
+                    SPGConect.editObject(COMPONENT, data);
+                }else{
+                    data.put("key", SUtil.uuid());
+                    data.put("estado", 1);
+                    data.put("fecha_on", SUtil.now());
+                    data.put("key_usuario", obj.getString("key_usuario"));
+                    registro.put(data);
+                }
+            }
+            
+            SPGConect.insertArray(COMPONENT, registro);
+            obj.put("data", data_);
             obj.put("estado", "exito");
         } catch (Exception e) {
             obj.put("estado", "error");
