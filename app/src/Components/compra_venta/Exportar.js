@@ -28,11 +28,11 @@ export default class Exportar extends Component {
             }}>
                 <SText bold color={STheme.color.success}>PDF</SText>
             </SView>
-            <SView width={8} />
+            {/* <SView width={8} />
             <SView card style={{ padding: 16 }} onPress={() => {
             }}>
                 <SText bold color={STheme.color.warning}>PNG</SText>
-            </SView>
+            </SView> */}
         </SView>
     }
     render() {

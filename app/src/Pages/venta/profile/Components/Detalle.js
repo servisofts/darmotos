@@ -48,24 +48,42 @@ export default class Detalle extends Component {
             // SNavigation.navigate("/venta/detalle/new", { key_compra_venta: this.data.key })
             SNavigation.navigate("/productos/producto", {
                 onSelect: (resp) => {
-                    // var cvdp = Object.values(this.compra_venta_detalle_producto).find((o) => o.key_producto == resp.key && o.estado > 0)
-                    // if (cvdp) {
-                    //     var cvd = this.compra_venta_detalle[cvdp.key_compra_venta_detalle];
-                    //     console.log(cvdp, cvd)
-                    //     if (cvd) {
-                    //         if (cvd.estado > 0) {
-                    //             console.log(cvd, cvdp)
-                    //             SPopup.alert("El producto ya existe en la cotizacion")
-                    //             return;
-                    //         }
-
-                    //     }
-                    // }
-                    // console.log(resp);
-                    // return;
+                    if (resp?.venta_sin_entregar && resp?.venta_sin_entregar.length > 0) {
+                        SPopup.alert("Lamentablemente, no puedes seleccionar este producto ya que está pendiente de entrega. Parece que ha sido vendido, pero aún no ha llegado a su destino. Si tienes alguna pregunta o inquietud, por favor ponte en contacto con el administrador de la tienda para obtener más información. ¡Gracias por tu comprensión!");
+                        return true;
+                    }
+                    console.log(resp);
+                    if (!resp?.modelo?.tipo_producto) {
+                        SPopup.alert("No se encontro tipo producto");
+                        return true;
+                    }
+                    if (!resp?.modelo?.tipo_producto?.key_cuenta_contable_credito) {
+                        SPopup.alert("No se encontro tipo producto key_cuenta_contable_credito");
+                        return true;
+                    }
+                    if (!resp?.modelo?.tipo_producto.key_cuenta_contable_contado) {
+                        SPopup.alert("No se encontro tipo producto key_cuenta_contable_contado");
+                        return true;
+                    }
                     var precio_unitario = resp.precio_venta;
                     if (this.props.data.tipo_pago != "contado") {
                         precio_unitario = resp.precio_venta_credito;
+                    }
+
+                    var exite_producto = Object.values(this.compra_venta_detalle).filter((cvd => {
+                        let producto = cvd.productos.find(p => p.key_producto == resp.key)
+                        if(producto){
+                            return true;
+                        }
+                        return false;
+                    }))
+                    if (exite_producto) {
+                        if (exite_producto.length > 0) {
+                            console.log("sadasd", resp);
+                            console.log(exite_producto)
+                            SPopup.alert("El producto ya esta en la lista.");
+                            return true;
+                        }
                     }
                     Model.compra_venta_detalle.Action.registro({
                         data: {
@@ -78,12 +96,19 @@ export default class Detalle extends Component {
                             data: {
                                 precio_venta: resp.precio_venta,
                                 precio_venta_credito: resp.precio_venta_credito,
-                                key_cuenta_contable_contado: "",
-                                key_cuenta_contable_credito: "",
+                                key_cuenta_contable_contado: resp?.modelo?.tipo_producto.key_cuenta_contable_contado,
+                                key_cuenta_contable_credito: resp?.modelo?.tipo_producto.key_cuenta_contable_credito,
                             }
                         },
                         key_producto: resp.key,
                         key_usuario: Model.usuario.Action.getKey()
+                    }).then(resp => {
+                        Model.compra_venta_detalle_producto.Action._dispatch({
+                            ...Model.compra_venta_detalle_producto.info,
+                            type: "registro",
+                            estado: "exito",
+                            data: resp?.productos[0]
+                        })
                     })
                     console.log(resp);
                 }
@@ -94,48 +119,20 @@ export default class Detalle extends Component {
     }
     render() {
         this.data = this.props.data;
-        this.compra_venta_detalle = Model.compra_venta_detalle.Action.getAll({
+        this.compra_venta_detalle = Model.compra_venta_detalle.Action.getAllConProductos({
             key_compra_venta: this.data.key
         })
-        // this.compra_venta_detalle_producto = Model.compra_venta_detalle_producto.Action.getAll({
-        //     key_compra_venta: this.data.key
-        // });
-        // if (!this.compra_venta_detalle_producto) return <SLoad />
+        console.log(this.compra_venta_detalle)
         if (!this.compra_venta_detalle) return <SLoad />
         return <SView col={"xs-12"} center>
             <SHr />
             <SText bold>DETALLE</SText>
             <SHr />
-            {/* <SText>{JSON.stringify(this.compra_venta_detalle)}</SText> */}
             <SList
                 data={this.compra_venta_detalle}
                 filter={obj => obj.estado != 0 && obj.key_compra_venta == this.data.key}
                 order={[{ "key": "fecha_on", order: "asc" }]}
                 render={(obj) => {
-                    // var cvdp = Object.values(this.compra_venta_detalle_producto).find((o) => o.key_compra_venta_detalle == obj.key)
-                    // var producto = Model.producto.Action.getByKey(cvdp.key_producto);
-                    // if (!producto) return <SLoad />
-                    // var precio_unitario = obj.data.precio_venta;
-                    // if (this.props.data.tipo_pago != "contado") {
-                    //     precio_unitario = obj.data.precio_venta_credito;
-                    // }
-                    // if (this.state.loading) return <SLoad />
-
-                    // if (parseFloat(precio_unitario) != parseFloat(obj.precio_unitario)) {
-                    //     console.log("AQUI ENTRA ENL PRECIO UNITARIO DIFERENTE")
-                    //     // console.log(obj.precio_unitario, precio_unitario)
-                    //     obj.precio_unitario = precio_unitario;
-                    //     this.setState({ loading: true })
-                    //     Model.compra_venta_detalle.Action.editar({
-                    //         data: obj
-                    //     }).then((resp) => {
-                    //         this.setState({ loading: false })
-                    //     }).catch((e) => {
-                    //         this.setState({ loading: false })
-                    //     })
-                    //     return <SLoad />
-                    // }
-
                     return this.detalle_item({
                         key: obj.key,
                         nombre: obj.descripcion,

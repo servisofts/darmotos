@@ -33,6 +33,7 @@ class index extends DPA.new {
             ...inp["key_marca"],
             editable: false,
             value: this.state?.marca?.key,
+            required:true,
             render: (ref) => {
                 var value = ref.getValue();
                 if (!value) {
@@ -54,6 +55,7 @@ class index extends DPA.new {
             ...inp["key_tipo_producto"],
             editable: false,
             value: this.state?.tipo_producto?.key,
+            required:true,
             render: (ref) => {
                 var value = ref.getValue();
                 if (!value) {

@@ -8,7 +8,10 @@ class index extends DPA.list {
             Parent: Parent,
             excludes: ["key", "fecha_on", "key_usuario", "key_servicio", "estado", "lat", "lng", "observacion", "key_empresa", "telefono", "correo"],
             // item: Item,
-
+            onRefresh: (resolve) => {
+                Parent.model.Action.CLEAR();
+                resolve();
+            }
         });
     }
     $allowNew() {

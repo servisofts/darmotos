@@ -29,8 +29,12 @@ class index extends DPA.item {
             color = STheme.color.accent
         }
         if (this.data.key_cliente) {
-            text = "Vendido"
+            text = "Entregado"
             color = STheme.color.danger
+        }
+        if (this.data?.venta_sin_entregar?.length > 0) {
+            text = "Pendiente de entrega"
+            color = STheme.color.warning
         }
         return <SView center row style={{
             position: "absolute",
@@ -80,16 +84,21 @@ class index extends DPA.item {
             </SView>
             <SView flex style={{ padding: 4 }}>
                 <SText fontSize={16} bold>{descripcion}</SText>
-                <SHr />
-                <SText fontSize={18} >Bs. {SMath.formatMoney(precio_venta)}</SText>
-                <SText fontSize={12} color={STheme.color.lightGray}>Bs. {SMath.formatMoney(precio_venta_credito)} Al credito</SText>
-                <SHr />
-                <SText fontSize={12} color={STheme.color.lightGray}>{this.tipo_producto?.descripcion}</SText>
-                <SText fontSize={12} color={STheme.color.lightGray}>{this.marca?.descripcion}</SText>
-                <SText fontSize={12} color={STheme.color.lightGray}>{this.modelo?.descripcion}</SText>
-                <SText fontSize={12} color={STheme.color.lightGray}>{observacion}</SText>
+
+                <SView row>
+                    <SText fontSize={12} color={STheme.color.lightGray}>{this.tipo_producto?.descripcion}</SText>
+                    <SView width={8} />
+                    <SText fontSize={12} color={STheme.color.lightGray}>{this.marca?.descripcion}</SText>
+                    <SView width={8} />
+                    <SText fontSize={12} color={STheme.color.lightGray}>{this.modelo?.descripcion}</SText>
+                    <SView width={8} />
+                    <SText fontSize={12} color={STheme.color.lightGray}>{observacion}</SText>
+                </SView>
                 <SHr />
                 {this.getImages()}
+                <SHr />
+                <SText fontSize={18} >Bs. {SMath.formatMoney(precio_venta)}</SText>
+                <SText fontSize={10} color={STheme.color.lightGray}>Bs. {SMath.formatMoney(precio_venta_credito)} Al credito</SText>
             </SView>
 
             {this.getEstado()}

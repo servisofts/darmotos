@@ -37,34 +37,43 @@ class index extends DPA.new {
             key_usuario: ""
         }).then((resp) => {
             this.$submitFile(resp.data.key);
-            new SThread(500, "esperarFoto", false).start(() => {
-                Model.usuarioRol.Action.registro({
-                    data: {
-                        key_rol: this.$params.key_rol,
-                        key_usuario: resp.data.key,
-                    },
-                    key_usuario: Model.usuario.Action.getKey()
-                }).then((tesp) => {
-                    if (this.presolve) {
-                        this.presolve(resp.data.key);
-                        SNavigation.replace("/cliente/profile", { pk: resp.data.key })
-                    }
-                })
+
+            Model.usuarioRol.Action.registro({
+                data: {
+                    key_rol: this.$params.key_rol,
+                    key_usuario: resp.data.key,
+                },
+                key_usuario: Model.usuario.Action.getKey()
+            }).then((tesp) => {
+                if (this.presolve) {
+                    this.presolve({
+                        key_usuario: resp.data.key, callback: () => {
+                            SNavigation.replace("/cliente/profile", { pk: resp.data.key })
+                        }
+                    })
+                    // 
+                }
+            }).catch((e) => {
+                this.reject("Error desconocido al asignar roles al usuario.");
             })
+
 
         }).catch(e => {
             if (e.error_dato) {
-                SPopup.alert("El dato (" + e.error_dato + ") ya existe para otro usuario.")
+                this.reject("El dato (" + e.error_dato + ") ya existe para otro usuario.")
                 return;
             }
-            SPopup.alert("error")
+            this.reject("Error desconocido al registrar usuario")
         })
     }
     $footer() {
         return <DatosDocumentosEditar key_rol={"51ee8a95-094b-41eb-8819-4afa1f349394"} onSubmit={() => {
             return new Promise((resolve, reject) => {
                 this.presolve = resolve;
-                this.form.submit();
+                this.reject = reject;
+                if (!this.form.submit()) {
+                    reject("Error en los datos del usuario")
+                }
                 // resolve("KEY_USUARIO");
             })
         }} />

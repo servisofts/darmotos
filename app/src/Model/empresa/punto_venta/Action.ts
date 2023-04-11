@@ -1,7 +1,14 @@
 import { SAction } from "servisofts-model";
 import Model from "../..";
 export default class Action extends SAction {
-    getAll({ key_sucursal }) {
+    // getAll({ key_sucursal }) {
+       
+    //     return this.getAllBySucursal({
+    //         key_sucursal: key_sucursal
+    //     })
+    // }
+
+    getAllBySucursal({ key_sucursal }) {
         var reducer = this._getReducer();
         if (reducer.key_sucursal != key_sucursal) {
             reducer.data = null;
@@ -12,10 +19,11 @@ export default class Action extends SAction {
         })
     }
 
-    getByKey(key: any, { key_sucursal }: any) {
-        var data = this.getAll({ key_sucursal });
+    getByKey(key, { key_sucursal }) {
+        var data = this.getAllBySucursal({ key_sucursal: key_sucursal });
         if (!data) return null;
-        return super.getByKey(key, { key_sucursal: key_sucursal }, null);
+        return data[key];
+        // return super.getByKey(key, { key_sucursal: key_sucursal }, null);
     }
     getAllByKeyEmpresa(key_empresa) {
         // var empresa: any = Model.empresa.Action.getSelect();

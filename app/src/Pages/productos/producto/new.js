@@ -15,21 +15,10 @@ class index extends DPA.new {
     $inputs() {
         var inp = super.$inputs();
 
-        // if (this.state?.modelo) {
-        //     if (this.state?.modelo?.key_tipo_producto) {
-
-        //         var modeloData = Model.tipo_producto_inventario_dato.Action.getAllBy({ key_tipo_producto: this.state?.modelo.key_tipo_producto });
-        //         var inventario_dato = Model.inventario_dato.Action.getAll();
-        //         if (!modeloData) return inp;
-        //         if (!inventario_dato) return inp;
-        //         this.extas = {};
-        //         Object.values(modeloData).map(obj => {
-        //             var dato = inventario_dato[obj.key_inventario_dato];
-        //             inp[dato.descripcion] = { type: dato.tipo, label: dato.descripcion, required: true, icon: <SText>{dato.observacion}</SText> }
-        //         })
-        //     }
-        // }
+        inp["descripcion"].editable = true
         inp["precio_compra"].type = "money"
+        inp["precio_venta"].type = "money"
+        inp["precio_venta_credito"].type = "money"
         inp["key_modelo"] = {
             ...inp["key_modelo"],
             editable: false,
@@ -68,23 +57,25 @@ class index extends DPA.new {
             this.$submitFile(resp.data.key);
 
             if (this.presolve) {
-                console.log(resp.data)
                 this.presolve({
                     key: resp.data.key,
                     callback: () => {
-                        SNavigation.goBack()
+                        if (this.onSelect) {
+                            this.onSelect(resp.data);
+                            return;
+                        }
+                        SNavigation.navigate("/productos/producto/profile", { pk: this.pk })
+
                     }
                 })
+                return;
                 // this.presolve(resp.data.key);
                 // SNavigation.replace("/cliente/profile", { pk: resp.data.key })
             }
-            if (this.onSelect) {
-                this.onSelect(resp.data);
-                return;
-            }
+            this.reject("Error desconocido al registrar")
             // SNavigation.goBack();
         }).catch(e => {
-            console.error(e);
+            this.reject("Error desconocido al registrar")
 
         })
     }
@@ -92,7 +83,10 @@ class index extends DPA.new {
         return <DatosDocumentosEditar key_tipo_producto={this.state?.modelo?.key_tipo_producto} onSubmit={() => {
             return new Promise((resolve, reject) => {
                 this.presolve = resolve;
-                this.form.submit();
+                this.reject = reject;
+                if (!this.form.submit()) {
+                    reject("Error en los datos")
+                }
                 // resolve("KEY_USUARIO");
             })
         }} />

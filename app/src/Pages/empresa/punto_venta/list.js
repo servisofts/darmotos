@@ -9,7 +9,7 @@ class index extends DPA.list {
             title: "Puntos de venta",
             itemType: "3",
             params: ["key_sucursal"],
-            excludes: ["key", "key_usuario", "key_servicio", "estado", "lat", "lng", "key_sucursal", "fecha_on", "direccion"]
+            excludes: ["key", "key_usuario", "key_servicio", "estado", "lat", "lng", "key_sucursal", "fecha_on", "direccion", "key_cuenta_contable"]
         });
     }
     $allowNew() {
@@ -28,7 +28,7 @@ class index extends DPA.list {
         return data.estado != 0
     }
     $getData() {
-        return Parent.model.Action.getAll({ key_sucursal: this.$params.key_sucursal });
+        return Parent.model.Action.getAllBySucursal({ key_sucursal: this.$params.key_sucursal });
     }
 }
 export default connect(index);

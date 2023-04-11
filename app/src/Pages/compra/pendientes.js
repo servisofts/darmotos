@@ -25,7 +25,7 @@ class index extends DPA.list {
         return [{ key: "fecha_on", order: "desc" }]
     }
     $filter(data) {
-        return data.estado != 0 && data.tipo == "compra" && (data.state == "aprobado" && data.state == "cotizacion")
+        return data.estado != 0 && data.tipo == "compra" && (data.state == "aprobado" || data.state == "cotizacion")
     }
     $getData() {
         return Parent.model.Action.getAll();

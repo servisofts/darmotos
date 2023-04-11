@@ -3,6 +3,7 @@ import { Parent } from ".."
 import Model from '../../../Model';
 import { SDate, SHr, SImage, SList, SLoad, SMath, SNavigation, SPopup, SText, STheme, SView } from 'servisofts-component';
 import States from './Components/States';
+import StateTiqueta from '../../../Components/compra_venta/StateTiqueta';
 class index extends DPA.profile {
     constructor(props) {
         super(props, {
@@ -31,7 +32,11 @@ class index extends DPA.profile {
     $allowAccess() {
         return Model.usuarioPage.Action.getPermiso({ url: Parent.path, permiso: "ver" })
     }
-
+    $header() {
+        if (!this.data) return;
+        var statesInfo = Model.compra_venta.Action.getStateInfo()[this?.data?.state];
+        return <StateTiqueta label={statesInfo.label} color={statesInfo.color} width={150} />
+    }
     $getData() {
         this.empresa = Model.empresa.Action.getSelect();
         var data = Parent.model.Action.getByKey(this.pk);

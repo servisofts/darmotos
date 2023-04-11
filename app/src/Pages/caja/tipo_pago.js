@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { SHr, SMath, SNavigation, SPage, SText, STheme, SView } from 'servisofts-component';
+import { SHr, SLoad, SMath, SNavigation, SPage, SText, STheme, SView } from 'servisofts-component';
 import Components from '../../Components';
+import Model from '../../Model';
 
 type PropsType = {
     monto: any,
     detalle: any,
-    key_caja: any,
+    key_punto_venta: any,
     _type: any,
     onSelect: any
 
@@ -42,6 +43,20 @@ class index extends Component {
             <SHr h={1} color={STheme.color.card} />
         </SView>
     }
+    getData() {
+    
+        var data = Model.punto_venta_tipo_pago.Action.getAll({ key_punto_venta: this.params.key_punto_venta });
+        if (!data) return <SLoad />
+        var tipos = Object.values(data).map(o => o.key_tipo_pago);
+        return <Components.empresa.tipo_pago.Select include={tipos} onSelect={(tp) => {
+         
+            if (this.params.onSelect) {
+                this.params.onSelect(tp);
+                SNavigation.goBack();
+            }
+
+        }} />
+    }
     render() {
         return (
             <SPage >
@@ -52,14 +67,7 @@ class index extends Component {
                         <SHr height={16} />
                         {this.getDetalle()}
                         <SHr height={16} />
-                        <Components.empresa.tipo_pago.Select onSelect={(tp) => {
-                            console.log(tp)
-                            if (this.params.onSelect) {
-                                this.params.onSelect(tp);
-                                SNavigation.goBack();
-                            }
-
-                        }} />
+                        {this.getData()}
                     </SView>
                 </SView>
             </SPage>

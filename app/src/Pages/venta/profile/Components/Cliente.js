@@ -12,8 +12,8 @@ export default class Cliente extends Component {
     data = {}
 
     seleccionarCliente() {
-        SNavigation.navigate("/cliente", {
-            onSelect: (obj) => {
+        SNavigation.navigate("/rol/profile/usuarios", {
+            pk: "51ee8a95-094b-41eb-8819-4afa1f349394", onSelect: (obj) => {
                 var cliente = {
                     nit: obj.CI,
                     razon_social: obj.Nombres + " " + obj.Apellidos,
@@ -33,6 +33,26 @@ export default class Cliente extends Component {
                 })
             }
         })
+        // SNavigation.navigate("/cliente", {
+        //     onSelect: (obj) => {
+        //         var cliente = {
+        //             nit: obj.CI,
+        //             razon_social: obj.Nombres + " " + obj.Apellidos,
+        //             key_usuario: obj.key,
+        //             telefono: obj.Telefono,
+        //             correo: obj.Correo,
+        //             direccion: "",
+        //             key_usuario: obj.key,
+        //         }
+        //         this.data.cliente = cliente;
+        //         Model.compra_venta.Action.editar({
+        //             data: this.data,
+        //             key_usuario: Model.usuario.Action.getKey()
+        //         }).then((resp) => {
+        //             console.log("Se agrego el cliente con exito")
+        //         })
+        //     }
+        // })
     }
     seleccionarSucursal() {
 

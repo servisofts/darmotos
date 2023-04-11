@@ -21,7 +21,9 @@ export default class NavBar extends React.Component {
   }
   render() {
     return (
-      <SView col={"xs-12"} height={40} backgroundColor={STheme.color.barColor}>
+      <SView col={"xs-12"} height={40} backgroundColor={STheme.color.barColor} style={{
+        overflow:"hidden"
+      }}>
         <SView col={"xs-12"} height row>
           <SView width={90}>
             {this.btnBack()}

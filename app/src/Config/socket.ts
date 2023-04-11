@@ -2,11 +2,11 @@ export default {
     debug: true, //para que se vea los returns del server
     name: 'darmotos',
 
-    ssl: true,
-    host: 'darmotos.servisofts.com',
+    // ssl: true,
+    // host: 'darmotos.servisofts.com',
 
-    // ssl: false,
-    // host: '192.168.0.199',
+    ssl: false,
+    host: '192.168.2.1',
 
     port: {
         native: 10038,
@@ -18,8 +18,9 @@ export default {
         roles_permisos: 'https://rolespermisos.servisofts.com/http/',
         empresa: 'https://empresa.servisofts.com/http/',
         inventario: 'https://inventario.servisofts.com/http/',
+        // inventario: 'http://192.168.2.1:30039/',
         compra_venta: 'https://compraventa.servisofts.com/http/',
-        // inventario: 'http://192.168.0.199:30039/',
+        // compra_venta: 'http://192.168.2.1:30041/',
     },
     timeReconnect: 5000
 }

@@ -58,4 +58,71 @@ export default class Action extends SAction {
             key_usuario: Model.usuario.Action.getKey()
         })
     }
+    getClientes() {
+        return new Promise((resolve, reject) => {
+            SSocket.sendPromise({
+                ...this.model.info,
+                type: "getClientes",
+                key_usuario: Model.usuario.Action.getKey()
+            }).then((resp: any) => {
+                resolve(resp);
+            }).catch(e => {
+                reject(e);
+            })
+        })
+    }
+    getDeudaProveedores() {
+        return new Promise((resolve, reject) => {
+            SSocket.sendPromise({
+                ...this.model.info,
+                type: "getDeudaProveedores",
+                key_usuario: Model.usuario.Action.getKey()
+            }).then((resp: any) => {
+                resolve(resp);
+            }).catch(e => {
+                reject(e);
+            })
+        })
+    }
+    getClientesDeudores() {
+        return new Promise((resolve, reject) => {
+            SSocket.sendPromise({
+                ...this.model.info,
+                type: "getClientesDeudores",
+                key_usuario: Model.usuario.Action.getKey()
+            }).then((resp: any) => {
+                resolve(resp);
+            }).catch(e => {
+                reject(e);
+            })
+        })
+    }
+    getByKeyCliente(key_cliente) {
+        return new Promise((resolve, reject) => {
+            SSocket.sendPromise({
+                ...this.model.info,
+                type: "getByKeyCliente",
+                key_cliente: key_cliente,
+                key_usuario: Model.usuario.Action.getKey()
+            }).then((resp: any) => {
+                resolve(resp);
+            }).catch(e => {
+                reject(e);
+            })
+        })
+    }
+    getStates(key_sucursal) {
+        return new Promise((resolve, reject) => {
+            SSocket.sendPromise({
+                ...this.model.info,
+                type: "getStates",
+                key_sucursal: key_sucursal,
+                key_usuario: Model.usuario.Action.getKey()
+            }).then((resp: any) => {
+                resolve(resp);
+            }).catch(e => {
+                reject(e);
+            })
+        })
+    }
 }   

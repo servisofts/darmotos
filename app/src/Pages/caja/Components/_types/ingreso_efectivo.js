@@ -7,7 +7,7 @@ export default class index {
     static key = "ingreso_efectivo";
     static descripcion = "Ingreso de efectivo"
     static icon = "Ingreso"
-
+    static permiso = ""
     static isActive(obj) {
         return 1
     }
@@ -17,7 +17,7 @@ export default class index {
     static action(obj) {
 
     }
-    static onPress(caja) {
+    static onPress(caja, punto_venta_tipo_pago) {
         //Pedimos el monto y el detalle
         SNavigation.navigate("/contabilidad/cuentas", {
             codigo:"4-2",
@@ -46,7 +46,7 @@ export default class index {
                             "key_caja": caja.key,
                             "descripcion": detalle,
                             "monto": monto,
-                            "tipo": "ingreso",
+                            "tipo": this.key,
                             "key_tipo_pago": "efectivo",
                             cuentas: [{ key_cuenta_contable: cuenta_contable.key, monto: monto }],
                         }

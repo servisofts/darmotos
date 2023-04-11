@@ -3,12 +3,13 @@ import { SPage } from "servisofts-component";
 import root from "./root";
 
 import almacen from "./almacen";
-import inventario from "./inventario";
+import list from "./almacen/list";
+// import inventario from "./inventario";
 export default SPage.combinePages("inventario",
     {
-        "": root,
+        "": list,
         ...almacen,
-        ...inventario
+        // ...inventario
 
     }
 )

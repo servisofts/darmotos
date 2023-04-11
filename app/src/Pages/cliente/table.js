@@ -1,4 +1,4 @@
-import { STable2 } from 'servisofts-component';
+import { SDate, STable2 } from 'servisofts-component';
 import DPA, { connect } from 'servisofts-page';
 import { Parent } from "."
 import Model from '../../Model';
@@ -12,6 +12,14 @@ class index extends DPA.table {
             params: ["key_rol"]
         });
     }
+    componentDidMount() {
+        Model.compra_venta.Action.getClientes().then(resp => {
+            this.setState({ data: resp.data })
+            console.log(resp);
+        }).catch(e => {
+            console.error(e);
+        })
+    }
     $allowAccess() {
         return Model.usuarioPage.Action.getPermiso({ url: Parent.path, permiso: "table" });
     }
@@ -22,11 +30,15 @@ class index extends DPA.table {
         var usuario_Dato = Model.usuario_dato.Action.getAll();
         var datos = Model.dato.Action.getAll();
         if (!data || !usuarioRol || !usuario_Dato || !datos) return null;
+        if (!this.state.data) return null;
         var dataFinal = {};
 
-        Object.values(usuarioRol).map(ur => {
+        Object.values(this.state.data).map((ur) => {
             if (data[ur.key_usuario]) {
-                dataFinal[ur.key_usuario] = data[ur.key_usuario]
+                dataFinal[ur.key_usuario] = {
+                    ...data[ur.key_usuario],
+                    ...ur,
+                }
                 var datos_del_usuario = Model.usuario_dato.Action.getAllBy({ key_usuario_perfil: ur.key_usuario });
 
                 Object.values(datos_del_usuario).map(ddu => {
@@ -61,8 +73,13 @@ class index extends DPA.table {
         header["Apellidos"].width = 120;
         header["CI"].width = 100;
         header["Correo"].width = 220;
-        header["Telefono"].width = 140;
-        header["key-ver"] = { label: "ver", width: 50, render: () => "Ver", center: true }
+        // header["cantidad"].width = 140;
+        // header["primer_compra"].width = 140;
+        // header["ultima_compra"].width = 140;
+
+        header["cantidad"] = { label: "# de compras", width: 50, center: true }
+        header["primer_compra"] = { label: "primer_compra", width: 100, center: true, render: (data) => new SDate(data).toString("yyyy-MM-dd hh:mm:ss") }
+        header["ultima_compra"] = { label: "ultima_compra", width: 100, center: true, render: (data) => new SDate(data).toString("yyyy-MM-dd hh:mm:ss") }
         return header;
     }
 }

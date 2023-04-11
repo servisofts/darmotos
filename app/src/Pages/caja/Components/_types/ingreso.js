@@ -7,6 +7,7 @@ export default class ingreso {
     static key = "ingreso";
     static descripcion = "Ingreso"
     static icon = "Ingreso"
+    static permiso = ""
     static isActive(obj) {
         return 1
     }
@@ -16,7 +17,7 @@ export default class ingreso {
     static action(obj) {
 
     }
-    static onPress(caja) {
+    static onPress(caja, punto_venta_tipo_pago) {
         SNavigation.navigate("/contabilidad/cuentas", {
             codigo: "4-2",
             // key_cuenta: "3038c20e-12f5-46b5-b70a-129fb634b241",
@@ -32,13 +33,14 @@ export default class ingreso {
                             monto: monto,
                             detalle: detalle,
                             key_caja: caja.key,
+                            key_punto_venta: caja.key_punto_venta,
                             _type: this.key,
                             onSelect: (tipo_pago) => {
                                 var caja_detalle = {
                                     "key_caja": caja.key,
                                     "descripcion": detalle,
                                     "monto": monto,
-                                    "tipo": "ingreso",
+                                    "tipo": this.key,
                                     "key_tipo_pago": tipo_pago.key,
                                     cuentas: [{ key_cuenta_contable: cuenta_contable.key, monto: monto }],
                                 }

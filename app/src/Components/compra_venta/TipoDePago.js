@@ -5,6 +5,7 @@ type planesType = "contado" | "pp_discrecional" | "pp_financiero"
 type PropsType = {
     data: any,
     defaultValue?: planesType,
+    disabled?: Boolean,
     onChange: (obj: planesType) => any,
 }
 
@@ -19,6 +20,7 @@ export default class TipoDePago extends Component<PropsType> {
         return <SInput type='select'
             defaultValue={this.props?.data?.tipo_pago ?? (this.props.defaultValue ?? "contado")}
             center
+            disabled={this.props.disabled}
             style={{
                 textAlign: "center"
             }}

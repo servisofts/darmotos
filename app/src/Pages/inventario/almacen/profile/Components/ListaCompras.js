@@ -1,6 +1,7 @@
-import { SDate, SHr, SList, SMath, SNavigation, SText, STheme, SView } from 'servisofts-component';
+import { SDate, SHr, SList, SLoad, SMath, SNavigation, SPopup, SText, STheme, SView } from 'servisofts-component';
 import DPA, { connect } from 'servisofts-page';
 import Model from '../../../../../Model';
+import PopupTipoRecepcion from './PopupTipoRecepcion';
 
 const Parent = {
     name: "Compras sin recepcionar.",
@@ -31,11 +32,17 @@ class index extends DPA.list {
     }
     $getData() {
         if (!this.props.data) return null;
-        return Model.compra_venta_detalle.Action.comprasSinRecepcionar({ key_sucursal: this.props.data.key_sucursal });
+
+        var data = Model.compra_venta_detalle.Action.comprasSinRecepcionar({ key_sucursal: "" });
+        // console.log(this.props.data, data)
+        return data;
+
     }
     $item(data, opt) {
+        return this.my_item(data, opt)
         return <SList
             data={new Array(data.cantidad).fill(0)}
+            limit={10}
             render={(obj) => {
                 return this.my_item(data, opt)
             }}
@@ -47,29 +54,20 @@ class index extends DPA.list {
             padding: 8
         }} onPress={() => {
             var precio = precio_unitario - (descuento / cantidad)
-            SNavigation.navigate("/productos/producto/new", {
+
+            PopupTipoRecepcion.open({
                 precio_compra: parseFloat(precio).toFixed(2),
                 descripcion: descripcion,
+                cantidad:cantidad,
                 key_compra_venta_detalle: key,
                 key_almacen: this.props.data.key,
-                onSelect: (data) => {
-                    Model.compra_venta_detalle.Action.recepcionar({
-                        key_compra_venta_detalle: key,
-                        key_producto: data.key
-                    }).then((resp) => {
-                        console.log(resp);
-                    }).catch(e => {
-                        console.log(e)
-                    })
-                    SNavigation.goBack();
-                }
             });
         }}>
 
             <SView row center>
                 <SText fontSize={18} bold>{descripcion}</SText>
                 <SView flex />
-                <SText bold fontSize={18}>x  {1} </SText>
+                <SText bold fontSize={18}>x  {cantidad} </SText>
                 <SView width={8} />
                 <SView width={10} height={10} style={{ borderRadius: 100 }} backgroundColor={STheme.color.danger} />
             </SView>
@@ -85,6 +83,9 @@ class index extends DPA.list {
                 <SText color={STheme.color.lightGray} fontSize={12}>{new SDate(fecha_on).toString("dd de MONTH, yyyy, hh:mm")}</SText>
             </SView>
             <SHr />
+            <SLoad type='window' hidden={!this.state.loading} label={this.state.loading} onCancel={() => {
+                this.setState({ loading: "" });
+            }} />
             {/* <SText>{JSON.stringify(data)}</SText> */}
         </SView>
     }

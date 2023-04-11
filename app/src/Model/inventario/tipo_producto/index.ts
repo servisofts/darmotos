@@ -11,6 +11,7 @@ export default new SModel<Action, Reducer>({
         "key": { type: "text", pk: true },
         "descripcion": { type: "text", notNull: true, editable: true, label: "Descripcion" },
         "observacion": { type: "text", editable: true, label: "Obs." },
+        "color": { type: "text", editable: true, label: "Color" },
         "fecha_on": { type: "timestamp", label: "F. Creacion" },
         "estado": { type: "integer" },
         "key_usuario": { type: "text", fk: "usuario" },

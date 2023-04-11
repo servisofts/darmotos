@@ -6,6 +6,7 @@ export default class amortizacion {
     static key = "amortizacion";
     static descripcion = "Deudas de clientes"
     static icon = "Caja"
+    static permiso = ""
     static isActive(obj) {
         if (!obj.data.key_amortizacion) return 0
         return 1
@@ -23,7 +24,7 @@ export default class amortizacion {
                 observacion: "--",
                 monto: monto,
                 fecha: "2023-01-06",
-                key_cuota: data.key_cuota,
+                key_cuotas: data.key_cuotas,
                 key_caja_detalle: obj.key
             },
             key_usuario: Model.usuario.Action.getKey()
@@ -33,7 +34,6 @@ export default class amortizacion {
             obj.cuentas = Object.values(e.cuentas);
             Model.caja_detalle.Action.editar({
                 data: obj,
-
                 key_usuario: Model.usuario.Action.getKey()
             })
         }).catch(e => {
@@ -43,25 +43,28 @@ export default class amortizacion {
     }
 
 
-    static onPress(caja) {
+    static onPress(caja, punto_venta_tipo_pago) {
         SNavigation.navigate("/cobranza/clientes_con_deuda", {
-            onSelect: (cuota) => {
+            onSelect: (cuotas) => {
+                let total = 0;
+                Object.values(cuotas).map(o => total += o.monto);
                 SNavigation.navigate("/caja/tipo_pago", {
-                    monto: cuota.monto,
+                    monto: total,
                     detalle: "Amortizacion de cuota",
                     key_caja: caja.key,
+                    key_punto_venta: caja.key_punto_venta,
                     _type: this.key,
                     onSelect: (tipo_pago) => {
                         console.log("Selecciono el tipo de pago");
                         var caja_detalle = {
                             "key_caja": caja.key,
                             "descripcion": "Amortizacion de cuota",
-                            "monto": cuota.monto,
-                            "tipo": "ingreso",
+                            "monto": total,
+                            "tipo": this.key,
                             "key_tipo_pago": tipo_pago.key,
                             "data": {
                                 "type": "amortizacion",
-                                "key_cuota": cuota.key
+                                "key_cuotas": Object.keys(cuotas)
                             }
                         }
                         console.log(caja_detalle)

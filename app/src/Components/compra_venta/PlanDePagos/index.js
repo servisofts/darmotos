@@ -50,7 +50,7 @@ export default class PlanDePagos extends Component {
                 {/* <TipoPago ref={ref => this.tipo_pago = ref} defaultValue={this.state.tipo_pago} onChange={(e) => {
                     this.setState({ tipo_pago: e })
                 }} /> */}
-                <TipoDePago data={this.props.data} onChange={(e) => {
+                <TipoDePago data={this.props.data} disabled={this.props.disabled} onChange={(e) => {
                     this.setState({ tipo_pago: e })
                 }} />
                 <SHr />

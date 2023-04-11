@@ -7,6 +7,7 @@ export default class index {
     static key = "pago_servicio";
     static descripcion = "Pago de servicio"
     static icon = "Carrito"
+    static permiso = ""
     static isActive(obj) {
         if (!obj.data.key_amortizacion) return 0
         return 1
@@ -22,9 +23,9 @@ export default class index {
             data: {
                 descripcion: "Amortizacion de cuota desde caja.",
                 observacion: "--",
-                monto: monto*-1,
+                monto: monto * -1,
                 fecha: new SDate().toString("yyyy-MM-dd"),
-                key_cuota: data.key_cuota,
+                key_cuotas: data.key_cuotas,
                 key_caja_detalle: obj.key
             },
             key_usuario: Model.usuario.Action.getKey()
@@ -40,25 +41,40 @@ export default class index {
             console.error(e);
         })
     }
-    static onPress(caja) {
+    static onPress(caja, punto_venta_tipo_pago) {
         //Pedimos el monto y el detalle
         SNavigation.navigate("/cobranza/proveedores_que_debemos", {
-            onSelect: (cuota) => {
+            onSelect: (cuotas) => {
+
+                let total = 0;
+                Object.values(cuotas).map(o => total += o.monto);
                 SNavigation.navigate("/caja/tipo_pago", {
-                    monto: cuota.monto,
+                    monto: total,
                     detalle: "Pago de servicio",
                     key_caja: caja.key,
+                    key_punto_venta: caja.key_punto_venta,
                     _type: this.key,
                     onSelect: (tipo_pago) => {
+
+                        if (tipo_pago.key == "efectivo") {
+                            var detalles = Model.caja_detalle.Action.getAll({ key_caja: caja.key });
+                            var movimientos = Object.values(detalles).filter(o => o.key_tipo_pago == "efectivo" && o.estado != 0)
+                            var monto_en_caja = 0;
+                            movimientos.map(o => { monto_en_caja += parseFloat(o.monto); });
+                            if (monto_en_caja < cuota.monto) {
+                                SPopup.alert("No tienes efectivo suficiente.")
+                                return;
+                            }
+                        }
                         var caja_detalle = {
                             "key_caja": caja.key,
                             "descripcion": "Pago de servicio",
-                            "monto": cuota.monto * -1,
-                            "tipo": "egreso",
+                            "monto": total * -1,
+                            "tipo": this.key,
                             "key_tipo_pago": tipo_pago.key,
                             "data": {
                                 "type": "pago_servicio",
-                                "key_cuota": cuota.key
+                                "key_cuotas": Object.keys(cuotas)
                             }
                         }
                         console.log(caja_detalle)

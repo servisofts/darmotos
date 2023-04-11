@@ -16,7 +16,7 @@ class index extends Component {
             <SPage title={Parent.title}>
                 <SHr height={32} />
                 <MenuPages path={Parent.path + "/"} blackList={["/contabilidad/asiento_contable"]} >
-               
+                    {/* <MenuButtom label={"Crear Asiento"} url={"/contabilidad/asiento"} /> */}
                 </MenuPages>
             </SPage>
         );

@@ -44,7 +44,7 @@ class index extends DPA.profile {
         }
         return <Components.contabilidad.cuenta_contable.Select
             defaultValue={cuenta_contable}
-            codigo={"1-2"}
+            codigo={"1"}
             onChange={(cuenta) => {
                 Parent.model.Action.editar({
                     data: {

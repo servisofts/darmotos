@@ -14,6 +14,9 @@ export default class Action extends SAction {
         if (!obj) return {}
         return obj;
     }
+
+
+
     getByPuntoVenta(key_punto_venta) {
         // var key_usuario = Model.usuario.Action.getKey();
         var data = this.getAll();
@@ -62,6 +65,15 @@ export default class Action extends SAction {
             estado: "cargando",
             fecha_inicio: fecha_inicio,
             fecha_fin: fecha_fin,
+
+        })
+    }
+    get_caja_by_key({ key_caja }) {
+        return SSocket.sendPromise({
+            ...this.model.info,
+            type: "getByKey",
+            estado: "cargando",
+            key: key_caja
 
         })
     }

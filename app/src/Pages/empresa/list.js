@@ -7,7 +7,11 @@ class index extends DPA.list {
     constructor(props) {
         super(props, {
             Parent: Parent,
-            excludes: ["key", "fecha_on", "key_usuario", "key_servicio", "estado"]
+            excludes: ["key", "fecha_on", "key_usuario", "key_servicio", "estado"],
+            onRefresh:(resolve)=>{
+                Parent.model.Action.CLEAR();
+                resolve()
+            }
         });
     }
     $allowNew() {

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { SButtom, SDate, SHr, SIcon, SList, SLoad, SMath, SNavigation, SPage, SText, STheme, SView } from 'servisofts-component';
+import Model from '../../../Model';
 import _types from './_types';
 export default class CajaActions extends Component {
     constructor(props) {
@@ -11,9 +12,23 @@ export default class CajaActions extends Component {
         // console.log(obj);
 
         var action = _types[key];
-
+        if (action.permiso) {
+            
+            if (!Model.usuarioPage.Action.getPermiso({ url: "/caja", permiso: action.permiso })) {
+                if (this.props.data.key_usuario != Model.usuario.Action.getKey()) {
+                    return null;
+                }
+                if (action.permiso != "cerrar_caja_otro_usuario") {
+                    return null;
+                }
+            }
+        }else{
+            if (this.props.data.key_usuario != Model.usuario.Action.getKey()) {
+                return null;
+            }
+        }
         return <SView width={80} height={80} center onPress={() => {
-            action.onPress(this.props.data)
+            action.onPress(this.props.data, this.props.punto_venta_tipo_pago)
         }} style={{
             padding: 2
         }}>
@@ -25,7 +40,7 @@ export default class CajaActions extends Component {
                     <SText center fontSize={10} bold>{action.descripcion}</SText>
                 </SView>
             </SView>
-        </SView>
+        </SView >
     }
     render() {
         return <SView col={"xs-12"}>

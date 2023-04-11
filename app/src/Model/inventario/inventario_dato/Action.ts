@@ -28,6 +28,7 @@ export default class Action extends SAction {
         Object.values(dato_tp).map((dr: any) => {
             var dato = datos[dr.key_inventario_dato]
             if (!dato) return;
+            dato.tpid=dr;
             resp[dato.key] = dato;
         })
         return resp;

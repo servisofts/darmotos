@@ -7,7 +7,8 @@ import Model from '../../../Model';
 type indexPropsType = {
     onSelect: (tipo_pago) => any,
     select: any,
-    exclude?: []
+    exclude?: [],
+    include?: [],
 }
 export default class index extends Component<indexPropsType> {
     constructor(props) {
@@ -24,9 +25,11 @@ export default class index extends Component<indexPropsType> {
     render_data() {
         var tipos_pago = Model.tipo_pago.Action.getAll();
         if (!tipos_pago) return <SLoad />
+        console.log(tipos_pago)
+
         return <SList
             data={tipos_pago}
-            filter={(a) => (this.props.exclude ?? []).indexOf(a.key) < 0}
+            filter={(a) => ((this.props.include ?? []).indexOf(a.key) >= 0)}
             render={(obj) => {
                 return <SView col={"xs-12"} card style={{ padding: 4 }} row center onPress={() => {
                     if (this.props.onSelect) {

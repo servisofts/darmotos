@@ -1,6 +1,7 @@
 import { SPage } from "servisofts-component";
 
 import root from "./root";
+import lista from "./lista";
 import detalle from "./detalle";
 import Model from "../../Model";
 
@@ -22,7 +23,8 @@ export const Parent = {
 }
 export default SPage.combinePages("compra",
     {
-        "": root,
+        "":lista,
+        "root": root,
         "new": _new,
         "delete": _delete,
         "edit": edit,

@@ -27,7 +27,7 @@ class index extends DPA.profile {
         return Parent.model.Action.getByKey(this.pk);
     }
 
-    getCuentaContable() {
+    getCuentaContableCredito() {
         if (!this.data) return <SLoad />
         var cuenta_contable = null;
         if (this.data.key_cuenta_contable_credito) {
@@ -47,7 +47,7 @@ class index extends DPA.profile {
                 })
             }} />
     }
-    getCuentaContableCredito() {
+    getCuentaContable() {
         if (!this.data) return <SLoad />
         var cuenta_contable = null;
         if (this.data.key_cuenta_contable_contado) {

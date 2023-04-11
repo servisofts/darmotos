@@ -10,6 +10,10 @@ class index extends DPA.list {
             itemType: "2",
             item: item,
             excludes: ["key", "fecha_on", "key_usuario", "data", "key_servicio", "estado", "tipo"],
+            onRefresh:(resolve)=>{
+                Model.notification.Action.CLEAR();
+                resolve();
+            }
             // defaultParams: { key_rol: "51ee8a95-094b-41eb-8819-4afa1f349394" },
             // params: ["key_rol"]
         });

@@ -28,7 +28,7 @@ class index extends DPA.edit {
             this.presolve({
                 key: this.pk,
                 callback: () => {
-                    SNavigation.goBack()
+                    // SNavigation.navigate("/productos/producto/profile", { pk: this.pk })
                 }
             })
             // SNavigation.goBack();

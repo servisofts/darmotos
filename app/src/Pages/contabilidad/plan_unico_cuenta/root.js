@@ -1,8 +1,7 @@
 import { Component } from 'react';
-import { SHr, SNavigation, SPage, SView } from 'servisofts-component';
+import { SHr, SNavigation, SPage, STheme, SView } from 'servisofts-component';
 import DPA, { connect } from 'servisofts-page';
-import { PlanDeCuentas } from 'servisofts-rn-contabilidad'
-import Model from '../../../Model';
+import { PlanDeCuentas2, PlanDeCuentasTable } from 'servisofts-rn-contabilidad'
 
 class index extends Component {
     constructor(props) {
@@ -13,13 +12,24 @@ class index extends Component {
     }
 
     render() {
-        return (<SPage>
-            <SView col={"xs-12"} center>
-                <SView col={"xs-12 sm-10 md-8 lg-6 xl-4"} >
-                    <PlanDeCuentas buscador onSelect={this.onSelect} defaultCode={this.codigo} defaultKey={this.key_cuenta} disabled={!!this.onSelect} />
-                </SView>
-                <SHr height={40} />
+        return (<SPage title={"Cuentas"} disableScroll center>
+            <SView col={"xs-12"} height style={{
+                padding: 8
+            }} center>
+                <PlanDeCuentasTable initialCode={this.codigo} onSelect={this.onSelect}
+                    space={4}
+                    width={500}
+                    itemProps={{
+                        padding: 12, space: 4,
+                        underline: true,
+                        underlineColor: STheme.color.card
+                    }} />
             </SView>
+            {/* <SView col={"xs-12"} center>
+                <SView col={"xs-11 sm-10 md-8 lg-6 xl-4"} center>
+                    <PlanDeCuentas2 initialCode={this.codigo} onSelect={this.onSelect} space={4} />
+                </SView>
+            </SView> */}
         </SPage>)
     }
 }

@@ -1,6 +1,6 @@
 import DPA, { connect } from 'servisofts-page';
 import Model from '../../../../Model';
-
+import Item from "../../../inventario/almacen/item"
 const Parent = {
     name: "Almacenes de la sucursal",
     path: `/inventario/almacen`,
@@ -11,8 +11,9 @@ class index extends DPA.list {
         super(props, {
             type: "componentTitle",
             Parent: Parent,
+            item: Item,
             title: Parent.name,
-            excludes: ["key", "fecha_on", "key_usuario", "Password", "Telefono", "Correo", "CI"]
+            excludes: ["key", "fecha_on", "key_usuario", "estado", "key_servicio", "key_sucursal"]
         });
     }
 

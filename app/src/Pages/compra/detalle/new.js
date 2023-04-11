@@ -1,6 +1,6 @@
 import DPA, { connect } from 'servisofts-page';
 import { Parent } from '.';
-import { SNavigation, SPopup } from 'servisofts-component';
+import { SHr, SNavigation, SPopup, SText, STheme, SView } from 'servisofts-component';
 import Model from '../../../Model';
 import Components from '../../../Components';
 
@@ -8,6 +8,7 @@ class index extends DPA.new {
     constructor(props) {
         super(props, {
             Parent: Parent,
+            title:"Compra",
             excludes: ["key", "key_compra_venta", "observacion", "unidad_medida", "fecha_on", "key_usuario", "key_servicio", "estado", "cliente", "proveedor", "state", "key_sucursal"]
         });
     }
@@ -38,7 +39,7 @@ class index extends DPA.new {
     }
     $onSubmit(data) {
         // data.tipo = "compra"
-        if(!this.cuenta_contable_input.getValue()){
+        if (!this.cuenta_contable_input.getValue()) {
             SPopup.alert("Seleccione una cuenta");
             return;
         }
@@ -59,8 +60,17 @@ class index extends DPA.new {
 
         })
     }
-    $header() {
-        return <Components.contabilidad.cuenta_contable.Select codigo={"5"} ref={ref => this.cuenta_contable_input = ref} />
+
+    $render() {
+        return <>
+            <SHr height={30} />
+            <SText color={STheme.color.lightGray} justify>{"¡Hola! Cuando compras un producto en nuestro sistema, tienes que asignar una cuenta específica donde se abonarán los pagos correspondientes a ese producto. Es importante que selecciones correctamente la cuenta asignada para asegurarte de que los pagos se apliquen correctamente a tu compra. De esta manera, podrás llevar un control claro de tus transacciones y asegurarte de que todo esté en orden. Si tienes dudas sobre cómo seleccionar la cuenta correcta, no dudes en preguntarnos. ¡Estamos aquí para ayudarte!"}</SText>
+            <SHr height={30} />
+            <Components.contabilidad.cuenta_contable.Select codigo={"5"} ref={ref => this.cuenta_contable_input = ref} />
+            <SHr h={8} />
+            {super.$render()}
+            <SHr height={100} />
+        </>
     }
 }
 

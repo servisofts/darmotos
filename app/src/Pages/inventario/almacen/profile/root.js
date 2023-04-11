@@ -1,15 +1,23 @@
 import DPA, { connect } from 'servisofts-page';
 import { Parent } from ".."
-import { SHr, SList, SLoad, SText, SView } from 'servisofts-component';
+import { SHr, SList, SLoad, SText, STheme, SView } from 'servisofts-component';
 import Model from '../../../../Model';
 import { MenuPages } from 'servisofts-rn-roles_permisos';
 import Item from "../item"
+import SCharts from 'servisofts-charts';
+import GraficoPorEstado from './Components/GraficoPorEstado';
+import GraficoPorTipos from './Components/GraficoPorTipos';
 class index extends DPA.profile {
     constructor(props) {
         super(props, {
             Parent: Parent,
             excludes: ["key", "fecha_on", "key_usuario", "estado", "key_servicio", "key_sucursal"],
-            item: Item
+            item: Item,
+            onRefresh: (resolve) => {
+                Parent.model.Action.CLEAR();
+                // Model.usuarioPage.Action.CLEAR();
+                resolve();
+            }
         });
     }
     $allowEdit() {
@@ -27,10 +35,14 @@ class index extends DPA.profile {
 
     $footer() {
         return <SView col={"xs-12"} >
+            {/* <SHr /> */}
+            {/* <GraficoPorTipos key_almacen={this.pk} /> */}
             <SHr />
-            <SText fontSize={16} bold>Menu</SText>
+            <GraficoPorEstado key_almacen={this.pk} />
             <SHr />
 
+            <SText fontSize={16} bold>Menu</SText>
+            <SHr />
             <MenuPages path={"/inventario/almacen/profile/"} permiso={"ver"} params={{
                 pk: this.pk
             }}>

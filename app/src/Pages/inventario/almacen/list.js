@@ -9,7 +9,12 @@ class index extends DPA.list {
             Parent: Parent,
             title:"Lista de almacenes",
             excludes: ["key", "fecha_on", "key_usuario", "estado", "key_servicio", "key_sucursal"],
-            item: item
+            item: item,
+            onRefresh:(resolve)=>{
+                Model.almacen.Action.CLEAR();
+                Model.sucursal.Action.CLEAR();
+                resolve();
+            }
         });
     }
     $allowNew() {

@@ -7,6 +7,7 @@ export default class index {
     static key = "egreso_efectivo";
     static descripcion = "Egreso de efectivo"
     static icon = "Egreso"
+    static permiso = ""
     static isActive(obj) {
         return 1
     }
@@ -16,7 +17,7 @@ export default class index {
     static action(obj) {
 
     }
-    static onPress(caja) {
+    static onPress(caja, punto_venta_tipo_pago) {
         //Pedimos el monto y el detalle
         SNavigation.navigate("/contabilidad/cuentas", {
             codigo: "5",
@@ -27,6 +28,15 @@ export default class index {
                     title: this.descripcion,
                     detail: cuenta_contable.codigo + " - " + cuenta_contable.descripcion,
                     onSubmit: ({ monto, detalle }) => {
+
+                        var detalles = Model.caja_detalle.Action.getAll({ key_caja: caja.key });
+                        var movimientos = Object.values(detalles).filter(o => o.key_tipo_pago == "efectivo" && o.estado != 0)
+                        var monto_en_caja = 0;
+                        movimientos.map(o => { monto_en_caja += parseFloat(o.monto); });
+                        if (monto_en_caja < monto) {
+                            SPopup.alert("No tienes efectivo suficiente.")
+                            return;
+                        }
                         //Pedimos el tipo de pago
                         if (caja.fraccionar_moneda) {
                             // SNavigation.navigate("/caja/fraccionar", {
@@ -41,7 +51,7 @@ export default class index {
                             "key_caja": caja.key,
                             "descripcion": detalle,
                             "monto": monto * -1,
-                            "tipo": "egreso",
+                            "tipo": this.key,
                             "key_tipo_pago": "efectivo",
                             cuentas: [{ key_cuenta_contable: cuenta_contable.key, monto: monto }],
                         }

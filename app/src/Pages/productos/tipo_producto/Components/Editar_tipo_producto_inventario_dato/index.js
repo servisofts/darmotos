@@ -22,9 +22,14 @@ class Editar_tipo_producto_inventario_dato extends Component {
             <SHr />
             <SText fontSize={16} bold>Datos</SText>
             <SHr />
+            <SView row col={"xs-12"}>
+                <SView flex />
+                <SText fontSize={10}>Requerido</SText>
+            </SView>
+            <SHr />
             <SList
                 data={inventario_dato}
-                buscador
+                // buscador
                 render={(itm) => {
                     var activo = Object.values(modelo_inventario_dato).find(o => o.key_inventario_dato == itm.key && o.estado > 0)
                     return <SView row col={"xs-12"} style={{
@@ -54,6 +59,8 @@ class Editar_tipo_producto_inventario_dato extends Component {
                                     })
                                 }
                             }} />
+                        {/* <SView width={8} /> */}
+
                         {/* <SView width={30} height={30} card>
                             <SImage src={Model.rol._get_image_download_path(SSocket.api, itm.key)} />
                         </SView> */}
@@ -61,7 +68,23 @@ class Editar_tipo_producto_inventario_dato extends Component {
                         <SText>{itm.descripcion}</SText>
                         <SView width={8} />
                         <SText bold>{itm.observacion}</SText>
-
+                        <SView flex />
+                        {!activo ? null :
+                            <SInput
+                                col={""}
+                                type={"checkBox"}
+                                defaultValue={activo.requerido}
+                                editable={!!allowEdit}
+                                onChangeText={(e) => {
+                                    Model.tipo_producto_inventario_dato.Action.editar({
+                                        data: {
+                                            ...activo,
+                                            requerido: !activo.requerido
+                                        },
+                                        key_usuario: Model.usuario.Action.getKey()
+                                    })
+                                }} />
+                        }
                     </SView>
 
                 }}

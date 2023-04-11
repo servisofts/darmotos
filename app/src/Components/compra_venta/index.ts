@@ -9,6 +9,7 @@ import Totales from "./Totales"
 import Conyuge from "./Conyuge"
 import Garante from "./Garante"
 import PlanDePagos from "./PlanDePagos"
+import StateTiqueta from "./StateTiqueta"
 export default { 
     TipoDePago,
     Separador,
@@ -20,6 +21,7 @@ export default {
     Totales,
     Conyuge,
     Garante,
-    PlanDePagos
+    PlanDePagos,
+    StateTiqueta
 
 }

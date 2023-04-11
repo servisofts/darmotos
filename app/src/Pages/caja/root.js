@@ -18,6 +18,7 @@ class index extends Component {
         // var key_usuario = Model.usuario.Action.getKey();
         // var isMyCaja = key_usuario == this.state?.caja?.key_usuario
         if (this.state.punto_venta && this.state.sucursal) {
+            
             if (this.state?.punto_venta?.key_sucursal != this.state?.sucursal?.key) {
                 delete this.state.punto_venta;
                 delete this.state.caja;
@@ -56,8 +57,12 @@ class index extends Component {
             this.setState({ loading: false })
         })
     }
-    renderCajaOpen(key_caja) {
-        var data = Model.caja.Action.getByKey(key_caja)
+    renderCajaOpen(data) {
+        if (data.key_usuario != Model.usuario.Action.getKey()) {
+            var permiso = Model.usuarioPage.Action.getPermiso({ url: "/caja", permiso: "ver_caja_otro_usuario" });
+            if (!permiso) return <SText color={STheme.color.danger}>Lo sentimos, no tienes permisos para ver las cajas de otros usuarios.</SText>
+        }
+        // var data = Model.caja.Action.getByKey(key_caja)
         // var punto_venta = Model.punto_venta.Action.getByKey(caja.key_punto_venta, { key_sucursal: caja.key_sucursal }); //TODO
         // var sucursal = Model.sucursal.Action.getByKey(caja.key_sucursal);
         // if (!data || !sucursal || !punto_venta) return <SLoad />
@@ -68,33 +73,58 @@ class index extends Component {
 
         return <CajaOpen data={data} sucursal={this.state.sucursal} punto_venta={this.state.punto_venta} />
     }
+    getCajaByKey(key_caja) {
+        if (this.state.loading) return null;
+        if (this.state.caja_by_key) return this.state.caja_by_key;
+        this.setState({ loading: true });
+        Model.caja.Action.get_caja_by_key({ key_caja: key_caja }).then((r) => {
+            this.setState({ loading: false, caja_by_key: r.data });
+        }).catch(e => {
+            this.setState({ loading: false });
+        })
+        return null;
+    }
     render_estado() {
         var caja = {};
-
-
-        var activa = Model.caja.Action.getActiva();
-        if (!activa) return <SLoad />
-        if (activa.key) {
-            caja = activa;
-        }
-
         if (this.params?.key_caja) {
-            caja = Model.caja.Action.getByKey(this.params?.key_caja);
+
+            caja = this.getCajaByKey(this.params?.key_caja);
             if (!caja) return <SLoad />
+            if (!caja.key) return <SLoad />
+            if (!caja.key_sucursal) return <SLoad />
+            if (this.state.loading) return <SLoad />;
+            // caja = Model.caja.Action.getByKey(this.params?.key_caja);
+        } else {
+            var activa = Model.caja.Action.getActiva();
+            if (!activa) return <SLoad />
+            if (activa.key) {
+                caja = activa;
+            }
         }
-        if (caja.key && !caja.fecha_cierre) {
+
+
+
+        if (caja.key) {
             this.state.punto_venta = Model.punto_venta.Action.getByKey(caja.key_punto_venta, { key_sucursal: caja.key_sucursal }); //TODO
+            if (!this.state.punto_venta) return <SLoad />
             this.state.sucursal = Model.sucursal.Action.getByKey(caja.key_sucursal);
-            if (!this.state.sucursal || !this.state.punto_venta) return <SLoad />
+            if (!this.state.sucursal) return <SLoad />
             return <>
                 {this.render_inputs({ disabled: true })}
                 <SHr />
-                {this.renderCajaOpen(caja.key)}
+                {this.renderCajaOpen(caja)}
             </>
         }
         if (!this.state.sucursal) return this.render_inputs({})
         if (!this.state.punto_venta) return this.render_inputs({})
 
+        if (caja.fecha_cierre) {
+            return <>
+                {this.render_inputs({})}
+                <SHr />
+                {this.renderCajaOpen(caja)}
+            </>
+        }
         var last = this.getLast();
         if (!last) return <SLoad />
 
@@ -102,7 +132,7 @@ class index extends Component {
             return <>
                 {this.render_inputs({})}
                 <SHr />
-                {this.renderCajaOpen(last.key)}
+                {this.renderCajaOpen(last)}
             </>
         }
         return <>

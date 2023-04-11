@@ -45,7 +45,7 @@ export default class PuntoVentaTipoPago extends Component {
 
                     } else {
                         SNavigation.navigate("/contabilidad/cuentas", {
-                            codigo: "1-1-1-2",
+                            codigo: "1-1-1",
                             onSelect: (cuenta) => {
                                 Model.punto_venta_tipo_pago.Action.registro({
                                     data: {

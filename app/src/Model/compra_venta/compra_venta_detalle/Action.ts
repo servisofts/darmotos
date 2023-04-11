@@ -13,6 +13,30 @@ export default class Action extends SAction {
     //     })
     // }
 
+    getAllConProductos({ key_compra_venta }) {
+        var reducer = this._getReducer();
+        if (reducer.key_compra_venta != key_compra_venta) {
+            reducer.data = null;
+            reducer.key_compra_venta = key_compra_venta;
+        }
+        var productos = Model.compra_venta_detalle_producto.Action.getAll({
+            key_compra_venta: key_compra_venta
+        });
+
+        var data = super.getAll({
+            key_compra_venta: key_compra_venta
+        })
+        if (!productos) return null;
+
+        var data_res = {};
+        let arr_productos = Object.values(productos);
+        Object.values(data).map((obj: any) => {
+            if (!obj.estado) return;
+            obj.productos = arr_productos.filter((o: any) => o.key_compra_venta_detalle == obj.key && o.estado != 0)
+            data_res[obj.key] = obj;
+        });
+        return data_res;
+    }
     getAll({ key_compra_venta }) {
         var reducer = this._getReducer();
         if (reducer.key_compra_venta != key_compra_venta) {
@@ -63,14 +87,18 @@ export default class Action extends SAction {
                     data: resp.data,
                     estado: "exito"
                 })
+                resolve(resp);
             }).catch(e => {
-                console.log("entro al estado error")
                 Model.producto.Action.editar({
                     data: {
                         key: key_producto,
                         estado: -1,
                     },
                     key_usuario: Model.usuario.Action.getKey()
+                }).then((e) => {
+                    reject(e);
+                }).catch((e) => {
+                    reject(e);
                 })
             })
         })
@@ -124,10 +152,10 @@ export default class Action extends SAction {
     }
     comprasSinRecepcionar({ key_sucursal }) {
         var reducer = this._getReducer();
-        if (reducer.key_sucursal != key_sucursal) {
-            reducer.data_compras_sr = null;
-        }
-        reducer.key_sucursal = key_sucursal
+        // if (reducer.key_sucursal != key_sucursal) {
+        // reducer.data_compras_sr = null;
+        // }
+        // reducer.key_sucursal = key_sucursal
         const data = reducer?.data_compras_sr;
         if (!data) {
             if (reducer.estado == "cargando") return null;
@@ -135,19 +163,26 @@ export default class Action extends SAction {
                 ...this.model.info,
                 type: "comprasSinRecepcionar",
                 estado: "cargando",
-                key_sucursal: key_sucursal
+                key_sucursal: ""
             }
             SSocket.send(petition);
             return null;
         }
-        return data;
+        if (!key_sucursal) return data;
+        let other = {};
+        Object.values(data).map((obj: any) => {
+            if (!obj?.proveedor?.key_sucursal) return null;
+            if (obj.proveedor.key_sucursal != key_sucursal) return null;
+            other[obj.key] = obj;
+        })
+        return other;
     }
-    ventasSinEntregar({ key_sucursal }) {
+    ventasSinEntregar(props: { key_sucursal?: any }) {
         var reducer = this._getReducer();
-        if (reducer.key_sucursal != key_sucursal) {
-            reducer.ventar_sin_entregar = null;
-        }
-        reducer.key_sucursal = key_sucursal
+        // if (reducer.key_sucursal != props?.key_sucursal) {
+        // reducer.ventar_sin_entregar = null;
+        // }
+        // reducer.key_sucursal = props?.key_sucursal
         const data = reducer?.ventar_sin_entregar;
         if (!data) {
             if (reducer.estado == "cargando") return null;
@@ -155,11 +190,18 @@ export default class Action extends SAction {
                 ...this.model.info,
                 type: "ventasSinEntregar",
                 estado: "cargando",
-                key_sucursal: key_sucursal
+                // key_sucursal: props?.key_sucursal
             }
             SSocket.send(petition);
             return null;
         }
-        return data;
+        if (!props.key_sucursal) return data;
+        let other = {};
+        Object.values(data).map((obj: any) => {
+            if (!obj?.proveedor?.key_sucursal) return null;
+            if (obj.proveedor.key_sucursal != props.key_sucursal) return null;
+            other[obj.key] = obj;
+        })
+        return other;
     }
 }   

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { SButtom, SForm, SHr, SNavigation, SOrdenador, SPage, SText, STheme, SView } from 'servisofts-component';
+import { SButtom, SForm, SHr, SLoad, SNavigation, SOrdenador, SPage, SText, STheme, SView } from 'servisofts-component';
 import Model from '../../../../Model';
 import SSocket from 'servisofts-socket'
 class index extends Component {
@@ -14,6 +14,7 @@ class index extends Component {
 
     async onSubmit(data, ref, key_producto, callback) {
         var arr = Object.keys(data);
+        var data_final_array = []
         for (let i = 0; i < arr.length; i++) {
             const key_dato = arr[i];
             var dto = Object.values(this.producto_inventario_dato).find(o => o.key_inventario_dato == key_dato);
@@ -29,23 +30,17 @@ class index extends Component {
                 dato_str = JSON.stringify(dato_str);
             }
             if (!dto) {
-                var resp = await Model.producto_inventario_dato.Action.registro({
-                    data: {
-                        key_producto: key_producto ?? this.props.key_producto,
-                        descripcion: dato_str,
-                        key_inventario_dato: key_dato
-                    },
-                    key_usuario: Model.usuario.Action.getKey()
+                data_final_array.push({
+                    key_producto: key_producto ?? this.props.key_producto,
+                    descripcion: dato_str,
+                    key_inventario_dato: key_dato
                 })
 
             } else {
                 if (dto?.descripcion != dato_str) {
-                    var resp = await Model.producto_inventario_dato.Action.editar({
-                        data: {
-                            ...dto,
-                            descripcion: dato_str,
-                        },
-                        key_usuario: Model.usuario.Action.getKey()
+                    data_final_array.push({
+                        ...dto,
+                        descripcion: dato_str,
                     })
 
                 }
@@ -53,9 +48,23 @@ class index extends Component {
             }
 
         }
-        ref.uploadFiles2(
-            SSocket.api.inventario + "upload/producto_inventario_dato/" + key_producto,
-        );
+        console.log("entro  a subir los files")
+        // ref.uploadFiles2(
+        //     SSocket.api.inventario + "upload/producto_inventario_dato/" + key_producto,
+        // );
+        console.log("entro  a registro all")
+        Model.producto_inventario_dato.Action.registroAll(data_final_array).then((resp) => {
+            this.setState({ loading: false, loadingLabel: "Guardando con exito" });
+            Model.usuario_dato.Action._dispatch(resp);
+            if (callback) {
+                callback();
+                return;
+            }
+            // SNavigation.goBack();
+        }).catch(e => {
+            this.setState({ loading: false, loadingLabel: JSON.stringify(e) });
+            console.log(e);
+        })
         callback();
     }
 
@@ -80,25 +89,49 @@ class index extends Component {
             var dto = Object.values(this.producto_inventario_dato).find(o => o.key_inventario_dato == obj.key);
             var defaultValue = dto?.descripcion;
             var filePath = SSocket.api.inventario + "producto_inventario_dato/" + this.props.key_producto;
-            inputs[obj.key] = { label: obj.descripcion, icon: <SText>{obj.observacion}</SText>, type: obj.tipo, required: true, defaultValue: defaultValue, filePath: filePath }
+            console.log(obj);
+            inputs[obj.key] = { label: obj.descripcion, icon: <SText>{obj.observacion}</SText>, type: obj.tipo, required: obj?.tpid?.requerido, defaultValue: defaultValue, filePath: filePath }
         })
+        
         return <SForm ref={(ref) => this.form = ref} inputs={inputs} onSubmitName={""} onSubmit={(data, ref) => {
             // console.log("subir")
             // console.log(data);
             // var files = ref.getFiles()
             // console.log(files);
+            this.setState({ loading: true, loadingLabel: "Subiendo archivos..." });
             if (this.props.onSubmit) {
-                this.props.onSubmit().then(resp => {
-                    var key_producto = resp.key;
-                    var callback = resp.callback;
-                    this.onSubmit(data, ref, key_producto, callback);
-                    // console.log(SSocket.api.root + "upload/producto_inventario_dato/" + key_producto)
-                    // callback()
+                this.props.onSubmit().then(({ key, callback }) => {
+                    ref.uploadFiles2(
+                        SSocket.api.inventario + "upload/producto_inventario_dato/" + key
+                    ).then((resp) => {
+                        this.setState({ loading: true, loadingLabel: "Guardando cambios..." });
+                        this.onSubmit(data, ref, key, callback);
+                    }).catch((e) => {
+                        this.setState({ loading: false, loadingLabel: "Error al subir los archivos..." });
+                    })
+                }).catch(e => {
+                    this.setState({ loading: true, loadingLabel: <SText color={STheme.color.danger}>"Error en los datos, Inserte correctamente los datos."</SText> });
+                    new SPromise((resolve, reject) => {
+
+                    }, 1000).then(e => {
+                        this.setState({ loading: false, loadingLabel: "" });
+                    }).catch(e => {
+                        this.setState({ loading: false, loadingLabel: "" });
+
+                    })
                 })
-                return;
             }
 
         }} />
+    }
+    getLoading() {
+        if (!this.state.loading) return null;
+        return <SView center col={"xs-12"} height style={{
+            position: "absolute",
+        }} card>
+            <SLoad />
+            <SText>{this.state.loadingLabel}</SText>
+        </SView>
     }
     render() {
         return (
@@ -117,6 +150,11 @@ class index extends Component {
                 }}>
                     ACEPTAR
                 </SButtom>
+
+                <SLoad type='window' hidden={!this.state.loading} label={this.state.loadingLabel} onCancel={() => {
+                    this.setState({ loading: !this.state.loading, loadingLabel: "" });
+                }} />
+
             </SView>
         );
     }

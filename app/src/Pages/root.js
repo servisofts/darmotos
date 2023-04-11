@@ -32,12 +32,18 @@ class index extends Component {
             return null;
         }
         return (
-            <SPage title={''} >
+            <SPage title={''} onRefresh={(end) => {
+                Model.usuarioPage.Action.CLEAR();
+                end()
+
+            }}>
                 <SHr height={32} />
                 <MenuPages path={"/"} permiso={"page"}>
                     {/* <MenuButtom label={"Notificaciones"} url={"/notificacion"} icon={""} /> */}
                     <MenuButtom label={"Mi perfil"} url={"/profile"} icon={this.getIconProfile()} />
+                    {/* <MenuButtom label={"Test"} url={"/test"} /> */}
                 </MenuPages>
+                <SHr height={100} />
             </SPage>
         );
     }

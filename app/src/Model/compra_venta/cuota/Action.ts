@@ -50,5 +50,21 @@ export default class Action extends SAction {
             });
         });
     }
+    async getAllByK(extra: { key_cliente?: any, key_proveedor?: any }) {
+        return new Promise((resolve, reject) => {
+            var reducer = this._getReducer();
+            const petition = {
+                ...this.model.info,
+                type: "getAll",
+                estado: "cargando",
+                ...extra
+            }
+            SSocket.sendPromise(petition).then((resp) => {
+                resolve(resp);
+            }).catch(e => {
+                reject(e);
+            });
+        });
+    }
 
 }   

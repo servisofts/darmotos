@@ -20,26 +20,32 @@ class CajaOpen extends Component {
     render_open(data) {
         var caja_detales = Model.caja_detalle.Action.getAll({ key_caja: data.key });
         var usuario = Model.usuario.Action.getByKey(data.key_usuario);
+        var punto_venta_tipo_pago = Model.punto_venta_tipo_pago.Action.getAll({ key_punto_venta: data.key_punto_venta });
+
         if (!caja_detales) return <SLoad />
         if (!usuario) return <SLoad />
-        var monto_actual = Model.caja_detalle.Action.getMontoEnCaja({ key_caja: data.key });
+        if (!punto_venta_tipo_pago) return <SLoad />
+        // var monto_actual = Model.caja_detalle.Action.getMontoEnCaja({ key_caja: data.key });
         // console.log(data)
         return <SView center col={"xs-12"}>
             <Cajero data={data} />
             <SHr />
-            <SText>Fecha de apertura: {new SDate(data.fecha_on).toString("yyyy-MM-dd hh:mm:ss")}</SText>
+            <SText color={STheme.color.lightGray} fontSize={14}>Fecha de apertura: {new SDate(data.fecha_on).toString("yyyy-MM-dd hh:mm:ss")}</SText>
+            <SText color={STheme.color.lightGray} fontSize={14}>Fecha de cierre : {data.fecha_cierre ? new SDate(data.fecha_cierre).toString("yyyy-MM-dd hh:mm:ss") : "La caja se encuentra abierta."}</SText>
+            {/* 
             <SHr height={16} />
             <SView card style={{ padding: 16 }}>
                 <SText fontSize={20} bold>Bs. {SMath.formatMoney(monto_actual)}</SText>
-            </SView>
+            </SView> */}
             <SHr height={36} />
-            <CajaArqueo key_caja={data.key} />
+            {data.fecha_off}<CajaArqueo key_caja={data.key} punto_venta_tipo_pago={punto_venta_tipo_pago} />
             <SHr height={36} />
-            <CajaActions data={data} />
+            {!data.fecha_cierre ? <CajaActions data={data} punto_venta_tipo_pago={punto_venta_tipo_pago} /> : <SText>Caja cerrada</SText>}
             <SHr height={36} />
             <SList
                 col={"xs-12"}
                 order={[{ key: "fecha_on", order: "desc", peso: 1, type: "date" }]}
+                filter={obj => obj.estado != 0}
                 data={caja_detales}
                 render={(obj) => {
                     return <CajaDetalleItem data={obj} />

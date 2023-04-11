@@ -12,7 +12,8 @@ export default class Conyuge extends Component {
     data = {}
 
     seleccionarCliente() {
-        SNavigation.navigate("/cliente", {
+        SNavigation.navigate("/rol/profile/usuarios", {
+            pk: "51ee8a95-094b-41eb-8819-4afa1f349394",
             onSelect: (obj) => {
                 var obj = {
                     nit: obj.CI,

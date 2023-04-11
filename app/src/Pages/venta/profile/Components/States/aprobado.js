@@ -94,7 +94,7 @@ export default class index extends Component {
                 <Components.compra_venta.Totales data={this.data} disabled />
                 <Components.compra_venta.Separador data={this.data} />
                 {/* <PlanPagos ref={ref => this.pp = ref} data={this.data} disabled={!this.isAdmin} /> */}
-                <Components.compra_venta.PlanDePagos ref={ref => this.pp = ref} data={this.data} />
+                <Components.compra_venta.PlanDePagos ref={ref => this.pp = ref} data={this.data} disabled />
                 <Components.compra_venta.Separador data={this.data} />
                 {/* <Separador data={this.data}/> */}
                 {this.getActions()}

@@ -1,5 +1,5 @@
 import { SPage } from "servisofts-component";
-import Model from "../../../Model/";
+import Model from "../../src/Model";
 import table from "./table";
 import list from "./list";
 const model = Model.inventario;

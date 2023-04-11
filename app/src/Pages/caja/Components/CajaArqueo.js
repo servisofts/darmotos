@@ -31,7 +31,7 @@ class CajaArqueo extends Component<PropsType> {
 
 
     renderTipoPago(tipo_pago) {
-        var movimientos = Object.values(this.caja_detalles).filter(o => o.key_tipo_pago == tipo_pago.key)
+        var movimientos = Object.values(this.caja_detalles).filter(o => o.key_tipo_pago == tipo_pago.key && o.estado != 0)
         var monto = 0;
         var aux;
         var monto_ingreso = 0;
@@ -72,6 +72,43 @@ class CajaArqueo extends Component<PropsType> {
             <SHr h={1} color={STheme.color.lightBlack} />
         </SView>
     }
+
+    getTotal() {
+        var movimientos = Object.values(this.caja_detalles);
+
+        movimientos = movimientos.filter(o => o.estado != 0);
+        var monto = 0;
+        var aux;
+        var monto_ingreso = 0;
+        var monto_egreso = 0;
+        movimientos.map(o => {
+            aux = parseFloat(o.monto);
+            monto += aux;
+            if (aux > 0) {
+                monto_ingreso += aux;
+            } else {
+                monto_egreso += aux;
+            }
+        });
+        var color = STheme.color.lightGray
+        if (monto != 0) {
+            color = monto >= 0 ? STheme.color.success : STheme.color.danger
+        }
+        var cantidad = movimientos.length;
+        return <SView col={"xs-12"} row style={{
+            paddingTop: 8,
+            paddingBottom: 8,
+            backgroundColor: STheme.color.card,
+        }}>
+            <SView flex >
+                <SText style={this.textStyle} color={STheme.color.lightGray} bold>{"Total"}</SText>
+            </SView>
+            <SView width={this.size / 2} style={this.contentTextStyle}><SText style={this.textStyle} color={STheme.color.lightGray} bold>{cantidad}</SText></SView>
+            <SView width={this.size} style={this.contentTextStyle}><SText style={this.textStyle} color={STheme.color.lightGray} bold>{SMath.formatMoney(monto_ingreso)}</SText></SView>
+            <SView width={this.size} style={this.contentTextStyle}><SText style={this.textStyle} color={STheme.color.lightGray} bold>{SMath.formatMoney(monto_egreso)}</SText></SView>
+            <SView width={this.size} style={this.contentTextStyle}><SText style={this.textStyle} color={STheme.color.lightGray} bold>{SMath.formatMoney(monto)}</SText></SView>
+        </SView>
+    }
     render() {
         if (!this.props.key_caja) return null;
         if (!this.loadData()) return null;
@@ -91,6 +128,8 @@ class CajaArqueo extends Component<PropsType> {
                 space={0}
                 render={this.renderTipoPago.bind(this)}
             />
+            {this.getTotal()}
+            <SHr h={2} color={STheme.color.lightBlack} />
         </SView>
         );
     }

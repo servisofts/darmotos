@@ -1,12 +1,16 @@
 import DPA, { connect } from 'servisofts-page';
 import { Parent } from ".."
 import Model from '../../../Model';
-import { SDate, SHr, SImage, SList, SLoad, SMath, SNavigation, SPopup, SText, STheme, SView } from 'servisofts-component';
+import { SDate, SHr, SImage, SList, SLoad, SMath, SNavigation, SPopup, SScrollView2, SScrollView3, SText, STheme, SView } from 'servisofts-component';
 import States from './Components/States';
+import StateTiqueta from '../../../Components/compra_venta/StateTiqueta';
+import Container from '../../../Components/Container';
 class index extends DPA.profile {
     constructor(props) {
         super(props, {
             Parent: Parent,
+            type: "pageContainer",
+            title: "Venta",
             excludes: ["key", "key_usuario", "key_servicio"]
         });
         this.state = {
@@ -66,6 +70,11 @@ class index extends DPA.profile {
         return data
     }
 
+    $header() {
+        if (!this.data) return;
+        var statesInfo = Model.compra_venta.Action.getStateInfo()[this?.data?.state];
+        return <StateTiqueta label={statesInfo.label} color={statesInfo.color} width={150} />
+    }
     $render() {
         this.data = this.$getData()
         if (!this.data) return <SLoad />
@@ -74,6 +83,16 @@ class index extends DPA.profile {
             ITEM = States["default"];
         }
         return <ITEM data={this.data} />
+        return <SView col={"xs-12"} center flex>
+            <SScrollView2 disableHorizontal >
+                <SView col={"xs-12"} center flex>
+                    <Container>
+                        <ITEM data={this.data} />
+                    </Container>
+                </SView>
+            </SScrollView2>
+        </SView>
+
     }
 
 }

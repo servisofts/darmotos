@@ -32,8 +32,12 @@ class index extends DPA.edit {
             },
             key_usuario: ""
         }).then((resp) => {
-            this.presolve(this.pk)
-            SNavigation.replace("/usuario/profile", { pk: this.pk })
+            this.presolve({
+                key_usuario: this.pk, callback: () => {
+                    SNavigation.replace("/usuario/profile", { pk: this.pk })
+                }
+            })
+
 
         }).catch(e => {
             console.error(e);

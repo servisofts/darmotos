@@ -1,55 +1,75 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { SDate, SHr, SIcon, SList, SLoad, SMath, SNavigation, SPage, SText, STheme, SView } from 'servisofts-component';
+import Container from '../../Components/Container';
 import Model from '../../Model';
 class index extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            select: {}
         };
         this.onSelect = SNavigation.getParam("onSelect");
+        this.key_cliente = SNavigation.getParam("key_cliente");
+        this.key_proveedor = SNavigation.getParam("key_proveedor");
     }
 
     componentDidMount() {
-        Model.cuota.Action.getPendientes().then(e => {
-            this.setState({ data: e.data })
-        })
+        if (this.key_cliente) {
+            Model.cuota.Action.getAllByK({ key_cliente: this.key_cliente }).then(e => {
+                this.setState({ data: e.data })
+            })
+        } else if (this.key_proveedor) {
+            Model.cuota.Action.getAllByK({ key_proveedor: this.key_proveedor }).then(e => {
+                this.setState({ data: e.data })
+            })
+        }
+
     }
 
     render_data() {
         var cuotas = this.state.data
         if (!cuotas) return <SLoad />
-        var cuotas_aux = {};
-        Object.values(cuotas).map(cuota => {
-            if (cuota.tipo === "compra") {
-                if (cuota.proveedor.nit == this.props.route.params.nit) {
-                    cuotas_aux[cuota.key] = cuota;
-                }
-            } else {
-                if (cuota.cliente.nit == this.props.route.params.nit) {
-                    cuotas_aux[cuota.key] = cuota;
-                }
-            }
-        });
+        // var cuotas_aux = {};
+        // Object.values(cuotas).map(cuota => {
+        //     if (cuota.tipo === "compra") {
+        //         if (cuota.proveedor.nit == this.props.route.params.nit) {
+        //             cuotas_aux[cuota.key] = cuota;
+        //         }
+        //     } else {
+        //         if (cuota.cliente.nit == this.props.route.params.nit) {
+        //             cuotas_aux[cuota.key] = cuota;
+        //         }
+        //     }
+        // });
 
-        cuotas = cuotas_aux;
+        // cuotas = cuotas_aux;
         return <SList
             order={[{ key: "fecha", type: "date", order: "asc" }]}
             data={cuotas}
+            buscador
             space={0}
             limit={10}
+            filter={a => a.estado != "2"}
             render={(obj) => {
                 var compra_venta = Model.compra_venta.Action.getByKey(obj.key_compra_venta);
+                var isSelect = this.state.select[obj.key];
                 if (!compra_venta) return <SLoad />
                 var isRetrasada = new SDate(obj.fecha).isBefore(new SDate())
                 return <SView col={"xs-12"} style={{
-                    padding: 8
+                    padding: 8, opacity: !isSelect ? 0.5 : 1
                 }} onPress={() => {
-                    if (this.onSelect) {
-                        SNavigation.goBack();
-                        this.onSelect(obj);
-                        return;
+                    if (!this.state.select[obj.key]) {
+                        this.state.select[obj.key] = obj;
+                    } else {
+                        delete this.state.select[obj.key];
                     }
+                    this.setState({ ...this.state })
+                    // if (this.onSelect) {
+                    //     SNavigation.goBack();
+                    //     this.onSelect(obj);
+                    //     return;
+                    // }
                 }}>
                     <SView col={"xs-12"} row>
                         <SView flex>
@@ -88,12 +108,34 @@ class index extends Component {
         />
 
     }
+    renderFooter() {
+        let total = 0;
+        Object.values(this.state.select).map(obj => {
+            total += obj.monto;
+        })
+        return <SView col={"xs-12"} height={50} center card onPress={() => {
+            if (this.onSelect) {
+                SNavigation.goBack();
+                this.onSelect(this.state.select);
+                return;
+            }
+        }}>
+            <Container>
+                <SView col={"xs-12"} row padding={8}>
+                    <SView flex><SText>Total:</SText></SView>
+                    <SView><SText>{SMath.formatMoney(total)}</SText></SView>
+                </SView>
+                <SText fontSize={10} color={STheme.color.lightGray}>{"Click aqui para continuar"}</SText>
+                <SHr />
+            </Container>
+        </SView>
+    }
     render() {
         return (
-            <SPage title={'Carrito de cuotas'}>
+            <SPage title={'Carrito de cuotas'} footer={this.renderFooter()}>
                 <SView col={"xs-12"} center>
                     <SHr />
-                    <SView col={"xs-11 sm-10 md-8 lg-6 xl-4"} center card>
+                    <SView col={"xs-11 sm-10 md-8 lg-6 xl-4"} center>
                         <SHr />
                         {this.render_data()}
                     </SView>

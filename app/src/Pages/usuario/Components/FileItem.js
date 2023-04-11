@@ -30,7 +30,7 @@ class index extends Component {
                     }} center col={"xs-12"} height>
                         <SText color={STheme.color.lightGray}>{extencion}</SText>
                     </SView>
-                    <SImage src={path + name} />
+                    <SImage src={path + name+"?time="+new Date().getTime()} />
 
                 </SView>
                 <SView flex col={"xs-11"} style={{

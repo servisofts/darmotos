@@ -7,8 +7,11 @@ class index extends DPA.list {
         super(props, {
             Parent: Parent,
             excludes: ["key", "fecha_on", "key_servicio", "estado"],
-            itemType:"2"
-
+            itemType:"2",
+            onRefresh: (resolve) => {
+                Parent.model.Action.CLEAR();
+                resolve();
+            }
         });
     }
     $allowNew() {

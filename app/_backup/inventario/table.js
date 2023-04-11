@@ -1,6 +1,6 @@
 import DPA, { connect } from 'servisofts-page';
 import { Parent } from "."
-import Model from '../../../Model';
+import Model from '../../src/Model';
 
 class index extends DPA.table {
     constructor(props) {

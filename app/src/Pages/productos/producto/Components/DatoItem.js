@@ -53,8 +53,14 @@ class index extends Component {
     type_files() {
         const { obj, dto } = this.props
         if (!dto) return <SText>{this.state.defaultValue}</SText>;
-        var arr = JSON.parse(dto.descripcion);
+        let arr = null;
+        try {
+            arr = JSON.parse(dto.descripcion);
+        } catch (e) {
+            console.error(e);
+        }
         if (!arr) return <SText>{this.state.defaultValue}</SText>;
+
         var filePath = SSocket.api.inventario + "producto_inventario_dato/" + dto.key_producto + "/" + obj.key + "/";
         return <SView col={"xs-12"} center>
             <SHr />
