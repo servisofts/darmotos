@@ -24,7 +24,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import Servisofts.SConfig;
-import Servisofts.SUtil;
 
 public class PDF {
     
@@ -37,7 +36,6 @@ public class PDF {
     private int espacios[];
     private int ANCHO = 612;
     private int ALTO = 792;
-    private int ANCHO_MARGEN = 572;
     private int ALTO_MARGEN = 752;
 
     private NumeroLiteral numero_literal;
@@ -52,8 +50,9 @@ public class PDF {
     public PDF(){
         try{
             document = new PDDocument();
-            page = new PDPage(PDRectangle.LETTER);
-            contentStream = new PDPageContentStream(document, page, PDPageContentStream.AppendMode.APPEND, true);
+            //page = new PDPage(PDRectangle.LETTER);
+            //contentStream = new PDPageContentStream(document, page, PDPageContentStream.AppendMode.APPEND, true);
+            generarFacturaRollo(new JSONObject(), "nombre.pdf", "#ff00ff");
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -101,14 +100,6 @@ public class PDF {
         }
     }
 
-    private float textCenter(String text,int x) throws IOException{
-        float tamanoFontX = font.getStringWidth(text) / 1000 * fontSize;
-        float startX = (x - (tamanoFontX/2));
-        return startX;
-    }
-
- 
-
     public float getTextCenterX(String text) throws IOException{
         float tamanoFontX = font.getStringWidth(text) / 1000 * fontSize;
         float startX = (page.getMediaBox().getWidth() - tamanoFontX) / 2;
@@ -118,52 +109,6 @@ public class PDF {
         float tamanoFontY = font.getFontDescriptor().getFontBoundingBox().getHeight() / 1000 * fontSize;
         float startY = (page.getMediaBox().getHeight() - tamanoFontY) / 2;
         return startY;
-    }
-
-    private float textCenter(String text) throws IOException{
-        float tamanoFontX = font.getStringWidth(text) / 1000 * fontSize;
-        float startX = (120 - (tamanoFontX/2));
-        return startX;
-    }
-
-    private void writeImg(String url){
-        try{
-            PDImageXObject pdImage = null;
-            try{
-                pdImage = PDImageXObject.createFromFile(url, document);
-            }catch(Exception e){
-                System.out.println("Imagen registrada");
-            }
-            y-=100;
-            contentStream.drawImage(pdImage, 25, y, 100, 100);
-            if(y<=100){
-                newPage();
-                y = page.getMediaBox().getHeight()-50;
-            }
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-        
-    }
-    
-    private void writeImgUrl(String url){
-        try{
-            URL url_ = new URL(url);
-            PDImageXObject pdImage = null;
-            BufferedImage image_ = ImageIO.read(url_);
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            ImageIO.write(image_, "PNG", baos);
-            byte[] bytes = baos.toByteArray();
-            pdImage = PDImageXObject.createFromByteArray(document, bytes, "prueba");
-            y-=100;
-            contentStream.drawImage(pdImage, 25, y, 100, 100);
-            if(y<=100){
-                newPage();
-                y = page.getMediaBox().getHeight()-50;
-            }
-        }catch(Exception e){
-            System.out.println("Imagen registrada");
-        }
     }
 
     private void writeImgUrl(String url, float center){
@@ -224,21 +169,6 @@ public class PDF {
         }
         contentStream.endText();
     }
-
-    private float textRight(String text,int x) throws IOException{
-        float tamanoFontX = font.getStringWidth(text) / 1000 * fontSize;
-        float startX = (x - (tamanoFontX));
-        return startX;
-    }
-    private float getCenterX(float ancho) throws IOException{
-        float startX = (page.getMediaBox().getWidth() - ancho) / 2;
-        return startX;
-    }
-    private float getCenterY(float alto) throws IOException{
-        float startY = (page.getMediaBox().getHeight() - alto) / 2;
-        return startY;
-    }
-    
     public static Color getColorHex(String colorStr) {
         return new Color(
                 Integer.valueOf( colorStr.substring( 1, 3 ), 16 ),
@@ -303,20 +233,7 @@ public class PDF {
         resultado=y-(resultado/2);
         return resultado;
     }
-    public void armarTabla(JSONArray array){
-        JSONArray head = array.getJSONArray(0);
-        JSONArray body = array.getJSONArray(0);
-        int width=0;
-        
-        for(int i=0;i<head.length();i++){
-            width+=head.getJSONObject(i).getInt("width");
-        }
-        int restar=configWidth(width);
-        for(int i=0;i<head.length();i++){
-            width+=head.getJSONObject(i).getInt("width");
-        }
-    }
-    
+  
     public int configWidth(int width){
         int restar =0;
         int aux=0;
@@ -473,26 +390,25 @@ public class PDF {
    }
 
    public void initOffSet(int cal) throws IOException{
-    ALTO=671;
-    ANCHO=241;
-    ALTO_MARGEN = 874;
-    numero_literal= new NumeroLiteral();
-    document = new PDDocument();
-    //page = new PDPage(new PDRectangle(ANCHO, cal));
-    page = new PDPage(new PDRectangle(ANCHO, ALTO));
-    document.addPage(page);
-    font = PDType0Font.load(document, new File(getRutaFont()));
-    contentStream = new PDPageContentStream(document, page, PDPageContentStream.AppendMode.APPEND, true);
-}
+        ALTO=671;
+        ANCHO=241;
+        ALTO_MARGEN = 874;
+        numero_literal= new NumeroLiteral();
+        document = new PDDocument();
+        //page = new PDPage(new PDRectangle(ANCHO, cal));
+        page = new PDPage(new PDRectangle(ANCHO, ALTO));
+        document.addPage(page);
+        font = PDType0Font.load(document, new File(getRutaFont()));
+        contentStream = new PDPageContentStream(document, page, PDPageContentStream.AppendMode.APPEND, true);
+    }
 
    public void drawPoints(float posy,int ancho) throws IOException{
-    int posLine=15;
-    String puntos="";
-    for(int m=0 ;m<ancho; m++){
-        puntos+=".";
+        String puntos="";
+        for(int m=0 ;m<ancho; m++){
+            puntos+=".";
+        }
+        write(15, posy, puntos);
     }
-    write(15, posy, puntos);
-}
 
 
     public String generarFacturaRollo( JSONObject contenido, String nombre_, String color)    throws IOException{
@@ -500,101 +416,6 @@ public class PDF {
         initOffSet(alto_cal);        
         setFontSize(8);
         
-        espacios =new int[8];
-        espacios[0]=20;
-        espacios[1]=90;
-        espacios[2]=150;
-        espacios[3]=230;
-        espacios[4]=410;
-        espacios[5]=470;
-        espacios[6]=530;
-        espacios[7]=592;
-        
-    
-        
-       /* JSONObject cabeza = contenido.getJSONObject("CABEZA");
-        JSONArray cuerpo = contenido.getJSONArray("CUERPO");
-        JSONObject casa = contenido.getJSONObject("CASA");
-        */
-        PDImageXObject pdImage = null;
-        
-        
-        float y = page.getMediaBox().getHeight();
-        
-        y-=20;
-        String rs = "RAZONSOCIALEMISOR";
-        String telefono = "TELEFONO";
-        int nit = 166224026;
-        int numero_fact = 5;
-        int codigo = 0;
-        int codigo_ambiente = 0;
-        
-        String fecha = "FECHAEMISION";
-        String municipio = "MUNICIPIO";
-        String nombre = "NOMBRERAZONSOCIAL";
-        String codigo_cliente = "CODIGOCLIENTE";
-        String numero_documento = "NUMERODOCUMENTO";
-        String cuf = "CUF";
-        String leyenda = "LEYENDA";
-        String estado = "ESTADO";
-        String casa_descripcion="N/A";
-        String casa_telefono="N/A";
-        
-        double monto_total=0.0;
-        double descuento=0.0;
-        double monto_subTotal=0.0;
-        double monto_IBCF=0.0;
-        double gifCard=0.0;
-        
-      /*  URL url_ = new URL("http://localhost:8080/perfilEmpresa/"+nit);
-        //URL url_ = new URL("http://localhost:8080/perfilEmpresa/"+nit);
-        BufferedImage image_ = ImageIO.read(url_);
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        ImageIO.write(image_, "PNG", baos);
-        byte[] bytes = baos.toByteArray();
-        
-        try{
-            pdImage = PDImageXObject.createFromByteArray(document, bytes, "prueba");
-        }catch(Exception e){
-            System.out.println("Imagen registrada");
-        }
-        contentStream.drawImage(pdImage, 25, 720, 170, 40);*/
-        
-        
-        /*if(!cabeza.isNull("MONTOTOTAL")){
-            monto_total=cabeza.getDouble("MONTOTOTAL");
-        }
-        if(!cabeza.isNull("DESCUENTOADICIONAL")){
-            descuento=cabeza.getDouble("DESCUENTOADICIONAL");
-        }
-
-        if(!cabeza.isNull("MONTOTOTALSUJETOIVA")){
-            monto_IBCF=cabeza.getDouble("MONTOTOTALSUJETOIVA");
-        }
-        if(!cabeza.isNull("MONTOGIFCARD")){
-            gifCard=cabeza.getDouble("MONTOGIFCARD");
-        }
-        
-        if(!casa.isNull("DIRECCION")){
-            casa_descripcion=casa.getString("DIRECCION");
-        }
-        if(!casa.isNull("TELEFONO")){
-            casa_telefono=casa.getString("TELEFONO");
-        }
-    */
-        
-        String complemento_ = "";
-        
-     /*    
-        if(!cabeza.isNull("COMPLEMENTO")){
-            complemento_ = cabeza.get("COMPLEMENTO")+"";
-        }
-        */
-        
-        ArrayList<String> direccion=limitText("DIRECCION",30);
-        ArrayList<String> list_casa_direccion=limitText(casa_descripcion,30);
-        
-        setFontSize(8);
         String titulo_factura = "FACTURA";
         String sub_titulo_factura = "CON DERECHO A CRÉDITO FISCAL";
         
@@ -603,6 +424,7 @@ public class PDF {
         y-=9;
         write(getTextCenterX(sub_titulo_factura), y, sub_titulo_factura);
         y-=9;
+        
         contentStream.setLineWidth(1f);   
         contentStream.stroke();  
         contentStream.close();

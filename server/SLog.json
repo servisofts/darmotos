@@ -2,7 +2,7 @@
   "Servicios": {
     "notification": {
       "host": "192.168.5.33:10033",
-      "status": "desconectado"
+      "status": "exito"
     },
     "compra_venta": {
       "host": "192.168.5.41:10041",
@@ -13,12 +13,12 @@
       "status": "exito"
     },
     "contabilidad": {
-      "host": "192.168.5.11:10011",
+      "host": "192.168.2.1:10011",
       "status": "exito"
     },
     "proyecto": {
       "host": "192.168.5.14:10014",
-      "status": "desconectado"
+      "status": "exito"
     },
     "usuario": {
       "host": "192.168.5.2:10002",
@@ -26,11 +26,11 @@
     },
     "caja": {
       "host": "192.168.5.45:10045",
-      "status": "exito"
+      "status": "desconectado"
     },
     "empresa": {
       "host": "192.168.5.29:10029",
-      "status": "desconectado"
+      "status": "exito"
     },
     "inventario": {
       "host": "192.168.5.39:10039",
@@ -42,5 +42,5 @@
     "status": "exito"
   },
   "- SLog": "RealTime Log from server Servisofts",
-  "- Fecha": "2023-01-30T22:32:51.000540"
+  "- Fecha": "2023-04-10T19:52:00.000486"
 }

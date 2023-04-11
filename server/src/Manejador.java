@@ -32,6 +32,9 @@ public class Manejador {
             case CuentaMovimiento.COMPONENT:
                 CuentaMovimiento.onMessage(obj, session);
                 break;
+            case Reporte.COMPONENT:
+                Reporte.onMessage(obj, session);
+                break;
         }
     }
 }
