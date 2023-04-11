@@ -4,6 +4,7 @@ import { Linking } from 'react-native';
 import { SButtom, SHr, SPage, SText, SView } from 'servisofts-component';
 import SSocket from 'servisofts-socket'
 import Model from '../Model';
+import { CuentaContable } from 'servisofts-rn-contabilidad';
 class Test extends Component {
     constructor(props) {
         super(props);
@@ -34,6 +35,7 @@ class Test extends Component {
                 }}  >
                     ENVIAR PDF
                 </SButtom>
+                <CuentaContable />
             </SPage >
         );
     }

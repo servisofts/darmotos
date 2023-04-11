@@ -12,6 +12,7 @@ class index extends Component {
         this.state = {
             key_caja: SNavigation.getParam("key_caja", "")
         };
+        this.params = SNavigation.getAllParams();
     }
     render_inputs({ disabled }) {
         // var key_usuario = Model.usuario.Action.getKey();
@@ -70,10 +71,16 @@ class index extends Component {
     render_estado() {
         var caja = {};
 
+
         var activa = Model.caja.Action.getActiva();
         if (!activa) return <SLoad />
         if (activa.key) {
             caja = activa;
+        }
+
+        if (this.params?.key_caja) {
+            caja = Model.caja.Action.getByKey(this.params?.key_caja);
+            if (!caja) return <SLoad />
         }
         if (caja.key && !caja.fecha_cierre) {
             this.state.punto_venta = Model.punto_venta.Action.getByKey(caja.key_punto_venta, { key_sucursal: caja.key_sucursal }); //TODO

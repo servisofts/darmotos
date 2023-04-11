@@ -8,6 +8,7 @@ import SelectMonedas from './SelectMonedas';
 import _types from './_types';
 import SSocket from 'servisofts-socket';
 import Cajero from './Cajero';
+import CajaArqueo from './CajaArqueo';
 class CajaOpen extends Component {
     constructor(props) {
         super(props);
@@ -31,6 +32,8 @@ class CajaOpen extends Component {
             <SView card style={{ padding: 16 }}>
                 <SText fontSize={20} bold>Bs. {SMath.formatMoney(monto_actual)}</SText>
             </SView>
+            <SHr height={36} />
+            <CajaArqueo key_caja={data.key} />
             <SHr height={36} />
             <CajaActions data={data} />
             <SHr height={36} />

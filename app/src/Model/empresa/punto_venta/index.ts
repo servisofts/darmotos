@@ -14,6 +14,7 @@ export default new SModel<Action, Reducer>({
         "fecha_on": { type: "timestamp", label: "F. registro" },
         "estado": { type: "integer" },
         "key_sucursal": { type: "text", fk: "sucursal", notNull: true },
+        "key_cuenta_contable": { type: "text", fk: "cuenta_contable", editable: true},
         "key_usuario": { type: "text", fk: "usuario" },
         "direccion": { type: "text", editable: true, label: "Direccion" },
         "lat": { type: "double", editable: true },

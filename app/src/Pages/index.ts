@@ -20,6 +20,7 @@ import venta from './venta';
 import caja from './caja';
 import cobranza from './cobranza';
 import notification from './notification';
+import reporte from './reporte';
 export default SPage.combinePages("/", {
     "": Root,
     "login": login,
@@ -40,6 +41,7 @@ export default SPage.combinePages("/", {
     ...venta,
     ...caja,
     ...cobranza,
-    ...notification
+    ...notification,
+    ...reporte
 
 });

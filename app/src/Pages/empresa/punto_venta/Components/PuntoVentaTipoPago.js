@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
-import { SHr, SList, SLoad, SText, STheme, SView } from 'servisofts-component';
+import { SHr, SList, SLoad, SNavigation, SPopup, SText, STheme, SView } from 'servisofts-component';
 import Model from '../../../../Model';
 
 export default class PuntoVentaTipoPago extends Component {
@@ -8,6 +8,13 @@ export default class PuntoVentaTipoPago extends Component {
         super(props);
         this.state = {
         };
+    }
+
+    getCuenta(select) {
+        if (!select) return null;
+        var cuenta_conta = Model.cuenta_contable.Action.getByKey(select?.key_cuenta_contable);
+        if (!cuenta_conta) return <SLoad />
+        return <SText fontSize={10} color={STheme.color.lightGray}>{cuenta_conta?.codigo} {cuenta_conta?.descripcion}</SText>
     }
 
     render_data() {
@@ -22,21 +29,36 @@ export default class PuntoVentaTipoPago extends Component {
                 var select = Object.values(punto_venta_tipo_pago).find(o => o.key_punto_venta == this.props.key_punto_venta && o.key_tipo_pago == obj.key && o.estado != 0)
                 return <SView col={"xs-12"} card style={{ padding: 4, opacity: !select ? 0.6 : 1 }} row center onPress={() => {
                     if (select) {
-                        Model.punto_venta_tipo_pago.Action.editar({
-                            data: {
-                                ...select,
-                                estado: 0,
-                            },
-                            key_usuario: Model.usuario.Action.getKey()
+                        SPopup.confirm({
+                            title: "Seguro de desactivar?",
+                            message: "Esta seguro de desactivar el tipo de pago para este punto de venta?",
+                            onPress: () => {
+                                Model.punto_venta_tipo_pago.Action.editar({
+                                    data: {
+                                        ...select,
+                                        estado: 0,
+                                    },
+                                    key_usuario: Model.usuario.Action.getKey()
+                                })
+                            }
                         })
+
                     } else {
-                        Model.punto_venta_tipo_pago.Action.registro({
-                            data: {
-                                key_punto_venta: this.props.key_punto_venta,
-                                key_tipo_pago: obj.key,
-                            },
-                            key_usuario: Model.usuario.Action.getKey()
+                        SNavigation.navigate("/contabilidad/cuentas", {
+                            codigo: "1-1-1-2",
+                            onSelect: (cuenta) => {
+                                Model.punto_venta_tipo_pago.Action.registro({
+                                    data: {
+                                        key_punto_venta: this.props.key_punto_venta,
+                                        key_tipo_pago: obj.key,
+                                        key_cuenta_contable: cuenta.key,
+                                    },
+                                    key_usuario: Model.usuario.Action.getKey()
+                                })
+                                SNavigation.goBack();
+                            }
                         })
+
                     }
 
                 }}>
@@ -46,6 +68,9 @@ export default class PuntoVentaTipoPago extends Component {
                     <SView flex>
                         <SText>{obj.descripcion}</SText>
                         <SText fontSize={10} color={STheme.color.lightGray}>{obj.observacion}</SText>
+                        <SHr height={4} />
+                        {this.getCuenta(select)}
+
                     </SView>
                 </SView>
             }}

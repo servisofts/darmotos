@@ -193,10 +193,13 @@ const calcular_cuotas = ({ data, totales, numero_cuotas, fecha_inicio, periodici
         codigo: 0,
         descripcion: "Inicial",
         monto: cuota_inicial,
-        fecha: new SDate(fecha_inicio,"yyyy-MM-dd").toString("yyyy-MM-dd"),
+        fecha: new SDate(fecha_inicio, "yyyy-MM-dd").toString("yyyy-MM-dd"),
     })
 
     var total_al_credito = total_pagar - cuota_inicial;
+
+    var saldo_capital = total_al_credito;
+
     var pmt = -PMT(porcentaje_interes / 100, numero_cuotas, total_al_credito, 0, 0)
     for (let i = 0; i < numero_cuotas; i++) {
         let initDate = new SDate(fecha_inicio, "yyyy-MM-dd");
@@ -210,7 +213,7 @@ const calcular_cuotas = ({ data, totales, numero_cuotas, fecha_inicio, periodici
             codigo: i + 1,
             descripcion: "Cuota",
             monto: pmt,
-            fecha: initDate.toString("yyyy-MM-dd")
+            fecha: initDate.toString("yyyy-MM-dd"),
         }
         cuotas.push(cuota);
 

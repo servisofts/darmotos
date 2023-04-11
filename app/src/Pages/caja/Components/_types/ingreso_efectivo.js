@@ -19,9 +19,9 @@ export default class index {
     }
     static onPress(caja) {
         //Pedimos el monto y el detalle
-        SNavigation.navigate("/contabilidad/plan_unico_cuenta", {
-            onlyChildrens: true,
-            key_cuenta: "3038c20e-12f5-46b5-b70a-129fb634b241",
+        SNavigation.navigate("/contabilidad/cuentas", {
+            codigo:"4-2",
+            // key_cuenta: "3038c20e-12f5-46b5-b70a-129fb634b241",
             onSelect: (cuenta_contable) => {
                 SNavigation.goBack();
                 PopupMontoDetalle.open({
@@ -36,6 +36,7 @@ export default class index {
                                 "key_caja": caja.key,
                                 "_type": this.key,
                                 onSubmit: (fracciones) => {
+                                    SNavigation.goBack();
                                     console.log(fracciones);
                                 }
                             })
@@ -47,11 +48,12 @@ export default class index {
                             "monto": monto,
                             "tipo": "ingreso",
                             "key_tipo_pago": "efectivo",
-                            "key_cuenta_contable": cuenta_contable.key,
+                            cuentas: [{ key_cuenta_contable: cuenta_contable.key, monto: monto }],
                         }
                         //Registramos el caja_detalle
                         Model.caja_detalle.Action.registro({
                             data: caja_detalle,
+                            cuentas: [{ key_cuenta_contable: cuenta_contable.key, monto: monto }],
                             key_usuario: Model.usuario.Action.getKey()
                         }).then((resp) => {
                             console.log(resp)

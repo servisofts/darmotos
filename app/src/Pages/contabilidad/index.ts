@@ -6,6 +6,9 @@ import cuenta_contable from "./cuenta_contable";
 import centro_costo from "./centro_costo";
 import plan_unico_cuenta from "./plan_unico_cuenta";
 import centro_costo_detalle from "./centro_costo_detalle";
+import asiento_contable from "./asiento_contable";
+import asiento_contable_detalle from "./asiento_contable_detalle";
+import cuentas from "./cuentas";
 export const Parent = {
     title: "Contabilidad",
     name: "contabilidad",
@@ -14,11 +17,14 @@ export const Parent = {
 export default SPage.combinePages(Parent.name,
     {
         "": root,
+        "cuentas": cuentas,
         ...gestion,
         ...cuenta_contable,
         ...centro_costo,
         ...plan_unico_cuenta,
-        ...centro_costo_detalle
+        ...centro_costo_detalle,
+        ...asiento_contable,
+        ...asiento_contable_detalle
 
     }
 )

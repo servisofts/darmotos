@@ -1,7 +1,8 @@
 import DPA, { connect } from 'servisofts-page';
 import { Parent } from '.';
-import { SNavigation } from 'servisofts-component';
+import { SNavigation, SPopup, SView } from 'servisofts-component';
 import Model from '../../../../Model';
+import Components from '../../../../Components';
 
 class index extends DPA.new {
     constructor(props) {
@@ -26,6 +27,11 @@ class index extends DPA.new {
         if (data.type == "egreso") {
             data.monto = data.monto * -1;
         }
+        var cc = this.cuenta_contable_input.getValue();
+        if (!cc) {
+            SPopup.alert("Deve seleccionar una cuenta contable");
+            return;
+        }
         Parent.model.Action.registro({
             data: data,
             key_usuario: Model.usuario.Action.getKey(),
@@ -35,6 +41,11 @@ class index extends DPA.new {
             console.error(e);
 
         })
+    }
+    $header() {
+        return <SView col={"xs-12"}>
+            <Components.contabilidad.cuenta_contable.Select codigo={"3"} ref={ref => this.cuenta_contable_input = ref} />
+        </SView>
     }
 }
 

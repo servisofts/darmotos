@@ -4,6 +4,8 @@ import { SHr, SList, SLoad, SNavigation, SText, SView } from 'servisofts-compone
 import Model from '../../../Model';
 import C_cuenta_movimiento_list_by_cuenta from "./movimiento/Components/list_by_cuenta";
 import item from './item';
+import { CuentaContable } from 'servisofts-rn-contabilidad';
+import Components from '../../../Components';
 
 class index extends DPA.profile {
     constructor(props) {
@@ -37,8 +39,24 @@ class index extends DPA.profile {
         }
         return data;
     }
+    getCuentaContable() {
+        if (!this.data) return <SLoad />
+        return <Components.contabilidad.cuenta_contable.Select
+            key_cuenta_contable={this.data.key_cuenta_contable}
+            codigo={"1-1-1-2"}
+            onChange={(cuenta) => {
+                Model.banco_cuenta.Action.editar({
+                    data: {
+                        ...this.data,
+                        key_cuenta_contable: cuenta.key
+                    },
+                    key_usuario: Model.usuario.Action.getKey()
+                })
+            }} />
+    }
     $footer() {
         return <SView col={"xs-12"}>
+            {this.getCuentaContable()}
             <SHr />
             <C_cuenta_movimiento_list_by_cuenta key_cuenta={this.pk} />
         </SView>

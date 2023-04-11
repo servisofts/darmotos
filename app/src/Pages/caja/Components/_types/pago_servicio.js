@@ -31,6 +31,7 @@ export default class index {
         }).then(e => {
             var amortizacion = e.data;
             obj.data.key_amortizacion = amortizacion.key
+            obj.cuentas = Object.values(e.cuentas);
             Model.caja_detalle.Action.editar({
                 data: obj,
                 key_usuario: Model.usuario.Action.getKey()

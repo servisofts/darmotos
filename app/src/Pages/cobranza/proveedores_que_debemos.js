@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { SDate, SHr, SIcon, SList, SLoad, SMath, SNavigation, SPage, SText, STheme, SView } from 'servisofts-component';
+import { SDate, SHr, SIcon, SImage, SList, SLoad, SMath, SNavigation, SPage, SText, STheme, SView } from 'servisofts-component';
 import { MenuButtom } from 'servisofts-rn-roles_permisos';
 import Model from '../../Model';
 import usuario from '../usuario';
+import SSocket from 'servisofts-socket';
 class index extends Component {
     constructor(props) {
         super(props);
@@ -52,10 +53,27 @@ class index extends Component {
                         }
                     });
                 }}>
-                    <SText fontSize={18}>{obj.Nombres} {obj.Apellidos}</SText>
-                    {/* <SText fontSize={18}>{obj.}</SText> */}
-                    <SText>Cuotas retrasadas: {cuotas_retrasadas.length}</SText>
-                    <SText>Cuotas restantes: {Object.values(obj.cuotas).length}</SText>
+                    <SView col={"xs-12"} row>
+                        <SView width={100} style={{
+                            padding: 8
+                        }}>
+                            <SImage src={Model.usuario._get_image_download_path(SSocket.api, obj.key)} />
+                        </SView>
+                        <SView>
+                            <SText fontSize={18}>{obj.Nombres} {obj.Apellidos}</SText>
+                            <SHr />
+                            <SView row>
+                                <SText>Cuotas retrasadas: </SText>
+                                <SText>{cuotas_retrasadas.length}</SText>
+                            </SView>
+                            <SHr height={4} />
+                            <SView row>
+                                <SText>Cuotas restantes: </SText>
+                                <SText>{Object.values(obj.cuotas).length}</SText>
+                            </SView>
+                        </SView>
+                    </SView>
+
                 </SView>
             }}
         />
