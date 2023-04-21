@@ -6,15 +6,19 @@
     },
     "compra_venta": {
       "host": "192.168.5.41:10041",
-      "status": "exito"
+      "status": "desconectado"
+    },
+    "sqr": {
+      "host": "192.168.5.34:10034",
+      "status": "desconectado"
     },
     "roles_permisos": {
       "host": "192.168.5.16:10016",
       "status": "exito"
     },
     "contabilidad": {
-      "host": "192.168.2.1:10011",
-      "status": "exito"
+      "host": "192.168.5.11:10011",
+      "status": "desconectado"
     },
     "proyecto": {
       "host": "192.168.5.14:10014",
@@ -26,14 +30,14 @@
     },
     "caja": {
       "host": "192.168.5.45:10045",
-      "status": "desconectado"
+      "status": "exito"
     },
     "empresa": {
       "host": "192.168.5.29:10029",
       "status": "exito"
     },
     "inventario": {
-      "host": "192.168.5.39:10039",
+      "host": "192.168.2.1:10039",
       "status": "exito"
     }
   },
@@ -42,5 +46,5 @@
     "status": "exito"
   },
   "- SLog": "RealTime Log from server Servisofts",
-  "- Fecha": "2023-04-10T19:52:00.000486"
+  "- Fecha": "2023-04-20T21:09:39.000160"
 }
