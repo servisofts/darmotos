@@ -96,6 +96,8 @@ export default class index extends Component {
                 {/* <PlanPagos ref={ref => this.pp = ref} data={this.data} disabled={!this.isAdmin} /> */}
                 <Components.compra_venta.PlanDePagos ref={ref => this.pp = ref} data={this.data} disabled />
                 <Components.compra_venta.Separador data={this.data} />
+                <Components.compra_venta.QRVenta data={this.data} />
+                <Components.compra_venta.Separador data={this.data} />
                 {/* <Separador data={this.data}/> */}
                 {this.getActions()}
             </SView>

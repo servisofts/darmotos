@@ -51,22 +51,23 @@ class index extends DPA.list {
     my_item(data, opt) {
         const { codigo, descripcion, cantidad, precio_unitario, proveedor, descuento, fecha_on, key } = data;
         return <SView card style={{
-            padding: 8
+            padding: 8,
+            overflow: "hidden"
         }} onPress={() => {
             var precio = precio_unitario - (descuento / cantidad)
 
             PopupTipoRecepcion.open({
                 precio_compra: parseFloat(precio).toFixed(2),
                 descripcion: descripcion,
-                cantidad:cantidad,
+                cantidad: cantidad,
                 key_compra_venta_detalle: key,
                 key_almacen: this.props.data.key,
             });
         }}>
 
-            <SView row center>
-                <SText fontSize={18} bold>{descripcion}</SText>
-                <SView flex />
+            <SView row center col={"xs-12"}>
+                <SText fontSize={18} bold flex>{descripcion}</SText>
+                <SView width={4}/>
                 <SText bold fontSize={18}>x  {cantidad} </SText>
                 <SView width={8} />
                 <SView width={10} height={10} style={{ borderRadius: 100 }} backgroundColor={STheme.color.danger} />

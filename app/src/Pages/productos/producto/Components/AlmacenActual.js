@@ -28,8 +28,12 @@ export default class AlmacenActual extends Component {
     }
     render() {
         var obj = Model.producto.Action.getByKey(this.props.key_producto);
-        if(!obj) return <SLoad/>
-        if (obj.key_cliente) return null; //Vendido
+        if (!obj) return <SLoad />
+        if (obj.key_cliente) return <SView>
+            <SHr />
+            <SText>Vendido</SText>
+            <SHr />
+        </SView>
         return (
             <SView center col={"xs-12"}>
                 {this.renderAlmacen()}

@@ -34,6 +34,8 @@ export default class index extends Component {
             <Components.compra_venta.Separador data={this.data} />
             <Components.compra_venta.Totales data={this.data} />
             <Components.compra_venta.Separador data={this.data} />
+            <Components.compra_venta.QRVenta data={this.data} />
+                <Components.compra_venta.Separador data={this.data} />
             <SHr />
             <SText>ESTA COTIZACION FUE DENEGADA</SText>
             <SHr />

@@ -15,7 +15,7 @@ class index extends Component {
             <SPage title={'Reportes'}>
                 <SHr height={32} />
                 <MenuPages path={"/reporte/"} >
-                    <MenuButtom label={"Dash Board"} icon={<SImage src={require("./cajas_historico/logo.png")} />} onPress={() => {
+                    <MenuButtom label={"Graficos"} icon={<SImage src={require("./cajas_historico/logo.png")} />} onPress={() => {
                         SNavigation.navigate("/reporte/dashboard")
                     }} />
 

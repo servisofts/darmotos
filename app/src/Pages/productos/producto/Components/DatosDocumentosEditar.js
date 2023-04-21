@@ -89,15 +89,15 @@ class index extends Component {
             var dto = Object.values(this.producto_inventario_dato).find(o => o.key_inventario_dato == obj.key);
             var defaultValue = dto?.descripcion;
             var filePath = SSocket.api.inventario + "producto_inventario_dato/" + this.props.key_producto;
-            console.log(obj);
+            // console.log(obj);
             inputs[obj.key] = { label: obj.descripcion, icon: <SText>{obj.observacion}</SText>, type: obj.tipo, required: obj?.tpid?.requerido, defaultValue: defaultValue, filePath: filePath }
         })
         
-        return <SForm ref={(ref) => this.form = ref} inputs={inputs} onSubmitName={""} onSubmit={(data, ref) => {
+        return <SForm ref={(ref) => this.form = ref} inputs={inputs} onSubmitName={""} 
+        onSubmit={(data, ref) => {
             // console.log("subir")
             // console.log(data);
             // var files = ref.getFiles()
-            // console.log(files);
             this.setState({ loading: true, loadingLabel: "Subiendo archivos..." });
             if (this.props.onSubmit) {
                 this.props.onSubmit().then(({ key, callback }) => {

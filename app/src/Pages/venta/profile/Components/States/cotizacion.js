@@ -80,7 +80,8 @@ export default class index extends Component {
                 <Components.compra_venta.Totales data={this.data} />
 
                 <Components.compra_venta.Separador data={this.data} />
-
+                <Components.compra_venta.QRVenta data={this.data} />
+                <Components.compra_venta.Separador data={this.data} />
                 {this.getActions()}
             </SView>
             <SHr height={16} />
