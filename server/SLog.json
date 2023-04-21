@@ -8,12 +8,16 @@
       "host": "192.168.5.41:10041",
       "status": "exito"
     },
+    "sqr": {
+      "host": "192.168.5.34:10034",
+      "status": "exito"
+    },
     "roles_permisos": {
       "host": "192.168.5.16:10016",
       "status": "exito"
     },
     "contabilidad": {
-      "host": "192.168.2.1:10011",
+      "host": "192.168.5.11:10011",
       "status": "exito"
     },
     "proyecto": {
@@ -26,14 +30,14 @@
     },
     "caja": {
       "host": "192.168.5.45:10045",
-      "status": "desconectado"
+      "status": "exito"
     },
     "empresa": {
       "host": "192.168.5.29:10029",
       "status": "exito"
     },
     "inventario": {
-      "host": "192.168.5.39:10039",
+      "host": "192.168.2.1:10039",
       "status": "exito"
     }
   },
@@ -42,5 +46,5 @@
     "status": "exito"
   },
   "- SLog": "RealTime Log from server Servisofts",
-  "- Fecha": "2023-04-10T19:52:00.000486"
+  "- Fecha": "2023-04-20T20:09:43.000964"
 }
