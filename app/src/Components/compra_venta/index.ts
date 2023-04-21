@@ -10,6 +10,8 @@ import Conyuge from "./Conyuge"
 import Garante from "./Garante"
 import PlanDePagos from "./PlanDePagos"
 import StateTiqueta from "./StateTiqueta"
+import QRVenta from "./QRVenta"
+import QRCompra from "./QRCompra"
 export default { 
     TipoDePago,
     Separador,
@@ -22,6 +24,8 @@ export default {
     Conyuge,
     Garante,
     PlanDePagos,
-    StateTiqueta
+    StateTiqueta,
+    QRVenta,
+    QRCompra
 
 }

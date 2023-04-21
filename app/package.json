@@ -40,7 +40,7 @@
     "servisofts-rn-contabilidad": "file:../../contabilidad/library/dist",
     "servisofts-rn-roles_permisos": "file:../../roles_permisos/library/dist",
     "servisofts-rn-usuario": "file:../../usuario/library/dist",
-    "servisofts-socket": "^3.0.1",
+    "servisofts-socket": "file:../../servisofts-socket/dist",
     "typescript": "^4.4.3",
     "xlsx": "0.18.5",
     "xlsx-color": "^0.14.30"

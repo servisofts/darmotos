@@ -57,7 +57,7 @@ class index extends Component {
         try {
             arr = JSON.parse(dto.descripcion);
         } catch (e) {
-            console.error(e);
+            // console.error(e);
         }
         if (!arr) return <SText>{this.state.defaultValue}</SText>;
 

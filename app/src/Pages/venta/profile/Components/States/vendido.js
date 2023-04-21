@@ -41,6 +41,8 @@ export default class index extends Component {
             <Components.compra_venta.Separador data={this.data} />
             <PlanPagos ref={ref => this.pp = ref} data={this.data} disabled />
             <Components.compra_venta.Separador data={this.data} />
+            <Components.compra_venta.QRVenta data={this.data} />
+            <Components.compra_venta.Separador data={this.data} />
             <Components.compra_venta.Participantes data={this.data} disabled />
             <Components.compra_venta.Separador data={this.data} />
             <Components.compra_venta.Comentarios data={this.data} disabled />

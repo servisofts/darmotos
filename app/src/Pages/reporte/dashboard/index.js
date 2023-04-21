@@ -26,7 +26,7 @@ class index extends Component<dashboardPropsType> {
 
     render() {
         return (
-            <SPage title={'DashBoard'}>
+            <SPage title={'Graficos'}>
                 <SHr h={SPACE} />
                 <SView style={{
                     padding: 8

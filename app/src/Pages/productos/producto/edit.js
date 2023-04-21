@@ -18,6 +18,7 @@ class index extends DPA.edit {
         return Parent.model.Action.getByKey(this.pk);
     }
     $onSubmit(data) {
+        console.log("Entro alalalalal")
         Parent.model.Action.editar({
             data: {
                 ...this.data,
@@ -28,6 +29,8 @@ class index extends DPA.edit {
             this.presolve({
                 key: this.pk,
                 callback: () => {
+                    Model.inventario_dato.Action.CLEAR();
+                    Model.producto_inventario_dato.Action.CLEAR();
                     // SNavigation.navigate("/productos/producto/profile", { pk: this.pk })
                 }
             })

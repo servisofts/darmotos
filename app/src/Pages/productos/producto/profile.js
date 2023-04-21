@@ -7,16 +7,24 @@ import AlmacenActual from './Components/AlmacenActual';
 import AlmacenProductoHistory from './Components/AlmacenProductoHistory';
 import DatosDocumentos from './Components/DatosDocumentos';
 import item from './item';
+import QRProducto from '../../../Components/QRProducto';
 class index extends DPA.profile {
     constructor(props) {
         super(props, {
             Parent: Parent,
             itemType: "1",
             excludes: ["key", "key_usuario", "key_servicio",],
+            onRefresh: (resolve) => {
+                Parent.model.Action.CLEAR();
+                Model.inventario_dato.Action.CLEAR();
+                Model.producto_inventario_dato.Action.CLEAR();
+                resolve();
+            },
             item: item
 
         });
     }
+
     $allowEdit() {
         return Model.usuarioPage.Action.getPermiso({ url: Parent.path, permiso: "edit" })
     }
@@ -30,16 +38,16 @@ class index extends DPA.profile {
         return Parent.model.Action.getByKey(this.pk);
     }
     $footer() {
-        return <SView col={"xs-12"}>
+        return <SView col={"xs-12"} center>
             <DatosDocumentos key_producto={this.pk} />
+            <SHr />
+            <SView col={"xs-12"} row>
+                <SView flex />
+                <QRProducto pk={this.pk} />
+            </SView>
             <SHr />
             <AlmacenActual key_producto={this.pk} />
             <SHr />
-
-            <SHr />
-
-            <SHr />
-            <SHr height={50} />
 
             <AlmacenProductoHistory key_producto={this.pk} />
             <SHr />

@@ -37,7 +37,17 @@ class index extends Component {
                 end()
 
             }}>
+                <SHr height={8} />
+                <SView col={"xs-12"} center
+                >
+                    <SText fontSize={18} center>{"Bienvenido al sistema comercial "}</SText>
+                    <SHr />
+                    <SView width={200}>
+                        <SIcon name={"logoCompleto"} fill={STheme.color.secondary} />
+                    </SView>
+                </SView>
                 <SHr height={32} />
+
                 <MenuPages path={"/"} permiso={"page"}>
                     {/* <MenuButtom label={"Notificaciones"} url={"/notificacion"} icon={""} /> */}
                     <MenuButtom label={"Mi perfil"} url={"/profile"} icon={this.getIconProfile()} />

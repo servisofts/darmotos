@@ -13,7 +13,7 @@ export default class RContent extends Component {
                     // borderRadius: 8,
                     borderWidth: 1,
                     // borderBottomRightRadius:10,
-                    backgroundColor: "#fff",
+                    backgroundColor: STheme.color.secondary,
                     overflow: "hidden",
                 }}>
                 <SView style={{

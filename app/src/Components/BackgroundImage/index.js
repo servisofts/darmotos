@@ -16,9 +16,9 @@ export default class BackgroundImage extends Component<type> {
         var source = this.props.source;
         if (!source) {
             if (STheme.getTheme() == 'dark') {
-                source = require("./dark.jpg");
+                source = require("./3.jpg");
             } else {
-                source = require("./default.jpg");
+                source = require("./w4.jpg");
             }
         }
         return <View style={{
@@ -27,7 +27,7 @@ export default class BackgroundImage extends Component<type> {
             top: 0,
             left: 0,
             position: "absolute",
-            // opacity: 0.8,
+            opacity: 0.6,
             ...this.props.style,
         }}>
             {/* <SGradient colors={["#000000", "#44000044"]} /> */}
