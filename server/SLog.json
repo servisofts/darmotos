@@ -2,18 +2,18 @@
   "Servicios": {
     "notification": {
       "host": "192.168.5.33:10033",
-      "status": "desconectado"
+      "status": "exito"
     },
     "compra_venta": {
-      "host": "192.168.5.41:10041",
-      "status": "desconectado"
-    },
-    "sqr": {
-      "host": "192.168.5.34:10034",
+      "host": "192.168.2.1:10041",
       "status": "exito"
     },
     "roles_permisos": {
       "host": "192.168.5.16:10016",
+      "status": "exito"
+    },
+    "sqr": {
+      "host": "192.168.5.34:10034",
       "status": "exito"
     },
     "contabilidad": {
@@ -30,15 +30,15 @@
     },
     "caja": {
       "host": "192.168.5.45:10045",
-      "status": "desconectado"
+      "status": "exito"
     },
     "empresa": {
       "host": "192.168.5.29:10029",
-      "status": "desconectado"
+      "status": "exito"
     },
     "inventario": {
       "host": "192.168.2.1:10039",
-      "status": "desconectado"
+      "status": "exito"
     }
   },
   "PostgreSQL": {
@@ -46,5 +46,5 @@
     "status": "exito"
   },
   "- SLog": "RealTime Log from server Servisofts",
-  "- Fecha": "2023-04-20T21:56:27.000575"
+  "- Fecha": "2023-04-22T00:20:02.000270"
 }
