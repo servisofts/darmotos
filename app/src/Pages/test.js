@@ -5,7 +5,7 @@ import { SButtom, SHr, SLoad, SPage, SText, SView } from 'servisofts-component';
 import SSocket from 'servisofts-socket'
 import Model from '../Model';
 import { CuentaContable } from 'servisofts-rn-contabilidad';
-import ReaderExcelRuddy from '../Components/ReaderExcelRuddy';
+import MigradorDeAmortizaciones from '../Components/MigradorDeAmortizaciones';
 class Test extends Component {
     constructor(props) {
         super(props);
@@ -15,8 +15,8 @@ class Test extends Component {
 
     render() {
         return (
-            <SPage title={'Test'} hidden>
-                <ReaderExcelRuddy />
+            <SPage title={'Test'}>
+                <MigradorDeAmortizaciones />
             </SPage >
         );
     }

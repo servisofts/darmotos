@@ -12,7 +12,7 @@ class Login extends Component {
 
     render() {
         if (Model.usuario.Action.getUsuarioLog()) {
-            SNavigation.replace("/");
+            SNavigation.goBack();
             return null;
         }
 

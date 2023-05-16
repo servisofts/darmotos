@@ -21,11 +21,14 @@ import caja from './caja';
 import cobranza from './cobranza';
 import notification from './notification';
 import reporte from './reporte';
+import bots from './bots';
+import t2 from './t2';
 export default SPage.combinePages("/", {
     "": Root,
     "login": login,
     "test": test,
     "wiki": wiki,
+    t2,
     ...profile,
     ...usuario,
     ...empresa,
@@ -42,6 +45,7 @@ export default SPage.combinePages("/", {
     ...caja,
     ...cobranza,
     ...notification,
-    ...reporte
+    ...reporte,
+    ...bots
 
 });

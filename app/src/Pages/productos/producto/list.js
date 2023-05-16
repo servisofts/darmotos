@@ -1,4 +1,4 @@
-import { SHr, SIcon, SText, STheme, SView } from 'servisofts-component';
+import { SHr, SIcon, SInput, SText, STheme, SView } from 'servisofts-component';
 import DPA, { connect } from 'servisofts-page';
 import { Parent } from "."
 import Model from '../../../Model';
@@ -15,6 +15,7 @@ class index extends DPA.list {
                 Model.marca.Action.CLEAR();
                 Model.modelo.Action.CLEAR();
                 Model.tipo_producto.Action.CLEAR()
+                Model.compra_venta_detalle.Action.CLEAR();
                 resolve();
             }
         });
@@ -55,6 +56,16 @@ class index extends DPA.list {
                 return false;
             }
         }
+
+        if (this.state.chasis) {
+            if (!data.datos) return false;
+            let dato = data.datos.find(a => a.key_inventario_dato == "9d50048e-79f2-47ed-ae8a-5d73c36aad25");
+            if (!dato) return false;
+            let str = dato.descripcion;
+            if (str.indexOf(this.state.chasis) < 0) {
+                return false;
+            }
+        }
         return true;
     }
 
@@ -64,7 +75,7 @@ class index extends DPA.list {
             paddingLeft: 8,
             paddingRight: 8,
             opacity: select ? 1 : 0.5,
-            backgroundColor: color+"99",
+            backgroundColor: color + "99",
         }} onPress={() => {
 
             if (!select) {
@@ -91,6 +102,16 @@ class index extends DPA.list {
             children: this.optionItem({ key: "vendido", label: "Vendido", color: STheme.color.danger })
         })
         return items;
+    }
+
+    $render() {
+        return <>
+            <SView col={"xs-12"}>
+                <SInput placeholder={"Filtrars por # de chasis"} onChangeText={val => this.setState({ chasis: val })} />
+                <SHr h={4} />
+            </SView>
+            {super.$render()}
+        </>
     }
     $getData() {
         var data = Parent.model.Action.getAllRecursive();

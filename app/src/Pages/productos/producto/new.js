@@ -61,6 +61,10 @@ class index extends DPA.new {
                     key: resp.data.key,
                     callback: () => {
                         if (this.onSelect) {
+                            if (this.key_last == resp.data.key) {
+                                return;
+                            }
+                            this.key_last = resp.data.key
                             this.onSelect(resp.data);
                             return;
                         }

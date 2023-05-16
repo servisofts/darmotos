@@ -13,7 +13,7 @@ export default class CajaActions extends Component {
 
         var action = _types[key];
         if (action.permiso) {
-            
+
             if (!Model.usuarioPage.Action.getPermiso({ url: "/caja", permiso: action.permiso })) {
                 if (this.props.data.key_usuario != Model.usuario.Action.getKey()) {
                     return null;
@@ -22,7 +22,7 @@ export default class CajaActions extends Component {
                     return null;
                 }
             }
-        }else{
+        } else {
             if (this.props.data.key_usuario != Model.usuario.Action.getKey()) {
                 return null;
             }
@@ -45,10 +45,14 @@ export default class CajaActions extends Component {
     render() {
         return <SView col={"xs-12"}>
             <SList
-                center
+                // center
+                scrollEnabled={false}
                 horizontal
-                initSpace={0}
-                space={0}
+                contentContainerStyle={{
+                    flex: 1,
+                    justifyContent: 'center',
+                    flexWrap: 'wrap',
+                }}
                 data={Object.keys(_types)}
                 render={this.item.bind(this)} />
         </SView>

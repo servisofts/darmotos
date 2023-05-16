@@ -49,7 +49,7 @@ class index extends Component {
                 <SHr height={32} />
 
                 <MenuPages path={"/"} permiso={"page"}>
-                    {/* <MenuButtom label={"Notificaciones"} url={"/notificacion"} icon={""} /> */}
+                    <MenuButtom label={"Migrador2"} url={"/bots/amortizaciones"} icon={<SIcon name={"Box"}  fill='#f098a7'/>} />
                     <MenuButtom label={"Mi perfil"} url={"/profile"} icon={this.getIconProfile()} />
                     {/* <MenuButtom label={"Test"} url={"/test"} /> */}
                 </MenuPages>

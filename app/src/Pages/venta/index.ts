@@ -14,6 +14,7 @@ import denegado from "./denegado";
 import pendientes from "./pendientes";
 import profile from "./profile";
 import edit from "./edit";
+import editar_plan_pagos from "./editar_plan_pagos";
 import lista from "./lista";
 const model = Model.compra_venta;
 
@@ -35,6 +36,7 @@ export default SPage.combinePages("venta",
         "pendientes": pendientes,
         "denegado": denegado,
         "profile": profile,
+        editar_plan_pagos,
         ...detalle,
     }
 )

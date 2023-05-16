@@ -3,6 +3,7 @@ import { Parent } from '.';
 import { SNavigation, SPopup, SThread } from 'servisofts-component';
 import Model from '../../Model';
 import DatosDocumentosEditar from '../usuario/Components/DatosDocumentosEditar';
+import Popups from '../../Components/Popups';
 
 class index extends DPA.new {
     constructor(props) {
@@ -20,7 +21,7 @@ class index extends DPA.new {
         var inputs = super.$inputs();
         // inputs["Password"].type = "password"
         inputs["Correo"].type = "email"
-        inputs["Telefono"].type = "phone"
+        // inputs["Telefono"].type = "phone"
         // inputs["rep_pass"] = { label: "Rep. Password", type: "password", required: true }
         return inputs;
     }
@@ -60,7 +61,15 @@ class index extends DPA.new {
 
         }).catch(e => {
             if (e.error_dato) {
+                // SPopup.alert("El dato (" + e.error_dato + ") ya existe para otro usuario.");
                 this.reject("El dato (" + e.error_dato + ") ya existe para otro usuario.")
+                Model.usuario.Action.getByDato({ key: e.error_dato, value: data[e.error_dato] }).then(e => {
+                    // SPopup.alert("Encontro usuario")
+                    Popups.UsuarioExistente.open({ data: Object.values(e.data)[0] })
+                    console.log(e);
+                }).catch(e => {
+                    console.error(e);
+                })
                 return;
             }
             this.reject("Error desconocido al registrar usuario")

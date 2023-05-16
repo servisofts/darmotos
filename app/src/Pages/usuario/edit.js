@@ -21,7 +21,7 @@ class index extends DPA.edit {
         var inputs = super.$inputs();
         inputs["Password"].type = "password"
         inputs["Correo"].type = "email"
-        inputs["Telefono"].type = "phone"
+        // inputs["Telefono"].type = "phone"
         return inputs;
     }
     $onSubmit(data) {

@@ -1,6 +1,6 @@
 import DPA, { connect } from 'servisofts-page';
 import { Parent } from '.';
-import { SNavigation, SPopup, SThread } from 'servisofts-component';
+import { SDate, SNavigation, SPopup, SThread } from 'servisofts-component';
 import Model from '../../Model';
 
 class index extends DPA.edit {
@@ -19,14 +19,19 @@ class index extends DPA.edit {
     $inputs() {
         var inp = super.$inputs();
         inp["observacion"].type = "textArea";
+        let sdate = new SDate(this.data.fecha_on);
+        inp["_fecha"] = { type: "date", label: "Fecha", defaultValue: sdate.toString("yyyy-MM-dd") }
+        inp["_hora"] = { type: "hour", label: "Hora", defaultValue: sdate.toString("hh:mm") }
         return inp;
     }
     $onSubmit(data) {
         new SThread(1000, "esperarFoto", false).start(() => {
+            let fecha = new SDate(data["_fecha"] + " " + data["_hora"], "yyyy-MM-dd hh:mm")
             Parent.model.Action.editar({
                 data: {
                     ...this.data,
-                    ...data
+                    ...data,
+                    fecha_on: fecha.toString()
                 },
                 key_usuario: ""
             }).then((resp) => {

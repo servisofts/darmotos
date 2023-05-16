@@ -7,8 +7,9 @@ type PropsType = {
     precio_compra: any,
     descripcion: any,
     key_compra_venta_detalle: any,
+    key_compra_venta: any,
     key_almacen: any,
-    cantidad:any,
+    cantidad: any,
 
 }
 export default class PopupTipoRecepcion extends Component<PropsType> {
@@ -50,6 +51,13 @@ export default class PopupTipoRecepcion extends Component<PropsType> {
                 <SList
                     data={[
                         {
+                            label: "Ver compra", icon: "Carrito", onPress: () => {
+                                // console.log(this.props);
+                                SNavigation.navigate("/compra/profile", { pk: this.props.key_compra_venta })
+                                PopupTipoRecepcion.close();
+                            }
+                        },
+                        {
                             label: "Individual", icon: "Add", onPress: () => {
                                 this.type_individual();
                             }
@@ -60,7 +68,7 @@ export default class PopupTipoRecepcion extends Component<PropsType> {
                             }
                         },
                     ]}
-                    style={{ justifyContent: 'space-between', }}
+                    style={{ justifyContent: 'space-between', flex: 1 }}
                     horizontal
                     render={this.item}
                 />
@@ -95,6 +103,9 @@ export default class PopupTipoRecepcion extends Component<PropsType> {
                     key_producto: data.key
                 }).then((resp) => {
                     // this.setState({ loading: false })
+                    Model.producto.Action.CLEAR();
+                    Model.compra_venta_detalle.Action.CLEAR();
+                    
                     SNavigation.replace("/productos/producto/profile", { pk: data.key })
                 }).catch(e => {
                     // this.setState({ loading: false })

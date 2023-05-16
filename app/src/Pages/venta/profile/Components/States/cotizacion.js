@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { SHr, SPage, SPopup, SText, STheme, SView } from 'servisofts-component';
+import { SHr, SLoad, SPage, SPopup, SText, STheme, SView } from 'servisofts-component';
 import Components from '../../../../../Components';
 import Model from '../../../../../Model';
 import Cliente from '../Cliente';
 import Detalle from '../Detalle';
 
 import Proveedor from '../Proveedor';
+import PDF from '../../../../../Components/PDF';
 
 
 export default class index extends Component {
@@ -54,7 +55,10 @@ export default class index extends Component {
     render() {
 
         this.data = this.props.data;
-        this.isAdmin = Model.compra_venta_participante.Action.allowAdmin({ key_compra_venta: this.props.data.key });
+        let permiso = Model.usuarioPage.Action.getPermiso({ url: "/venta", permiso: "admin" })
+        this.isAdmin = !!permiso ? true : Model.compra_venta_participante.Action.allowAdmin({ key_compra_venta: this.props.data.key });
+        this.isSuperAdmin = !!permiso;
+        // this.isAdmin = true;
         var statei = Model.compra_venta.Action.getStateInfo(this.data.state)
         return (<SView col={"xs-12"} center>
             <SView col={"xs-12"} center card style={{ padding: 14, }}>

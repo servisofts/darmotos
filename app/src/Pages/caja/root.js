@@ -10,7 +10,7 @@ class index extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            key_caja: SNavigation.getParam("key_caja", "")
+            key_caja: SNavigation.getParam("key_caja") ?? SNavigation.getParam("pk")
         };
         this.params = SNavigation.getAllParams();
     }
@@ -18,7 +18,7 @@ class index extends Component {
         // var key_usuario = Model.usuario.Action.getKey();
         // var isMyCaja = key_usuario == this.state?.caja?.key_usuario
         if (this.state.punto_venta && this.state.sucursal) {
-            
+
             if (this.state?.punto_venta?.key_sucursal != this.state?.sucursal?.key) {
                 delete this.state.punto_venta;
                 delete this.state.caja;

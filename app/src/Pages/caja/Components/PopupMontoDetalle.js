@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { SButtom, SHr, SInput, SPopup, SText, STheme, SView } from 'servisofts-component';
+import { SButtom, SHr, SInput, SPage, SPopup, SText, STheme, SView } from 'servisofts-component';
 
 type PropsTypes = {
     title: any,
@@ -45,6 +45,7 @@ export default class PopupMontoDetalle extends Component<PropsTypes> {
             <SView col={"xs-12 sm-10 md-8 lg-6 xl-4"} backgroundColor={STheme.color.background} style={{
                 borderRadius: 8,
             }} center withoutFeedback>
+                {SPage.backgroundComponent}
                 <SView col={"xs-11"} center>
                     <SHr height={16} />
                     <SText fontSize={16} bold>{this.props.title}</SText>

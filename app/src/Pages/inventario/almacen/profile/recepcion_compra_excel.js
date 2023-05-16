@@ -76,9 +76,9 @@ class index extends DPA.profile {
                     { key: "precio_venta", label: "precio_venta", style: { width: 200 } },
                     { key: "precio_venta_credito", label: "precio_venta_credito", style: { width: 200 } },
                     ...headers,
-                    { key: "key_almacen", label: "key_almacen", style: { width: 1 } },
-                    { key: "key_modelo", label: "key_modelo", style: { width: 1 } },
-                    { key: "key_compra_venta_detalle", label: "key_compra_venta_detalle", style: { width: 1 } },
+                    { key: "key_almacen", label: "key_almacen", style: { width: 200 } },
+                    { key: "key_modelo", label: "key_modelo", style: { width: 200 } },
+                    { key: "key_compra_venta_detalle", label: "key_compra_venta_detalle", style: { width: 200 } },
 
                 ]}
             >

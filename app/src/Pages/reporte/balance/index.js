@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { SHr, SList, SLoad, SMath, SNavigation, SPage, SText, STheme, SView } from 'servisofts-component';
 import Model from '../../../Model';
+import PDF from '../../../Components/PDF';
 
 class index extends Component {
     constructor(props) {
@@ -18,10 +19,8 @@ class index extends Component {
     }
 
     render_cuentas() {
-        var cuentas = Model.cuenta_contable.Action.getAllOrder({});
-        if (!cuentas) return <SLoad />
-        if (!this.state.data) return <SLoad />
-        return <SList data={cuentas}
+
+        return <SList data={this.cuentas}
             filter={obj => obj.codigo.startsWith("1") || obj.codigo.startsWith("4") || obj.codigo.startsWith("5")}
             render={(obj) => {
                 return <SView col={"xs-12"} >
@@ -37,6 +36,22 @@ class index extends Component {
                 </SView>
             }} />
     }
+
+
+    render_exportar_excel() {
+        return <PDF.informe_economico data={this.state.data} cuentas={this.cuentas} />
+    }
+    render_data() {
+        this.cuentas = Model.cuenta_contable.Action.getAllOrder({});
+        if (!this.cuentas) return <SLoad />
+        if (!this.state.data) return <SLoad />
+        return <>
+            {this.render_exportar_excel()}
+            <SHr height={16} />
+            {this.render_cuentas()}
+            <SHr height={16} />
+        </>
+    }
     render() {
         return (
             <SPage title={'Balance'} onRefresh={(resolve) => {
@@ -47,8 +62,7 @@ class index extends Component {
             }}>
                 <SView col={"xs-12"} center>
                     <SView col={"xs-11 sm-10 md-8 lg-6 xl-4"} center>
-                        <SHr height={16} />
-                        {this.render_cuentas()}
+                        {this.render_data()}
                         <SHr height={50} />
                     </SView>
                 </SView>

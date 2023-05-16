@@ -62,6 +62,7 @@ class index extends Component {
     }
 
     optionItem({ key, label, color }) {
+        if (key == "Exportar") return this.renderExportExcel();
         var select = !!this.state.select[key]
         return <>
             <SView height center card style={{
@@ -103,13 +104,24 @@ class index extends Component {
         </SExcel>
     }
     renderLista() {
-        return <SView col={"xs-12"} height={35} row>
-            {this.renderExportExcel()}
-            <SView width={4} />
-            {this.optionItem({ key: "Vigente", label: "Vigente", color: STheme.color.success })}
-            {this.optionItem({ key: "Vencido", label: "Vencido", color: STheme.color.warning })}
-            {this.optionItem({ key: "Ejecucion", label: "Ejecucion", color: STheme.color.danger })}
-            {this.optionItem({ key: "Castigado", label: "Castigado", color: STheme.color.danger })}
+        return <SView col={"xs-12"} height={38} row>
+            {/* {this.renderExportExcel()} */}
+            {/* <SView width={4} /> */}
+            <SList
+                horizontal
+                data={[
+                    { key: "Exportar", label: "Exportar" },
+                    { key: "Vigente", label: "Vigente", color: STheme.color.success },
+                    { key: "Vencido", label: "Vencido", color: STheme.color.warning },
+                    { key: "Ejecucion", label: "Ejecucion", color: STheme.color.danger },
+                    { key: "Castigado", label: "Castigado", color: STheme.color.danger }
+                ]}
+                render={data => this.optionItem(data)}
+            />
+            {/* {this.optionItem({ key: "Vigente", label: "Vigente", color: STheme.color.success })} */}
+            {/* {this.optionItem({ key: "Vencido", label: "Vencido", color: STheme.color.warning })} */}
+            {/* {this.optionItem({ key: "Ejecucion", label: "Ejecucion", color: STheme.color.danger })} */}
+            {/* {this.optionItem({ key: "Castigado", label: "Castigado", color: STheme.color.danger })} */}
         </SView>
     }
     getColor(type) {
@@ -122,7 +134,7 @@ class index extends Component {
     }
     render() {
         return (
-            <SPage title={'Clientes deudores'}>
+            <SPage title={'Cuentas por cobrar'}>
                 <SView col={"xs-12"} center>
                     <SView col={"xs-11 sm-10 md-8 lg-6 xl-4"} center>
                         <SHr />

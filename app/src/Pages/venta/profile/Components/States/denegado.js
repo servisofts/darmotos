@@ -18,6 +18,12 @@ export default class index extends Component {
     render() {
         this.data = this.props.data;
         var statei = Model.compra_venta.Action.getStateInfo(this.data.state)
+        let permiso = Model.usuarioPage.Action.getPermiso({ url: "/venta", permiso: "admin" })
+        // this.isAdmin = !!permiso ?? Model.compra_venta_participante.Action.allowAdmin({ key_compra_venta: this.props.data.key });
+        this.isAdmin = !!permiso ? true : Model.compra_venta_participante.Action.allowAdmin({ key_compra_venta: this.props.data.key });
+
+        this.isSuperAdmin = !!permiso;
+
         return (<SView col={"xs-12"} center card style={{ padding: 14, }}>
             <SHr />
             <SText center bold>{this.data?.descripcion}</SText>

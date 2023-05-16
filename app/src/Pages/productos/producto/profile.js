@@ -1,4 +1,4 @@
-import { SButtom, SHr, SNavigation, SText, SView } from 'servisofts-component';
+import { SButtom, SHr, SNavigation, SPopup, SText, SView } from 'servisofts-component';
 import DPA, { connect } from 'servisofts-page';
 import { MenuPages } from 'servisofts-rn-roles_permisos';
 import { Parent } from "."
@@ -24,6 +24,11 @@ class index extends DPA.profile {
 
         });
     }
+    componentDidMount(){
+        if(!Model.usuario.Action.getKey()){
+            SNavigation.navigate("/login");
+        }
+    }
 
     $allowEdit() {
         return Model.usuarioPage.Action.getPermiso({ url: Parent.path, permiso: "edit" })
@@ -35,6 +40,9 @@ class index extends DPA.profile {
         return Model.usuarioPage.Action.getPermiso({ url: Parent.path, permiso: "ver" })
     }
     $getData() {
+        if(!Model.usuario.Action.getKey()){
+            return null;
+        }
         return Parent.model.Action.getByKey(this.pk);
     }
     $footer() {

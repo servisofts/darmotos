@@ -12,6 +12,11 @@ export default class AlmacenActual extends Component {
     renderAlmacen() {
         var obj = Model.producto.Action.getByKey(this.props.key_producto);
         if (!obj) return <SLoad />
+        if (!obj.key_almacen) return <SView>
+            <SHr />
+            <SText>{obj.key_almacen}</SText>
+            <SHr />
+        </SView>
         var almacen = Model.almacen.Action.getByKey(obj.key_almacen);
         if (!almacen) return <SLoad />
         var sucursal = Model.sucursal.Action.getByKey(almacen.key_sucursal);

@@ -77,8 +77,9 @@ class index extends Component {
     type_link() {
         const { obj, dto } = this.props
         return <SText fontSize={this.state.fontSize} col={"xs-12"} center color={"#8AB4F8"} onPress={() => {
-            Linking.openURL(unescape(dto?.descripcion))
-        }} underLine>{!dto?.descripcion ? this.state.defaultValue??"" : unescape(dto?.descripcion??"")}</SText>
+            let str = unescape(dto.descripcion,).replaceAll("Â", "");
+            Linking.openURL(str)
+        }} underLine>{!dto?.descripcion ? this.state.defaultValue ?? "" : unescape(dto?.descripcion ?? "")}</SText>
     }
     type_default() {
         const { obj, dto } = this.props

@@ -20,7 +20,7 @@ class index extends DPA.edit {
     $inputs() {
         var inputs = super.$inputs();
         inputs["Correo"].type = "email"
-        inputs["Telefono"].type = "phone"
+        // inputs["Telefono"].type = "phone"
         return inputs;
     }
 

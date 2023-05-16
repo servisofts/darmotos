@@ -17,15 +17,17 @@ class QRVenta extends Component {
             "type": "registro",
             "estado": "cargando",
             "data": {
-                "image": IMG,
-                "colorBackground": "#ffffff",
+                "image_src": "https://darmotos.servisofts.com/logo512.png",
+                // "image_src": "https://rolespermisos.servisofts.com/http//page/18725a49-6a1e-41b0-ae4c-4ca9454b1436",
                 "framework": "Rounded",
-                "colorImageBackground": "#ffffff",
                 "header": "Circle",
-                "colorHeader": "#78C932",
-                "body": "RoundedConectVH",
+                // "colorHeader": "#ffffff",
+                // "colorBackground":"#000000",
+                "body": "Dot",
                 "content": content,
-                "colorBody": "#000000"
+                "colorBody2": "#80D034",
+                "colorBody": "#80D034",
+                "type_color": "solid",
             }
         })
     }

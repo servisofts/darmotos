@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { SHr, SLoad, SText, STheme, SView } from 'servisofts-component';
+import { SDate, SExcel, SExcelReader, SHr, SLoad, SOrdenador, SText, STheme, SView } from 'servisofts-component';
 import Model from '../../../Model';
 import TipoDePago from '../TipoDePago';
 import TipoPago from './TipoPago';
@@ -33,8 +33,30 @@ export default class PlanDePagos extends Component {
         var TipoPagoComponent = tipo.ComponentOpciones
         // console.log(tipo.calcular_cuotas())
         // console.log(this.props.data)
+        if (this.cuotas) {
+            const fechaMinima = Object.values(this.cuotas).reduce((minFecha, currentObj) => {
+                const currentFecha = new Date(currentObj.fecha);
+                return currentFecha < minFecha ? currentFecha : minFecha;
+            }, new Date());
+            this.props.data.fecha_inicio = new SDate(fechaMinima).toString("yyyy-MM-dd")
+        }
         if (!this.cuotas) return <SLoad />
+        let orders = new SOrdenador([{ key: "codigo", order: "asc", type: "number" }]).ordernarObjetoToLista(this.cuotas);
         return <SView col={"xs-12"}>
+            <SView col={"xs-12"} row>
+                <SExcel data={orders}
+                    header={[
+                        { key: "codigo", label: "codigo", type: "s", style: { width: 100 } },
+                        { key: "descripcion", label: "descripcion", type: "s", style: { width: 100 } },
+                        { key: "fecha", label: "fecha", type: "d", style: { width: 100 },  },
+                        { key: "interes", label: "interes", type: "n", style: { width: 100 } },
+                        { key: "monto", label: "monto", type: "n", style: { width: 100 } },
+                    ]} renderData={(d)=>{
+                        d.fecha = new SDate(d.fecha).toString("yyyy-MM-dd")
+                        return d;
+                    }} />
+                <SView width={8} />  
+            </SView>
             <TipoPagoComponent ref={ref => this.tipo_pago_select = ref} data={this.props.data} cuotas={this.cuotas} totales={this.totales} />
         </SView>
     }

@@ -189,11 +189,17 @@ const PMT = (ir, np, pv, fv, type) => {
 const calcular_cuotas = ({ data, totales, numero_cuotas, fecha_inicio, periodicidad_medida, periodicidad_valor, porcentaje_interes, cuota_inicial }) => {
     var total_pagar = totales.subtotal;
     var cuotas = []
+    let fecha = new SDate(fecha_inicio, "yyyy-MM-dd");
+    var pdata = PERIODICIDAD_DATA[periodicidad_medida];
+    if (pdata.add) {
+        var d = periodicidad_valor * -1
+        fecha = pdata.add(fecha, d)
+    }
     cuotas.push({
         codigo: 0,
         descripcion: "Inicial",
         monto: cuota_inicial,
-        fecha: new SDate(fecha_inicio, "yyyy-MM-dd").toString("yyyy-MM-dd"),
+        fecha: fecha.toString("yyyy-MM-dd"),
     })
 
     var total_al_credito = total_pagar - cuota_inicial;
@@ -203,9 +209,9 @@ const calcular_cuotas = ({ data, totales, numero_cuotas, fecha_inicio, periodici
     var pmt = -PMT(porcentaje_interes / 100, numero_cuotas, total_al_credito, 0, 0)
     for (let i = 0; i < numero_cuotas; i++) {
         let initDate = new SDate(fecha_inicio, "yyyy-MM-dd");
-        var pdata = PERIODICIDAD_DATA[periodicidad_medida];
+        pdata = PERIODICIDAD_DATA[periodicidad_medida];
         if (pdata.add) {
-            var d = (i + 1) * periodicidad_valor
+            var d = (i) * periodicidad_valor
             initDate = pdata.add(initDate, d)
         }
 

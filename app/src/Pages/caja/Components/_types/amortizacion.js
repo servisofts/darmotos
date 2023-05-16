@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { SNavigation, SText, STheme } from 'servisofts-component';
+import { SDate, SNavigation, SText, STheme } from 'servisofts-component';
 import Model from '../../../../Model';
 
 export default class amortizacion {
@@ -23,7 +23,7 @@ export default class amortizacion {
                 descripcion: "Amortizacion de cuota desde caja.",
                 observacion: "--",
                 monto: monto,
-                fecha: "2023-01-06",
+                fecha: new SDate().toString("yyyy-MM-dd"),
                 key_cuotas: data.key_cuotas,
                 key_caja_detalle: obj.key
             },

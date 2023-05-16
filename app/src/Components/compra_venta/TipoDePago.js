@@ -28,6 +28,7 @@ export default class TipoDePago extends Component<PropsType> {
                 { key: "contado", content: "Al contado" },
                 { key: "pp_discrecional", content: "Credito Discrecional" },
                 { key: "pp_financiero", content: "Credito Financiero" },
+                { key: "excel", content: "Excel" },
             ]}
             onChangeText={(evt) => {
                 // this.setState({ tipo_pago: evt })

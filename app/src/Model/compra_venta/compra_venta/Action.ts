@@ -111,12 +111,14 @@ export default class Action extends SAction {
             })
         })
     }
-    getStates(key_sucursal) {
+    getStates(key_sucursal, fecha_inicio, fecha_fin) {
         return new Promise((resolve, reject) => {
             SSocket.sendPromise({
                 ...this.model.info,
                 type: "getStates",
                 key_sucursal: key_sucursal,
+                fecha_inicio: fecha_inicio,
+                fecha_fin: fecha_fin,
                 key_usuario: Model.usuario.Action.getKey()
             }).then((resp: any) => {
                 resolve(resp);

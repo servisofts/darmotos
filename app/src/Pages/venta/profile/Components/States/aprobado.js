@@ -54,6 +54,8 @@ export default class index extends Component {
                         }
                     }
                     Model.compra_venta.Action.changeState({ data: this.data, state: "vendido" }).then((resp) => {
+                        Model.producto.Action.CLEAR();
+                        Model.compra_venta_detalle.Action.CLEAR();
                     }).catch(e => {
                         SPopup.alert(e.error)
                     })
@@ -69,7 +71,11 @@ export default class index extends Component {
     }
     render() {
         this.data = this.props.data;
-        this.isAdmin = Model.compra_venta_participante.Action.allowAdmin({ key_compra_venta: this.props.data.key });
+        let permiso = Model.usuarioPage.Action.getPermiso({ url: "/venta", permiso: "admin" })
+        // this.isAdmin = !!permiso ?? Model.compra_venta_participante.Action.allowAdmin({ key_compra_venta: this.props.data.key });
+        this.isAdmin = !!permiso ? true : Model.compra_venta_participante.Action.allowAdmin({ key_compra_venta: this.props.data.key });
+
+        this.isSuperAdmin = !!permiso;
         // var statei = Model.compra_venta.Action.getStateInfo(this.data.state)
         return (<SView col={"xs-12"} center>
             <SView col={"xs-12"} center card style={{ padding: 14, }}>

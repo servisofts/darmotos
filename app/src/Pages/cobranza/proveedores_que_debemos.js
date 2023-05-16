@@ -79,6 +79,7 @@ class index extends Component {
     }
 
     optionItem({ key, label, color }) {
+        if (key == "Exportar") return this.renderExportExcel();
         var select = !!this.state.select[key]
         return <>
             <SView height center card style={{
@@ -110,18 +111,32 @@ class index extends Component {
         }
     }
     renderLista() {
-        return <SView col={"xs-12"} height={35} row>
-            {this.renderExportExcel()}
-            <SView width={4} />
+        return <SView col={"xs-12"} height={38} row>
+            <SList
+                horizontal
+                data={[
+                    { key: "Exportar", label: "Exportar" },
+                    { key: "Vigente", label: "Vigente", color: STheme.color.success },
+                    { key: "Vencido", label: "Vencido", color: STheme.color.warning },
+                    { key: "Ejecucion", label: "Ejecucion", color: STheme.color.danger },
+                    { key: "Castigado", label: "Castigado", color: STheme.color.danger }
+                ]}
+                render={data => this.optionItem(data)}
+            />
+            {/* {this.renderExportExcel()} */}
+            {/* <SView width={4} />
             {this.optionItem({ key: "Vigente", label: "Vigente", color: STheme.color.success })}
             {this.optionItem({ key: "Vencido", label: "Vencido", color: STheme.color.warning })}
             {this.optionItem({ key: "Ejecucion", label: "Ejecucion", color: STheme.color.danger })}
-            {this.optionItem({ key: "Castigado", label: "Castigado", color: STheme.color.danger })}
+            {this.optionItem({ key: "Castigado", label: "Castigado", color: STheme.color.danger })} */}
         </SView>
     }
     render() {
         return (
-            <SPage title={'Clientes deudores'}>
+            <SPage title={'Cuentas por pagar'} onRefresh={()=>{
+                Model.usuario.Action.CLEAR();
+                this.componentDidMount();
+            }}>
                 <SView col={"xs-12"} center>
                     <SView col={"xs-11 sm-10 md-8 lg-6 xl-4"} center>
                         <SHr />

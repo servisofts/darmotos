@@ -9,6 +9,7 @@ import _types from './_types';
 import SSocket from 'servisofts-socket';
 import Cajero from './Cajero';
 import CajaArqueo from './CajaArqueo';
+import Components from '../../../Components';
 class CajaOpen extends Component {
     constructor(props) {
         super(props);
@@ -30,8 +31,17 @@ class CajaOpen extends Component {
         return <SView center col={"xs-12"}>
             <Cajero data={data} />
             <SHr />
-            <SText color={STheme.color.lightGray} fontSize={14}>Fecha de apertura: {new SDate(data.fecha_on).toString("yyyy-MM-dd hh:mm:ss")}</SText>
-            <SText color={STheme.color.lightGray} fontSize={14}>Fecha de cierre : {data.fecha_cierre ? new SDate(data.fecha_cierre).toString("yyyy-MM-dd hh:mm:ss") : "La caja se encuentra abierta."}</SText>
+            <SView col={"xs-12"} row>
+                <SView flex>
+                    <SText color={STheme.color.text} fontSize={12}>{"Apertura el " + new SDate(data.fecha_on).toString("DAY, dd de MONTH del yyyy a las hh:mm")}</SText>
+                    <SHr />
+                    <SText color={STheme.color.warning} fontSize={12}>{data.fecha_cierre ? new SDate(data.fecha_cierre).toString("DAY, dd de MONTH del yyyy a las hh:mm") : "La caja se encuentra abierta."}</SText>
+                </SView>
+                <SView>
+                    <Components.caja.QRCaja pk={data.key} width={120} height={120} />
+                </SView>
+            </SView>
+
             {/* 
             <SHr height={16} />
             <SView card style={{ padding: 16 }}>

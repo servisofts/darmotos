@@ -2,7 +2,7 @@ import { SModel } from "servisofts-model";
 import Action from "./Action";
 import Reducer from "./Reducer";
 
-export type compra_venta_state = "cotizacion" | "aprobado" | "denegado" | "comprado";
+export type compra_venta_state = "cotizacion" | "aprobado" | "denegado" | "comprado" | "vendido";
 
 export default new SModel<Action, Reducer>({
     info: {
@@ -20,7 +20,7 @@ export default new SModel<Action, Reducer>({
         "proveedor": { type: "json" },
         "key": { type: "text", pk: true },
         "key_usuario": { type: "text", fk: "usuario" },
-        "fecha_on": { type: "timestamp", label: "F. Creacion" },
+        "fecha_on": { type: "timestamp", label: "F. Creacion"},
         "estado": { type: "integer" },
     },
     Action,

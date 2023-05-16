@@ -23,6 +23,11 @@ class index extends DPA.profile {
             // proveedor: {}
         }
     }
+    componentDidMount(){
+        if(!Model.usuario.Action.getKey()){
+            SNavigation.navigate("/login");
+        }
+    }
     $allowEdit() {
         return Model.usuarioPage.Action.getPermiso({ url: Parent.path, permiso: "edit" })
     }

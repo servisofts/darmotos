@@ -18,6 +18,11 @@ export default class index extends Component {
 
     render() {
         this.data = this.props.data;
+        let permiso = Model.usuarioPage.Action.getPermiso({ url: "/venta", permiso: "admin" })
+        // this.isAdmin = !!permiso ?? Model.compra_venta_participante.Action.allowAdmin({ key_compra_venta: this.props.data.key });
+        this.isAdmin = !!permiso ? true : Model.compra_venta_participante.Action.allowAdmin({ key_compra_venta: this.props.data.key });
+        this.isSuperAdmin = !!permiso;
+
         var statei = Model.compra_venta.Action.getStateInfo(this.data.state)
         return (<SView col={"xs-12"} center card style={{ padding: 14, }}>
             <SHr />
@@ -49,19 +54,19 @@ export default class index extends Component {
 
 
             <Components.compra_venta.Exportar data={this.data} />
-            {/* <SView col={"xs-12"} row center>
-                <SView card style={{ padding: 16 }} onPress={() => {
+            <SView col={"xs-12"} row center>
+                {/* <SView card style={{ padding: 16 }} onPress={() => {
                     Model.compra_venta.Action.changeState({ data: this.data, state: "denegado" })
                 }}>
                     <SText bold color={STheme.color.danger}>DENEGAR</SText>
                 </SView>
-                <SView width={8} />
+                <SView width={8} /> */}
                 <SView card style={{ padding: 16 }} onPress={() => {
-                    Model.compra_venta.Action.changeState({ data: this.data, state: "comprado" })
+                    Model.compra_venta.Action.changeState({ data: this.data, state: "cotizacion" })
                 }}>
-                    <SText bold color={STheme.color.success}>COMPRAR</SText>
+                    <SText bold color={STheme.color.danger}>VOLVER A COTIZACION</SText>
                 </SView>
-            </SView> */}
+            </SView>
         </SView>
 
         );

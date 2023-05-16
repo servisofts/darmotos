@@ -3,6 +3,7 @@ import { SDate, SHr, SImage, SList, SLoad, SMath, SNavigation, SPopup, SText, ST
 import SSocket from 'servisofts-socket'
 import { Linking } from 'react-native';
 import Model from '../../Model';
+import PDF from '../PDF';
 export default class Exportar extends Component {
     constructor(props) {
         super(props);
@@ -26,9 +27,11 @@ export default class Exportar extends Component {
                     console.error(e)
                 });
             }}>
-                <SText bold color={STheme.color.success}>PDF</SText>
+                <SText bold color={STheme.color.success}>PDF Rollo</SText>
             </SView>
-            {/* <SView width={8} />
+            <SView width={8} />
+            <PDF.venta data={this.data} />
+            {/* 
             <SView card style={{ padding: 16 }} onPress={() => {
             }}>
                 <SText bold color={STheme.color.warning}>PNG</SText>
@@ -42,6 +45,7 @@ export default class Exportar extends Component {
             <SText bold>EXPORTAR</SText>
             <SHr />
             {this.renderButtoms()}
+
         </SView>
     }
 }

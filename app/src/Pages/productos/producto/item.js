@@ -77,7 +77,7 @@ class index extends DPA.item {
                 <SView card flex height style={{
                     overflow: 'hidden',
                 }}>
-                    <SImage src={Model.producto._get_image_download_path(SSocket.api, this.data.key)} style={{
+                    <SImage src={Model.producto._get_image_download_path(SSocket.api, this.data.key)+"?time"+new Date().getTime()} style={{
                         resizeMode: "cover"
                     }} />
                 </SView>

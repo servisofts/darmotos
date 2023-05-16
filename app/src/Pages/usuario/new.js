@@ -18,7 +18,7 @@ class index extends DPA.new {
         var inputs = super.$inputs();
         inputs["Password"].type = "password"
         inputs["Correo"].type = "email"
-        inputs["Telefono"].type = "phone"
+        // inputs["Telefono"].type = "phone"
         inputs["rep_pass"] = { label: "Rep. Password", type: "password", required: true }
         return inputs;
     }

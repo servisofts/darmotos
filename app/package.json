@@ -39,6 +39,7 @@
     "servisofts-page": "file:../../servisofts-page/dist",
     "servisofts-rn-contabilidad": "file:../../contabilidad/library/dist",
     "servisofts-rn-roles_permisos": "file:../../roles_permisos/library/dist",
+    "servisofts-rn-spdf": "file:../../spdf/library/dist",
     "servisofts-rn-usuario": "file:../../usuario/library/dist",
     "servisofts-socket": "file:../../servisofts-socket/dist",
     "typescript": "^4.4.3",

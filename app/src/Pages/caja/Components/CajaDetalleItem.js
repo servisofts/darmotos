@@ -65,17 +65,18 @@ export default class CajaDetalleItem extends Component {
             return null;
         }
         return <SView width={30} height={30} style={{
-            padding: 4,
             position: "absolute",
-            right: -8,
-            bottom: -8,
+            right: 0,
+            bottom: 0,
+            justifyContent: "flex-end",
+            alignItems: "flex-end"
         }} onPress={() => {
             PopupAjustes.open({
                 data: this.props.data
             });
-          
+
         }}>
-            <SIcon name='Engranaje' fill={STheme.color.text} />
+            <SIcon name='Engranaje' fill={STheme.color.lightGray} width={16} height={16} />
         </SView>
     }
     render() {

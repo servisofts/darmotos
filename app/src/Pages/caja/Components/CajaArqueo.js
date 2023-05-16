@@ -7,7 +7,7 @@ type PropsType = {
 }
 class CajaArqueo extends Component<PropsType> {
 
-    size = 70;
+    size = 60;
 
     textStyle = {
         fontSize: 12,
@@ -112,7 +112,7 @@ class CajaArqueo extends Component<PropsType> {
     render() {
         if (!this.props.key_caja) return null;
         if (!this.loadData()) return null;
-        return (<SView col={"xs-12"} center>
+        return (<SView col={"xs-12"} center >
             <SView col={"xs-12"} row>
                 <SView flex >
                     <SText style={this.textStyle} color={STheme.color.lightGray}>{"Descripcion"}</SText>
@@ -124,8 +124,8 @@ class CajaArqueo extends Component<PropsType> {
             </SView>
             <SHr h={2} color={STheme.color.lightBlack} />
             {/* <SText>{'Arqueo de caja'}</SText> */}
-            <SList data={this.tipo_pago}
-                space={0}
+            <SList
+                data={this.tipo_pago}
                 render={this.renderTipoPago.bind(this)}
             />
             {this.getTotal()}

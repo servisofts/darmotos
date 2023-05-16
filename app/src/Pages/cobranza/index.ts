@@ -7,6 +7,7 @@ import clientesPendientes from "./clientesPendientes";
 import clientes_con_deuda from "./clientes_con_deuda";
 import proveedores_que_debemos from "./proveedores_que_debemos";
 import carrito_de_cuotas from "./carrito_de_cuotas";
+import penalidades from "./penalidades";
 export default SPage.combinePages("cobranza",
     {
         "": root,
@@ -15,6 +16,7 @@ export default SPage.combinePages("cobranza",
         carrito_de_cuotas,
         pendientes,
         clientesPendientes,
+        penalidades,
         test
     }
 )

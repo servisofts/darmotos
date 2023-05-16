@@ -48,7 +48,7 @@ export default class ListaCuotas extends Component {
         // if (!cuotas) return <SLoad />
         // this.cuotas = Object.values(cuotas)
 
-        console.log(this.props.totales)
+        // console.log(this.props.totales)
         var interes = parseFloat(this.props.data?.porcentaje_interes)
         // var capital_amortizado = 0;
 
@@ -79,7 +79,7 @@ export default class ListaCuotas extends Component {
         })
         return <SList
             data={cuotas}
-            limit={5}
+            limit={20}
             render={(data) => {
                 return this.totales_item({
                     codigo: data.codigo,
